@@ -13,23 +13,31 @@
           <br>
         </mat-card-title>
         <mat-card-content>
-          <form>
+          <form novalidate [formGroup]="loginForm" (ngSubmit)="onSubmit()">
             <p>
               <mat-form-field>
                 <mat-icon matSuffix>account_circle</mat-icon>
-                <input matInput placeholder="Username" type="text">
+                <input matInput placeholder="Username" type="text" formControlName="username">
+                <mat-error *ngIf="formErrors.username">
+                  {{formErrors.username}}
+                </mat-error>
                 <br>
               </mat-form-field>
             </p>
             <p>
               <mat-form-field>
                 <mat-icon matSuffix>lock</mat-icon>
-                <input matInput placeholder="Password" type="password">
+                <input matInput placeholder="Password" type="password" required formControlName="password">
+                <mat-error *ngIf="formErrors.username">
+                  {{formErrors.password}}
+                </mat-error>
                 <br>
               </mat-form-field>
             </p>
             <br>
-            <button type="submit" mat-raised-button color="primary">Iniciar Sesion</button>
+            <button type="submit" mat-raised-button color="primary" [disabled]="loginForm.invalid">Iniciar
+              Sesion</button>
+
             <br>
             <br>
             <div>
