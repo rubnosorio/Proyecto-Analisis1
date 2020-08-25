@@ -1,0 +1,42 @@
+<div class="container">
+
+    <div class="card">
+        <div class="div-title">
+            <mat-card>
+                <h3><strong>Listado de Tareas creados en el este curso</strong></h3>
+            </mat-card>
+        </div>
+        <div class="containertasks">
+            <mat-accordion>
+                <mat-expansion-panel *ngFor="let tarea of tareas" hideToggle>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            {{tarea.nombre_tarea}}
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            {{tarea.fecha_entrega}}
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+
+                    <div class="containertask">
+                        <h1>{{tarea.nombre_tarea}}</h1>
+                        <mat-divider></mat-divider>
+                        <h3>Analisis y Diseño 1</h3>
+                        <mat-divider></mat-divider>
+                        <h3><strong>Fecha de Entrega: </strong>{{tarea.fecha_entrega}}</h3>
+                        <mat-divider></mat-divider>
+                        <p>
+                            {{tarea.descripcion}}
+                            
+                        </p>
+                        <a *ngIf="tarea.url_archivo" href="tarea.url_archivo">Archivo Adjunto</a>
+                    </div>
+
+                    <button mat-raised-button color="accent" (click)="editTask(tarea)">Editar</button>
+                    <button mat-raised-button color="warn" (click)="deleteTask(tarea)">Eliminar</button>
+
+                </mat-expansion-panel>
+            </mat-accordion>
+        </div>
+    </div>
+</div>
