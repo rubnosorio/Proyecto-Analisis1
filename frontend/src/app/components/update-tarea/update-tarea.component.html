@@ -1,0 +1,34 @@
+<div class="cardconfig">
+    <div class="center">
+        <mat-card>
+            <mat-card-header>
+              <mat-card-title style="text-align: center;">Actualizar Tarea</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <p>
+                    <mat-form-field appearance="legacy" style="width: 500px;">
+                        <mat-label>Titulo: </mat-label>
+                        <mat-icon matSuffix>assignment</mat-icon>
+                        <input matInput [(ngModel)]="titulo">
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-form-field style="width: 500px">
+                        <mat-label>Instrucciones: </mat-label>
+                        <mat-icon matSuffix>list</mat-icon> 
+                        <textarea matInput
+                        cdkTextareaAutosize
+                        #cfcAutosize="cdkTextareaAutosize"
+                        cdkAutosizeMaxRows="12"
+                        [(ngModel)]="instruccion">
+                        </textarea>
+                      </mat-form-field>
+                </p>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-raised-button (click)="actualizar()">Actualizar</button>
+              <button mat-raised-button (click)="cancelacion()">Cancelar</button>
+            </mat-card-actions>
+          </mat-card>
+    </div>
+</div>
