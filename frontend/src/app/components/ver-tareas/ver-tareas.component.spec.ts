@@ -9,6 +9,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 
 import { VerTareasComponent } from './ver-tareas.component';
 import { Tarea } from 'src/app/models/tarea';
+import { By } from '@angular/platform-browser';
 
 fdescribe('VerTareasComponent', () => {
   let component: VerTareasComponent;
@@ -43,6 +44,12 @@ fdescribe('VerTareasComponent', () => {
     component.getTasks()
     var array = component.tareas
     expect(array.length).toBe(11)
+  })
+
+  it("tareas que se muestran al usuario", () => {
+    const tasks = fixture.debugElement.queryAll(By.css('.mat-accordion mat-expansion-panel'));
+    expect(tasks.length).toBe(11);
+    
   })
 
 });
