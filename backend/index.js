@@ -15,10 +15,10 @@ const aws_keys = require('./aws/aws_keys');
 const s3 = new AWS.S3(aws_keys.s3);
 
 var connection = mysql.createConnection({
-    host: '52.87.153.164',
-    user: 'root',
-    password: 'root',
-    database: 'analisis1',
+    host: 'xxxxxxxxxxxxxxxx',
+    user: 'xxxxx',
+    password: 'xxxxxx',
+    database: 'xxxxxxx',
     port: 3306
 });
 connection.connect();
