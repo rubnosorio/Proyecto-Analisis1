@@ -11,6 +11,8 @@ app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 app.use(cors());
 let bcrypt = require('bcryptjs');
 var mysql = require('mysql');
+const aws_keys = require('./aws/aws_keys');
+const s3 = new AWS.S3(aws_keys.s3);
 
 var connection = mysql.createConnection({
     host: '52.87.153.164',
@@ -20,13 +22,6 @@ var connection = mysql.createConnection({
     port: 3306
 });
 connection.connect();
-
-const s3 = new AWS.S3({
-    region: 'us-east-2',
-    accessKeyId: "AKIAQQMKMIT76PMWLIOM",
-    secretAccessKey: "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"
-});
-
 
 //----------------------------------------------------PRUEBA CONEXIÓN A DB------------------------------------------------
 app.get('/rol', (req, res) => {
