@@ -3,7 +3,7 @@ module.exports = (app, mysql, s3, connection) => {
         //variables para información del frontend
         var nombre_tarea = req.body.nombre_tarea;
         var descripcion = req.body.descripción;
-        //var fecha_entrega = req.body.fecha_entrega;
+        var fecha_entrega = req.body.fecha_entrega;
         var nombre_clase = req.body.nombre_clase;
         var id_clase = req.body.id_clase;
 
@@ -29,8 +29,8 @@ module.exports = (app, mysql, s3, connection) => {
             }
             else{
                 //insertamos en la base de datos la información
-                connection.query(`insert into TAREA (nombre_tarea,descripcion,url_directorio,url_archivo_instruccion,id_clase)
-                values ('${nombre_tarea}','${descripcion}','${folder}','${data.Location}',${parseInt(id_clase)})`, function (err, rows, fields) {
+                connection.query(`insert into TAREA (nombre_tarea,descripcion,url_directorio,url_archivo_instruccion,fecha_entrega,id_clase)
+                values ('${nombre_tarea}','${descripcion}','${folder}','${data.Location}',STR_TO_DATE(REPLACE('${fecha_entrega}','/','.') ,GET_FORMAT(date,'EUR')),${parseInt(id_clase)})`, function (err, rows, fields) {
                     if (!err) {
                         res.send(rows)
                     }
