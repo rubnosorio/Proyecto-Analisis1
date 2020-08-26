@@ -2,11 +2,11 @@
     <div class="center">
         <mat-card>
             <mat-card-header>
-              <mat-card-title style="text-align: center;">Actualizar Tarea</mat-card-title>
+              <mat-card-title>Actualizar Tarea</mat-card-title>
             </mat-card-header>
             <mat-card-content>
                 <p>
-                    <mat-form-field appearance="legacy" style="width: 500px;">
+                    <mat-form-field style="width: 500px;">
                         <mat-label>Titulo: </mat-label>
                         <mat-icon matSuffix>assignment</mat-icon>
                         <input matInput [(ngModel)]="titulo">
@@ -14,15 +14,21 @@
                 </p>
                 <p>
                     <mat-form-field style="width: 500px">
-                        <mat-label>Instrucciones: </mat-label>
+                        <mat-label>Descripcion: </mat-label>
                         <mat-icon matSuffix>list</mat-icon> 
                         <textarea matInput
                         cdkTextareaAutosize
                         #cfcAutosize="cdkTextareaAutosize"
                         cdkAutosizeMaxRows="12"
-                        [(ngModel)]="instruccion">
+                        [(ngModel)]="descripcion">
                         </textarea>
                       </mat-form-field>
+                </p>
+                <p>
+                  <mat-form-field style="width: 500px;">
+                    <mat-label>Fecha de entrega: </mat-label>
+                    <input matInput type="datetime-local" [(ngModel)]="fecha_entrega">
+                  </mat-form-field>
                 </p>
             </mat-card-content>
             <mat-card-actions>
