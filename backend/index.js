@@ -11,6 +11,8 @@ app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 app.use(cors());
 let bcrypt = require('bcryptjs');
 var mysql = require('mysql');
+const aws_keys = require('./aws/aws_keys');
+const s3 = new AWS.S3(aws_keys.s3);
 
 var connection = mysql.createConnection({
     host: '52.87.153.164',
@@ -20,14 +22,6 @@ var connection = mysql.createConnection({
     port: 3306
 });
 connection.connect();
-
-const s3 = new AWS.S3({
-    region: 'us-east-2',
-    accessKeyId: "AKIAQQMKMIT76PMWLIOM",
-    secretAccessKey: "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"
-});
-
-
 //----------------------------------------------------PRUEBA CONEXIÓN A DB------------------------------------------------
 app.get('/rol', (req, res) => {
     connection.query('show databases', function (err, rows, fields) {
@@ -38,11 +32,12 @@ app.get('/rol', (req, res) => {
             throw err;
         }
     });
+    res.send("todo bien, todo correcto y yo que me alegro");
 });
 
 //---------------------------------------------------ENDPOINTS------------------------------------------------------------
 
-const crear_tarea = require('./endpoints/crear_tarea')(app, mysql, s3);
+const crear_tarea = require('./endpoints/crear_tarea')(app, mysql, s3, connection);
 
 // server init
 app.listen(3000, () => console.log('escuchando en puerto 3000'));
