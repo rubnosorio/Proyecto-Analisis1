@@ -13,6 +13,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { NgxMatFileInputModule } from '@angular-material-components/file-input';
+
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, CrearTareaComponent],
@@ -27,6 +30,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatGridListModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    NgxMatFileInputModule,
+    ReactiveFormsModule,
   ],
   providers: [MatDatepickerModule],
   bootstrap: [AppComponent],

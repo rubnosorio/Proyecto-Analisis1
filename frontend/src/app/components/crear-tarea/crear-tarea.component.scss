@@ -32,6 +32,10 @@ $indigocolor: #4b0082;
   color: gray;
 }
 
+.text-area-noresize{
+  resize: none;
+}
+
 @media only screen and (max-width: 600px) {
   .card-container {
     width: 80%;

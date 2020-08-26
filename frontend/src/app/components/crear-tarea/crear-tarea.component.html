@@ -5,33 +5,45 @@
       CREAR TAREA
     </mat-card-title>
     <mat-card-content>
-      <form>
+      <form novalidate [formGroup]="homeworkForm">
         <mat-form-field>
           <mat-icon matSuffix>book</mat-icon>
-          <input matInput placeholder="Nombre de la Tarea" type="text">
-          <br>
+          <input matInput placeholder="Nombre de la Tarea" type="text" formControlName="nombre_tarea">
+          <mat-error *ngIf="formErrors.nombre_tarea">
+            {{formErrors.nombre_tarea}}
+          </mat-error>
+        </mat-form-field>
+        <br><br>
+        <mat-form-field>
+          <input matInput [min]="minDate" [matDatepicker]="picker" placeholder="Fecha de entrega"
+            formControlName="fecha_entrega">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error *ngIf="formErrors.fecha_entrega">
+            {{formErrors.fecha_entrega}}
+            <br>
+          </mat-error>
+        </mat-form-field>
+        <br><br>
+        <mat-form-field>
+          <ngx-mat-file-input [multiple]="false" placeholder="Archivo de instrucciones" formControlName="archivo">
+          </ngx-mat-file-input>
         </mat-form-field>
         <mat-form-field>
           <mat-icon matSuffix>create</mat-icon>
-          <input matInput placeholder="Descripcion" type="text">
-          <br>
+          <textarea class="text-area-noresize" matInput placeholder="Descripcion" rows="10"
+            formControlName="descripcion"></textarea>
+          <mat-error *ngIf="formErrors.descripcion">
+            {{formErrors.descripcion}} <br>
+          </mat-error>
         </mat-form-field>
-        <br>
-        <mat-form-field>
-          <input matInput [matDatepicker]="picker" placeholder="Fecha de entrega">
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
-        <br>
-        <label class="label-archivo">Instrucciones</label>
-        <button type="button" mat-raised-button (click)="fileInput.click()">Subir Archivo</button>
-        <input hidden #fileInput type="file" id="file">
-        <br>
       </form>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-button type="submit" mat-raised-button color="primary">Crear Tarea</button>
-      <button mat-button type="submit" mat-raised-button color="primary">Limpiar Formulario</button>
+      <button mat-button [disabled]="homeworkForm.invalid" type="submit" mat-raised-button color="primary"
+        (click)="onSubmit()">Crear
+        Tarea</button>
+      <button mat-button mat-raised-button color="primary" (click)="clean()">Limpiar Formulario</button>
     </mat-card-actions>
     <br>
   </mat-card>
