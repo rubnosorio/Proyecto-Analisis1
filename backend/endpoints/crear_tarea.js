@@ -6,16 +6,21 @@ module.exports = (app, mysql, s3, connection) => {
         var fecha_entrega = req.body.fecha_entrega;
         var nombre_clase = req.body.nombre_clase;
         var id_clase = req.body.id_clase;
-
-        //variables para uso de base64
         var base64String = req.body.archivo; //variable que recibe la información en base64 del archivo
-        var extension = base64String.substring(base64String.indexOf('/') + 1, base64String.indexOf(';base64')); //obtiene la información de la extension a partir del header
-        var base64 = base64String.split(","); //separamos el header del codigo en base64
+        var base64;
+        var extension;
+        var decoded=""; //variable que recibira el archivo decodificado, si no viene unicamente se creará la carpeta en S3
+        var filename="";
+        if(base64String!=""){ //si se envió el archivo lo debemos decodificar
+            //variables para uso de base64
+            extension = base64String.substring(base64String.indexOf('/') + 1, base64String.indexOf(';base64')); //obtiene la información de la extension a partir del header
+            base64 = base64String.split(","); //separamos el header del codigo en base64
+            decoded = Buffer.from(base64[1], 'base64');
+            filename= "instrucciones"+nombre_tarea+"."+extension;
+        }
         //variables para el bucket de S3
         const bucketname = 'proyectoanalisis1';
         const folder = `${nombre_clase}/${nombre_tarea}/`;
-        const filename= "instrucciones"+nombre_tarea+"."+extension;
-        let decoded = Buffer.from(base64[1], 'base64');
         const filepath = `${folder}${filename}`;
         let uploadParamsS3 = {
             Bucket: bucketname,
@@ -29,13 +34,21 @@ module.exports = (app, mysql, s3, connection) => {
             }
             else{
                 //insertamos en la base de datos la información
+                var url_archivo="";
+                var status={
+                    statusCode:200
+                }
+                if(filename!=""){
+                    url_archivo=data.Location;
+                }
                 connection.query(`insert into TAREA (nombre_tarea,descripcion,url_directorio,url_archivo_instruccion,fecha_entrega,id_clase)
-                values ('${nombre_tarea}','${descripcion}','${folder}','${data.Location}',STR_TO_DATE(REPLACE('${fecha_entrega}','/','.') ,GET_FORMAT(date,'EUR')),${parseInt(id_clase)})`, function (err, rows, fields) {
+                values ('${nombre_tarea}','${descripcion}','${folder}','${url_archivo}',STR_TO_DATE(REPLACE('${fecha_entrega}','/','.') ,GET_FORMAT(date,'EUR')),${parseInt(id_clase)})`, function (err, rows, fields) {
                     if (!err) {
-                        res.send(rows)
+                        res.send(status)
                     }
                     else {
-                        throw err;
+                        status.statusCode=404;
+                        res.sendStatus(status)
                     }
                 });
             }
