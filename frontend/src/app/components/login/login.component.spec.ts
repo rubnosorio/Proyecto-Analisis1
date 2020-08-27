@@ -10,7 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
 
-describe('Crear Componente Login', () => {
+describe('Login Component', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
   beforeEach(async(() => {
@@ -42,30 +42,6 @@ describe('Crear Componente Login', () => {
     expect(component.formErrors.password).toBe('');
     expect(component.formErrors.username).toBe('');
   });
-});
-
-describe('Formulario Incorrecto', () => {
-  let component: LoginComponent;
-  let fixture: ComponentFixture<LoginComponent>;
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      imports: [
-        MatCardModule,
-        MatInputModule,
-        MatButtonModule,
-        MatIconModule,
-        ReactiveFormsModule,
-        BrowserAnimationsModule,
-      ],
-      providers: [FormBuilder],
-      declarations: [LoginComponent],
-    }).compileComponents();
-  }));
-  beforeEach(() => {
-    fixture = TestBed.createComponent(LoginComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
   it('Deberia mostrar un error de minimo de caracteres en el nombre de usuario', () => {
     let username = component.loginForm.controls['username'];
     username.setValue('a');
@@ -80,43 +56,16 @@ describe('Formulario Incorrecto', () => {
     component.onValueChanged(component.loginForm.value);
     expect(component.formErrors.password).not.toBe('');
   });
-  it('Deberia mostrar un error de maximo de caracteres en el nombre de usuario', () => {
+  it('Deberia mostrar un error de maximo de caracteres', () => {
     let username = component.loginForm.controls['username'];
     username.setValue('aaaaaaaaaaaaaaaaaaaaaaaaaa');
-    username.markAsDirty();
-    component.onValueChanged(component.loginForm.value);
-    expect(component.formErrors.username).not.toBe('');
-  });
-  it('Deberia mostrar un error de maximo de caracteres en el password', () => {
     let password = component.loginForm.controls['password'];
     password.setValue('aaaaaaaaaaaaaaaaaaaaaaaaaa');
+    username.markAsDirty();
     password.markAsDirty();
     component.onValueChanged(component.loginForm.value);
+    expect(component.formErrors.username).not.toBe('');
     expect(component.formErrors.password).not.toBe('');
-  });
-});
-
-describe('Formulario Incorrecto', () => {
-  let component: LoginComponent;
-  let fixture: ComponentFixture<LoginComponent>;
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      imports: [
-        MatCardModule,
-        MatInputModule,
-        MatButtonModule,
-        MatIconModule,
-        ReactiveFormsModule,
-        BrowserAnimationsModule,
-      ],
-      providers: [FormBuilder],
-      declarations: [LoginComponent],
-    }).compileComponents();
-  }));
-  beforeEach(() => {
-    fixture = TestBed.createComponent(LoginComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
   });
   it('Deberia tener un formulario correcto', () => {
     let username = component.loginForm.controls['username'];
