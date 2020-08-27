@@ -10,6 +10,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 import { UpdateTareaComponent } from './components/update-tarea/update-tarea.component';
 
 @NgModule({
@@ -22,6 +23,7 @@ import { UpdateTareaComponent } from './components/update-tarea/update-tarea.com
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    ToastrModule.forRoot(),
     MatCardModule,
     MatInputModule,
     MatButtonModule,

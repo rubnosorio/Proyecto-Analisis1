@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Tarea } from '../../models/tarea';
 import { UpdateTareaService } from '../../services/update-tarea.service';
+import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 
 @Component({
@@ -14,7 +15,7 @@ export class UpdateTareaComponent implements OnInit {
 
   tarea: Tarea = new Tarea(0,"Tarea 1","Instrucciones\n1) Instruccion 1\n2) Instruccion 2\n3) Instruccion 3\n","","2020-08-30T23:59");
 
-  constructor(private update_tarea:UpdateTareaService,private router:Router) { }
+  constructor(private toastr: ToastrService, private update_tarea:UpdateTareaService, private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -29,8 +30,9 @@ export class UpdateTareaComponent implements OnInit {
           console.error(err);
         }
       );
+      this.toastr.success('La tarea fue actualizada con exito!','Tarea Actualizada');
     }else{
-      console.log('No se puede actualizar tarea si esta vacia.');
+      this.toastr.error('No pueden registrarse campos vacios en la tarea!','Error al Actualizar');
     }
   }
 
