@@ -2,7 +2,7 @@ module.exports = (app, mysql, s3, connection) => {
     app.post('/crear_tarea', (req, res) => {
         //variables para información del frontend
         var nombre_tarea = req.body.nombre_tarea;
-        var descripcion = req.body.descripción;
+        var descripcion = req.body.descripcion;
         var fecha_entrega = req.body.fecha_entrega;
         var nombre_clase = req.body.nombre_clase;
         var id_clase = req.body.id_clase;
