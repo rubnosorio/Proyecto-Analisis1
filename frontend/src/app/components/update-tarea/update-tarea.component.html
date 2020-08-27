@@ -9,7 +9,7 @@
                     <mat-form-field style="width: 500px;">
                         <mat-label>Titulo: </mat-label>
                         <mat-icon matSuffix>assignment</mat-icon>
-                        <input matInput [(ngModel)]="titulo">
+                        <input matInput [(ngModel)]="tarea.nombre_tarea">
                     </mat-form-field>
                 </p>
                 <p>
@@ -20,14 +20,14 @@
                         cdkTextareaAutosize
                         #cfcAutosize="cdkTextareaAutosize"
                         cdkAutosizeMaxRows="12"
-                        [(ngModel)]="descripcion">
+                        [(ngModel)]="tarea.descripcion">
                         </textarea>
                       </mat-form-field>
                 </p>
                 <p>
                   <mat-form-field style="width: 500px;">
                     <mat-label>Fecha de entrega: </mat-label>
-                    <input matInput type="datetime-local" [(ngModel)]="fecha_entrega">
+                    <input matInput type="datetime-local" [(ngModel)]="tarea.fecha_entrega">
                   </mat-form-field>
                 </p>
             </mat-card-content>
