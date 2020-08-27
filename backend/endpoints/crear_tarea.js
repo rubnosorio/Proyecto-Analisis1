@@ -48,7 +48,7 @@ module.exports = (app, mysql, s3, connection) => {
                     }
                     else {
                         status.statusCode=404;
-                        res.sendStatus(status)
+                        res.send(status)
                     }
                 });
             }
