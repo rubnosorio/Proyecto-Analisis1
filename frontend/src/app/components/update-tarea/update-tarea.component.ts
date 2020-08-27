@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 
 export class UpdateTareaComponent implements OnInit {
 
-  tarea: Tarea = new Tarea(0,"Tarea 1","Instrucciones\n1) Instruccion 1\n2) Instruccion 2\n3) Instruccion 3\n","","2020-08-30T23:59");
+  tarea: Tarea = new Tarea(0,"Tarea 1","Instrucciones\n1) Instruccion 1\n2) Instruccion 2\n3) Instruccion 3\n","","");
 
   constructor(private toastr: ToastrService, private update_tarea:UpdateTareaService, private router:Router) { }
 
@@ -22,6 +22,8 @@ export class UpdateTareaComponent implements OnInit {
 
   actualizar(){
     if(this.tarea.nombre_tarea.length != 0 && this.tarea.descripcion.length != 0 && this.tarea.fecha_entrega.length != 0){
+      var splitted = this.tarea.fecha_entrega.split("-", 3);
+      this.tarea.fecha_entrega=splitted[2]+'/'+splitted[1]+'/'+splitted[0];
       this.update_tarea.update_Tarea(this.tarea).subscribe(
         res => {
           console.log(res);
