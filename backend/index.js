@@ -13,10 +13,10 @@ let bcrypt = require('bcryptjs');
 var mysql = require('mysql');
 
 var connection = mysql.createConnection({
-    host: '',
-    user: '',
-    password: '',
-    database: '',
+    host: '52.87.153.164',
+    user: 'root',
+    password: 'root',
+    database: 'analisis1',
     port: 3306
 });
 connection.connect();
