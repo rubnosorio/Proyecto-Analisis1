@@ -13,11 +13,11 @@ let bcrypt = require('bcryptjs');
 var mysql = require('mysql');
 
 var connection = mysql.createConnection({
-    host: 'xxx.xxx.xxx.xxx',
-    user: '----',
-    password: '-----',
-    database: '----',
-    port: 3306
+    //host: 'xxx.xxx.xxx.xxx',
+    //user: '----',
+    //password: '-----',
+    //database: '----',
+    //port: 3306
 });
 connection.connect();
 
@@ -39,6 +39,8 @@ app.get('/rol', (req, res) => {
         }
     });
 });
+
+const ver_tareas = require('./endpoints/ver-tareas')(app,connection);
 
 // server init
 app.listen(3000, () => console.log('escuchando en puerto 3000'));
