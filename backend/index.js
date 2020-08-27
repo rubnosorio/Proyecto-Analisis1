@@ -24,15 +24,15 @@ var connection = mysql.createConnection({
 connection.connect();
 //----------------------------------------------------PRUEBA CONEXIÓN A DB------------------------------------------------
 app.get('/rol', (req, res) => {
-    connection.query('show databases', function (err, rows, fields) {
+    /*connection.query('show databases', function (err, rows, fields) {
         if (!err) {
             res.send(rows)
         }
         else {
             throw err;
         }
-    });
-    res.send("todo bien, todo correcto y yo que me alegro");
+    });*/
+    res.sendStatus(200);
 });
 
 //---------------------------------------------------ENDPOINTS------------------------------------------------------------
