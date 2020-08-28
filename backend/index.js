@@ -42,4 +42,7 @@ const crear_tarea = require('./endpoints/crear_tarea')(app, mysql, s3, connectio
 const ver_tareas = require('./endpoints/ver-tareas')(app,connection);
 
 // server init
+const update_tarea = require('./endpoints/update_tarea')(app,connection);
+const get_tarea = require('./endpoints/obtener_tarea')(app,connection);
+
 app.listen(3000, () => console.log('escuchando en puerto 3000'));
