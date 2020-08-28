@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="containertask">
+        <h1>{{tarea.nombre_tarea}}</h1>
+        <mat-divider></mat-divider>
+        <h3>Analisis y Diseño 1</h3>
+        <mat-divider></mat-divider>
+        <h3><strong>Fecha de Entrega: </strong>{{tarea.fecha_entrega}}</h3>
+        <mat-divider></mat-divider>
+        <p>
+            {{tarea.descripcion}}
+
+        </p>
+        <a *ngIf="tarea.url_archivo_instruccion" href="tarea.url_archivo_instruccion">Archivo Adjunto</a>
+        <br>
+        <h3><strong>Seccion de Entrega</strong></h3>
+        <br>
+        <ngx-dropzone (change)="onSelect($event)">
+            <ngx-dropzone-label>Arrastra tus Archivos Aca o Presiona en el recuadro.</ngx-dropzone-label>
+            <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
+                <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+            </ngx-dropzone-preview>
+        </ngx-dropzone>
+        <br>
+        <div class="buttons">
+            <button mat-raised-button (click)="sendTask()" color="accent">Entregar</button>
+            <button mat-raised-button color="warn">Cancelar</button>
+        </div>
+    </div>
+</div>

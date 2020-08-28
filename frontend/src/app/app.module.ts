@@ -17,11 +17,14 @@ import { NgxMatFileInputModule } from '@angular-material-components/file-input';
 import { MatDividerModule } from '@angular/material/divider'
 import { MatExpansionModule } from '@angular/material/expansion';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgxDropzoneModule } from 'ngx-dropzone';
+import { EntregarTareaComponent } from './components/entregar-tarea/entregar-tarea.component';
 @NgModule({
   declarations: [
     AppComponent,
     CrearTareaComponent,
-    VerTareasComponent
+    VerTareasComponent,
+    EntregarTareaComponent
   ],
   imports: [
     BrowserModule,
@@ -38,6 +41,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     MatDividerModule,
     MatExpansionModule
+    NgxDropzoneModule
   ],
   providers: [MatDatepickerModule],
   bootstrap: [AppComponent],
