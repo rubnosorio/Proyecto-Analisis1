@@ -39,5 +39,7 @@ app.get('/rol', (req, res) => {
 
 const crear_tarea = require('./endpoints/crear_tarea')(app, mysql, s3, connection);
 
+const ver_tareas = require('./endpoints/ver-tareas')(app,connection);
+
 // server init
 app.listen(3000, () => console.log('escuchando en puerto 3000'));
