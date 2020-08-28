@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Tarea } from '../../models/tarea'
+import { EntregarTareaService } from '../../services/tarea/entregar-tarea.service'
+import { EntregarTarea } from 'src/app/models/entregar-tarea';
 
 @Component({
   selector: 'app-entregar-tarea',
@@ -11,7 +13,7 @@ export class EntregarTareaComponent implements OnInit {
   tarea: Tarea
   files: File[] = [];
 
-  constructor() {
+  constructor(private entregaService: EntregarTareaService) {
     this.getTask()
   }
 
@@ -23,21 +25,27 @@ export class EntregarTareaComponent implements OnInit {
   }
 
   onSelect(event) {
-    console.log(event);
     this.files.push(...event.addedFiles);
   }
 
   onRemove(event) {
-    console.log(event);
     this.files.splice(this.files.indexOf(event), 1);
   }
 
-  sendTask() {
+  getFile() {
     var r = new FileReader()
+    if(this.files.length < 1) {
+      console.log("falta que se agregue un archivo")
+      return
+    }
     var f = r.readAsDataURL(this.files[0])
     r.onload = function l(){
-      console.log(r.result)
+      this.sendTask(r.result)
     }.bind(this);
+  }
+
+  sendTask(base: string) {
+    this.entregaService.sendTask(new EntregarTarea(1,1,1,"",this.files[0].name,base,0))
   }
 
 }
