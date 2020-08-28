@@ -1,4 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Tarea } from '../../models/tarea';
+import { UpdateTareaService } from '../../services/update-tarea.service';
+import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,27 +13,28 @@ import { Router } from '@angular/router';
 
 export class UpdateTareaComponent implements OnInit {
 
-  idtarea: number;
-  titulo: string;
-  descripcion: string;
-  fecha_entrega: string;
+  tarea: Tarea = new Tarea(0,"Tarea 1","Instrucciones\n1) Instruccion 1\n2) Instruccion 2\n3) Instruccion 3\n","","","");
 
-  constructor(private router:Router) { }
+  constructor(private toastr: ToastrService, private update_tarea:UpdateTareaService, private router:Router) { }
 
   ngOnInit(): void {
-    this.idtarea=0;
-    this.titulo='Tarea N';
-    this.descripcion='Instrucciones Tarea N\n 1) Instruccion 1\n 2) Instruccion 2\n 3) Instruccion 3\n';
-    this.fecha_entrega='2020-08-30T23:59';
   }
 
   actualizar(){
-    if(this.titulo.length != 0 && this.descripcion.length != 0 && this.fecha_entrega.length != 0){
-      console.log('Titulo: '+this.titulo);
-      console.log('Descripción: '+this.descripcion);
-      console.log('Fecha Entrega: '+this.fecha_entrega);
+    if(this.tarea.nombre_tarea.length != 0 && this.tarea.descripcion.length != 0 && this.tarea.fecha_entrega.length != 0){
+      var splitted = this.tarea.fecha_entrega.split("-", 3);
+      this.tarea.fecha_entrega=splitted[2]+'/'+splitted[1]+'/'+splitted[0];
+      this.update_tarea.update_Tarea(this.tarea).subscribe(
+        res => {
+          console.log(res);
+        },
+        err => {
+          console.error(err);
+        }
+      );
+      this.toastr.success('La tarea fue actualizada con exito!','Tarea Actualizada');
     }else{
-      console.log('No se puede actualizar tarea si esta vacia.');
+      this.toastr.error('No pueden registrarse campos vacios en la tarea!','Error al Actualizar');
     }
   }
 

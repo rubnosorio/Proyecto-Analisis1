@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http'
 import { NgModule } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
@@ -10,19 +11,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CrearTareaComponent } from './components/crear-tarea/crear-tarea.component';
+import { ToastrModule } from 'ngx-toastr';
 import { UpdateTareaComponent } from './components/update-tarea/update-tarea.component';
 import { VerTareasComponent } from './components/ver-tareas/ver-tareas.component';
-import { MatCardModule } from '@angular/material/card';
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { MatGridListModule } from '@angular/material/grid-list';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { NgxMatFileInputModule } from '@angular-material-components/file-input';
 import { MatDividerModule } from '@angular/material/divider'
 import { MatExpansionModule } from '@angular/material/expansion';
-import { ReactiveFormsModule } from '@angular/forms';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { EntregarTareaComponent } from './components/entregar-tarea/entregar-tarea.component';
 @NgModule({
@@ -37,6 +33,8 @@ import { EntregarTareaComponent } from './components/entregar-tarea/entregar-tar
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
+    ToastrModule.forRoot(),
     MatCardModule,
     MatInputModule,
     MatButtonModule,
