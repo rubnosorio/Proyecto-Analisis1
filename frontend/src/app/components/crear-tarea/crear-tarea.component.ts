@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+import { ServiceCrearTareaService } from '../../services/crear_tarea/service-crear-tarea.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 @Component({
   selector: 'app-crear-tarea',
   templateUrl: './crear-tarea.component.html',
@@ -35,7 +38,11 @@ export class CrearTareaComponent implements OnInit {
     },
   };
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private creartareaservice: ServiceCrearTareaService,
+    private _snackBar: MatSnackBar
+  ) {
     this.createForm();
   }
 
@@ -45,6 +52,7 @@ export class CrearTareaComponent implements OnInit {
 
   clean(): void {
     this.homeworkForm.reset();
+    this.homeworkForm.controls['archivo'].setValue('');
   }
 
   createForm(): void {
@@ -96,6 +104,53 @@ export class CrearTareaComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log(this.homeworkForm.value);
+    let fecha = this.homeworkForm.controls['fecha_entrega'].value;
+
+    this.readFilePromise().then((abase64) => {
+      let envio = {
+        nombre_tarea: this.homeworkForm.controls['nombre_tarea'].value,
+        descripcion: this.homeworkForm.controls['descripcion'].value,
+        fecha_entrega:
+          fecha.getDate() +
+          '/' +
+          (fecha.getMonth() + 1) +
+          '/' +
+          fecha.getFullYear(),
+        archivo: abase64,
+        id_clase: 1,
+        nombre_clase: 'analisis2',
+      };
+      this.creartareaservice.crear_tarea(envio).subscribe((res) => {
+        if (res.statusCode == 200) {
+          this._snackBar.open('Tarea Creada Correctamente', '', {
+            duration: 5000,
+          });
+          this.clean();
+        } else {
+          this._snackBar.open(
+            `Error ${res.statusCode} al procesar la solicitud`,
+            '',
+            {
+              duration: 5000,
+            }
+          );
+          this.clean();
+        }
+      });
+    });
   }
+
+  readFilePromise = () => {
+    return new Promise((resolve, reject) => {
+      if (this.homeworkForm.controls['archivo'].value != '') {
+        const reader = new FileReader();
+        reader.readAsDataURL(this.homeworkForm.controls['archivo'].value);
+        reader.onload = () => {
+          resolve(reader.result.toString());
+        };
+      } else {
+        resolve('');
+      }
+    });
+  };
 }
