@@ -21,6 +21,8 @@ import { MatDividerModule } from '@angular/material/divider'
 import { MatExpansionModule } from '@angular/material/expansion';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { EntregarTareaComponent } from './components/entregar-tarea/entregar-tarea.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { DialogoComponent } from './components/dialogo/dialogo.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +30,7 @@ import { EntregarTareaComponent } from './components/entregar-tarea/entregar-tar
     VerTareasComponent,
     EntregarTareaComponent,
     UpdateTareaComponent,
+    DialogoComponent
   ],
   imports: [
     BrowserModule,
@@ -48,8 +51,12 @@ import { EntregarTareaComponent } from './components/entregar-tarea/entregar-tar
     MatExpansionModule,
     NgxDropzoneModule,
     FormsModule,
+    MatDialogModule, // <--- Aquí
   ],
   providers: [MatDatepickerModule],
   bootstrap: [AppComponent],
+  entryComponents: [
+    DialogoComponent// <--- Aquí
+  ]
 })
 export class AppModule {}
