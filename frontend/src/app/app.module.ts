@@ -14,11 +14,15 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { NgxMatFileInputModule } from '@angular-material-components/file-input';
-
+import { MatDividerModule } from '@angular/material/divider'
+import { MatExpansionModule } from '@angular/material/expansion';
 import { ReactiveFormsModule } from '@angular/forms';
-
 @NgModule({
-  declarations: [AppComponent, CrearTareaComponent],
+  declarations: [
+    AppComponent,
+    CrearTareaComponent,
+    VerTareasComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -32,6 +36,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatNativeDateModule,
     NgxMatFileInputModule,
     ReactiveFormsModule,
+    MatDividerModule,
+    MatExpansionModule
   ],
   providers: [MatDatepickerModule],
   bootstrap: [AppComponent],
