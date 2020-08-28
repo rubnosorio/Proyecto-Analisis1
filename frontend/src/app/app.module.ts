@@ -23,6 +23,7 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
 import { EntregarTareaComponent } from './components/entregar-tarea/entregar-tarea.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DialogoComponent } from './components/dialogo/dialogo.component';
+import { LoginComponent } from './components/login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +31,8 @@ import { DialogoComponent } from './components/dialogo/dialogo.component';
     VerTareasComponent,
     EntregarTareaComponent,
     UpdateTareaComponent,
-    DialogoComponent
+    DialogoComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
