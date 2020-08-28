@@ -41,6 +41,7 @@ const crear_tarea = require('./endpoints/crear_tarea')(app, mysql, s3, connectio
 
 const ver_tareas = require('./endpoints/ver-tareas')(app,connection);
 
+const eliminar_tarea = require('./endpoints/eliminar_tarea')(app,connection);
 // server init
 const update_tarea = require('./endpoints/update_tarea')(app,connection);
 const get_tarea = require('./endpoints/obtener_tarea')(app,connection);
