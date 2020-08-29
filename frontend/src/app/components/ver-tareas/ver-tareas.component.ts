@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Tarea } from '../../models/tarea'
+import { VerTareaService } from '../../services/tarea/ver-tarea.service'
 
 @Component({
   selector: 'app-ver-tareas',
@@ -11,7 +12,7 @@ export class VerTareasComponent implements OnInit {
   tareas: Tarea[]
   panelOpenState = false;
 
-  constructor() {
+  constructor(private tareaService: VerTareaService) {
     //consumir el servicio para obtener las tareas
     this.getTasks()
   }
@@ -21,7 +22,10 @@ export class VerTareasComponent implements OnInit {
 
   getTasks() {
     //funcion que consume el servicio para obtener todas las tareas
-    this.tareas = [
+    this.tareaService.getTasks(1).subscribe((data_api: any) => {
+      this.tareas = data_api;
+    })
+    /*this.tareas = [
       new Tarea(0,"Titulo de prueba para Tarea 0","Descripcion de prueba para las instrucciones de una tarea 0","","asdasd","24/08/2020 11:15"),
       new Tarea(1,"Titulo de prueba para Tarea 1","Descripcion de prueba para las instrucciones de una tarea 1","","","24/08/2020 11:15"),
       new Tarea(2,"Titulo de prueba para Tarea 2","Descripcion de prueba para las instrucciones de una tarea 2","","","24/08/2020 11:15"),
@@ -33,7 +37,7 @@ export class VerTareasComponent implements OnInit {
       new Tarea(8,"Titulo de prueba para Tarea 8","Descripcion de prueba para las instrucciones de una tarea 8","","","24/08/2020 11:15"),
       new Tarea(9,"Titulo de prueba para Tarea 9","Descripcion de prueba para las instrucciones de una tarea 9","","","24/08/2020 11:15"),
       new Tarea(10,"Titulo de prueba para Tarea 10","Descripcion de prueba para las instrucciones de una tarea 10","","","24/08/2020 11:15"),
-    ]
+    ]*/
   }
 
   editTask(tarea: Tarea){
