@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Tarea } from '../../models/tarea'
+import { Tarea } from '../../models/tarea';
+import { DialogService } from '../../services/shared/dialog.service';
+import {EliminarTareaService} from '../../services/eliminar-tarea.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-ver-tareas',
@@ -11,7 +14,7 @@ export class VerTareasComponent implements OnInit {
   tareas: Tarea[]
   panelOpenState = false;
 
-  constructor() {
+  constructor(private toastr: ToastrService,private dialogService: DialogService, private eliminar_task:EliminarTareaService) {
     //consumir el servicio para obtener las tareas
     this.getTasks()
   }
@@ -44,8 +47,23 @@ export class VerTareasComponent implements OnInit {
 
   deleteTask(tarea: Tarea){
     //metodo donde se abre un componente Dialod o Bottom Sheet
-    console.log("eliminar tarea")
-    console.log(tarea)
+    this.dialogService.openConfirmDialog()
+    .afterClosed().subscribe(res => {
+      console.log(res);
+      if(res){
+        this.eliminar_task.delete_Tarea(tarea).subscribe(
+          res => {
+            console.log(res);
+          },
+          err => {
+            console.error(err);
+          }
+        );
+        this.toastr.success('La tarea fue eliminada con exito!','Tarea Eliminada');
+      }
+    })
   }
+
+
 
 }
