@@ -1,7 +1,7 @@
-let aws_keys ={
-    s3:{
-        region:'xxxxxxxxxxxx',
-        accessKeyId: "xxxxxxxxxxxxx", 
+let aws_keys = {
+    s3: {
+        region: 'xxxxxxxxxxxx',
+        accessKeyId: "xxxxxxxxxxxxx",
         secretAccessKey: "xxxxxxxxxxxxxxxxxxxx"
     }
 }

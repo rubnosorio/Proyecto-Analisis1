@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+import { LoginserviceService } from '../../services/login/loginservice.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -28,7 +31,11 @@ export class LoginComponent implements OnInit {
     },
   };
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private ls: LoginserviceService,
+    private _snackBar: MatSnackBar
+  ) {
     this.createForm();
   }
 
@@ -81,6 +88,18 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.loginForm.value);
+    this.ls.login(this.loginForm.value).subscribe((res) => {
+      if (res.statusCode == 200) {
+        this._snackBar.open('Credenciales Correctas', '', {
+          duration: 5000,
+        });
+        this.loginForm.reset();
+      } else {
+        this._snackBar.open(`Credenciales Incorrectas`, '', {
+          duration: 5000,
+        });
+        this.loginForm.reset();
+      }
+    });
   }
 }
