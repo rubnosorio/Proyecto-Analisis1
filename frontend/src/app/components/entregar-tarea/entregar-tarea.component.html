@@ -14,7 +14,7 @@
         <br>
         <h3><strong>Seccion de Entrega</strong></h3>
         <br>
-        <ngx-dropzone (change)="onSelect($event)">
+        <ngx-dropzone [multiple]="false" (change)="onSelect($event)">
             <ngx-dropzone-label>Arrastra tus Archivos Aca o Presiona en el recuadro.</ngx-dropzone-label>
             <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
                 <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
@@ -22,7 +22,7 @@
         </ngx-dropzone>
         <br>
         <div class="buttons">
-            <button mat-raised-button (click)="sendTask()" color="accent">Entregar</button>
+            <button mat-raised-button (click)="getFile()" color="accent">Entregar</button>
             <button mat-raised-button color="warn">Cancelar</button>
         </div>
     </div>
