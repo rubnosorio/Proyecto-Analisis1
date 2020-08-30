@@ -25,6 +25,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { DialogoComponent } from './components/dialogo/dialogo.component';
 import { LoginComponent } from './components/login/login.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { VerExamenesComponent } from './components/ver-examenes/ver-examenes.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,6 +35,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     UpdateTareaComponent,
     DialogoComponent,
     LoginComponent,
+    VerExamenesComponent,
   ],
   imports: [
     BrowserModule,
