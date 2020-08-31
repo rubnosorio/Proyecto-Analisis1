@@ -23,6 +23,6 @@ export class EliminarTareaService {
       },
     };
     console.log(options.body.id_tarea);
-    return this.http.delete(baseURL+'/eliminar_tarea',options);
+    return this.http.delete(baseURL+'eliminar_tarea',options);
   }
 }
