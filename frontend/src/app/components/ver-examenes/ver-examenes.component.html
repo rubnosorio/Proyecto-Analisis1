@@ -11,15 +11,23 @@
                 <mat-expansion-panel *ngFor="let examen of examenes" hideToggle>
                     <mat-expansion-panel-header>
                         <mat-panel-title>
-                            {{examen.titulo}}
+                            {{examen.nombre_examen}}
                         </mat-panel-title>
                         <mat-panel-description>
-                            {{examen.fecha_creacion}}
+                            {{examen.fecha}}
                         </mat-panel-description>
                     </mat-expansion-panel-header>
 
                     <div class="containertask">
-                        <h1>{{examen.titulo}}</h1>
+                        <h1>{{examen.nombre_examen}}</h1>
+                        <mat-divider></mat-divider>
+                        <h3><strong>Numero de Preguntas: </strong>{{examen.num_preguntas}}</h3>
+                        <mat-divider></mat-divider>
+                        <h3><strong>Fecha de Realizacion: </strong>{{examen.fecha}}</h3>
+                        <mat-divider></mat-divider>
+                        <h3><strong>Puntep: </strong>{{examen.valor_examen}}</h3>
+                        <mat-divider></mat-divider>
+                        <h3><strong>Estado: </strong>{{examen.estado}}</h3>
                         <mat-divider></mat-divider>
                         <p>
                             {{examen.descripcion}}
