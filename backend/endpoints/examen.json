@@ -1,0 +1,83 @@
+{
+    "nombre_examen": "1er Parcial",
+    "id_clase":1,
+    "num_preguntas": 4,
+    "valor_examen": 15,
+    "fecha": "15/08/2020",
+    "estado": 1,
+    "descripcion":"este campo es obligatorio",
+    "preguntas": [
+        {
+            "pregunta": "¿Que día es hoy?",
+            "tipo_respuesta": 0,
+            "num_correctas": 1,
+            "opciones": [
+                {
+                    "respuesta": "lunes",
+                    "es_correcta": 1
+                },
+                {
+                    "respuesta": "martes",
+                    "es_correcta": 0
+                },
+                {
+                    "respuesta": "miercoles",
+                    "es_correcta": 0
+                },
+                {
+                    "respuesta": "ninguna de las anteriores es correcta",
+                    "es_correcta": 0
+                }
+            ]
+        },
+        {
+            "pregunta": "¿Que juego(s) juega Erick?",
+            "tipo_respuesta": 0,
+            "num_correctas": 3,
+            "opciones": [
+                {
+                    "respuesta": "Overwatch",
+                    "es_correcta": 1
+                },
+                {
+                    "respuesta": "COD",
+                    "es_correcta": 1
+                },
+                {
+                    "respuesta": "PUBG",
+                    "es_correcta": 1
+                },
+                {
+                    "respuesta": "Free Fire",
+                    "es_correcta": 0
+                }
+            ]
+        },
+        {
+            "pregunta": "¿Cual es el segundo nombre de Erick",
+            "tipo_respuesta": 1,
+            "num_correctas": 1,
+            "opciones": [
+                {
+                    "respuesta": "Alexander",
+                    "es_correcta": 1
+                }
+            ]
+        },
+        {
+            "pregunta": "¿Sale el semestre?",
+            "tipo_respuesta": 2,
+            "num_correctas": 1,
+            "opciones": [
+                {
+                    "respuesta": "Verdadero",
+                    "es_correcta": 1
+                },
+                {
+                    "respuesta": "Falso",
+                    "es_correcta": 0
+                }
+            ]
+        }
+    ]
+}
