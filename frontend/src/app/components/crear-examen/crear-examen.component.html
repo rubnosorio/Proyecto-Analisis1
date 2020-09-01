@@ -1,1 +1,47 @@
-<button mat-stroked-button color="primary" (click)="crearpregunta()">Crear Pregunta</button>
+<div class="card-container">
+  <mat-card>
+    <br>
+    <mat-card-title>
+      CREAR EXAMEN
+    </mat-card-title>
+    <mat-card-content>
+      <form novalidate [formGroup]="examForm">
+        <mat-form-field>
+          <mat-icon matSuffix>book</mat-icon>
+          <input matInput placeholder="Nombre del Examen" type="text" formControlName="exam_name">
+        </mat-form-field>
+        <br><br>
+        <mat-form-field>
+          <input matInput [min]="minDate" [matDatepicker]="picker" placeholder="Fecha del examen"
+            formControlName="exam_date">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <br><br>
+        <mat-form-field>
+          <mat-icon matSuffix>create</mat-icon>
+          <textarea class="text-area-noresize" matInput placeholder="Descripcion" rows="5"
+            formControlName="exam_description"></textarea>
+        </mat-form-field>
+        <br><br>
+        <mat-form-field>
+          <input matInput placeholder="Ponderacion del examen" formControlName="exam_grade" type="number">
+        </mat-form-field>
+      </form>
+      <p style="margin-left: 25%; margin-top:5px;">
+        Numero de preguntas agregadas: {{preguntas.length}}
+      </p>
+      <button style="margin-left:25%; margin-top:5px;" mat-stroked-button color="primary"
+        (click)="crearpregunta()">Agregar
+        Pregunta</button>
+      <br><br>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button [disabled]="examForm.invalid || preguntas.length==0" mat-raised-button color="primary"
+        (click)="onSubmit()">Crear
+        Examen</button>
+      <button mat-button mat-raised-button color="primary" (click)="clean()">Limpiar Formulario</button>
+    </mat-card-actions>
+    <br>
+  </mat-card>
+</div>

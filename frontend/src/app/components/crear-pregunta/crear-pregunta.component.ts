@@ -49,13 +49,20 @@ export class CrearPreguntaComponent implements OnInit {
         [
           Validators.required,
           Validators.minLength(5),
-          Validators.maxLength(100),
+          Validators.maxLength(25),
         ],
       ],
       question_type: ['', [Validators.required]],
     });
     this.answerForm = this.fb.group({
-      answer_desc: ['', [Validators.required]],
+      answer_desc: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(5),
+          Validators.maxLength(255),
+        ],
+      ],
       answer_res: ['', [Validators.required]],
     });
   }
