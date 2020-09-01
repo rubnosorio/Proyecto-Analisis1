@@ -3,10 +3,10 @@ module.exports=(app,connection)=>{
         var { id_clase } = req.body;
         connection.query(`select * from EXAMEN where id_clase = ${id_clase}`, function (err, rows, fields) {
             if (!err) {
-                res.send(rows)
+                res.status(200).send(rows)
             }
             else {
-                throw err;
+                res.status(404).send(err);
             }
         });
     })
