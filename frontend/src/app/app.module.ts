@@ -25,6 +25,13 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { DialogoComponent } from './components/dialogo/dialogo.component';
 import { LoginComponent } from './components/login/login.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { CrearExamenComponent } from './components/crear-examen/crear-examen.component';
+import { CrearPreguntaComponent } from './components/crear-pregunta/crear-pregunta.component';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatSelectModule } from '@angular/material/select';
+import { MatListModule } from '@angular/material/list';
+import { MatRadioModule } from '@angular/material/radio';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,6 +41,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     UpdateTareaComponent,
     DialogoComponent,
     LoginComponent,
+    CrearExamenComponent,
+    CrearPreguntaComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,6 +65,10 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     FormsModule,
     MatDialogModule, // <--- Aquí
     MatSnackBarModule,
+    MatStepperModule,
+    MatSelectModule,
+    MatListModule,
+    MatRadioModule,
   ],
   providers: [MatDatepickerModule],
   bootstrap: [AppComponent],
