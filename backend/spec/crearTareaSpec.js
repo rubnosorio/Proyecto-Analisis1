@@ -35,7 +35,6 @@ describe('rol', function () {
         id_clase: 1,
         archivo: `data:text/plain;base64,aG9sYQ==`
     }
-
     it('crear_tarea', function (done) {
         request.post(endpoint, { json: true, body: tarea }, function (error, response) {
             expect(response.statusCode).toEqual(200);
