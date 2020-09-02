@@ -13,9 +13,10 @@ let bcrypt = require('bcryptjs');
 var mysql = require('mysql');
 const aws_keys = require('./aws/aws_keys');
 const s3 = new AWS.S3(aws_keys.s3);
+var uuid = require('uuid');
 
 var connection = mysql.createConnection({
-    host: '52.87.153.164',
+    host: '107.22.143.33',
     user: 'root',
     password: 'root',
     database: 'analisis1',
@@ -47,5 +48,7 @@ const update_tarea = require('./endpoints/update_tarea')(app,connection);
 const get_tarea = require('./endpoints/obtener_tarea')(app,connection);
 const login = require('./endpoints/login')(app,connection);
 const entregar_tarea = require('./endpoints/entregar_tarea')(app, s3, connection);
+const crear_examen = require('./endpoints/crear_examen')(app, connection);
+const crear_clase = require('./endpoints/crear_clase')(app, connection,uuid);
 
 app.listen(3000, () => console.log('escuchando en puerto 3000'));
