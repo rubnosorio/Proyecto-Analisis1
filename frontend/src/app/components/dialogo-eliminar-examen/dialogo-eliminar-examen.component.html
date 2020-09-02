@@ -2,6 +2,14 @@
     <div class="content-container">
         <span class="content-span full-width">¿Está Seguro que desea eliminar este exámen?</span>
     </div>
-    <button mat-flat-button id="no-button" [mat-dialog-close]="false">NO</button>
-    <button mat-flat-button id="yes-button" [mat-dialog-close]="true">SI</button>
+    <mat-form-field style="text-align: center;">
+        <input #pass matInput style="text-align: center;" id="in-class"  placeholder="Nombre de clase" style=" margin-left:15;" type="text" >
+    </mat-form-field>
+    <br>
+    <br>
+    <br>
+
+
+    <button mat-flat-button id="no-button" [mat-dialog-close]= 'OnResT(pass.value)' >NO</button>
+    <button mat-flat-button id="yes-button" [mat-dialog-close]='{"respuesta":true }'>SI</button>
 </div>

@@ -26,6 +26,11 @@ import { DialogoComponent } from './components/dialogo/dialogo.component';
 import { LoginComponent } from './components/login/login.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { DialogoEliminarExamenComponent } from './components/dialogo-eliminar-examen/dialogo-eliminar-examen.component';
+import { CrearClaseComponent } from './components/crear-clase/crear-clase.component';
+import { MatDialogRef } from '@angular/material/dialog';
+import {MAT_DIALOG_DATA} from '@angular/material/dialog';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,6 +41,7 @@ import { DialogoEliminarExamenComponent } from './components/dialogo-eliminar-ex
     DialogoComponent,
     LoginComponent,
     DialogoEliminarExamenComponent,
+    CrearClaseComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,12 +63,12 @@ import { DialogoEliminarExamenComponent } from './components/dialogo-eliminar-ex
     NgxDropzoneModule,
     FormsModule,
     MatDialogModule, // <--- Aquí
-    MatSnackBarModule,
+    MatSnackBarModule
   ],
-  providers: [MatDatepickerModule],
+  providers: [MatDatepickerModule, {provide: MatDialogRef, useValue: {}},{provide: MAT_DIALOG_DATA, useValue: []}],
   bootstrap: [AppComponent],
   entryComponents: [
     DialogoComponent, // <--- Aquí
-  ],
+  ]
 })
 export class AppModule {}
