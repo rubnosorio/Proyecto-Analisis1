@@ -5,6 +5,7 @@ import { VerTareasComponent } from './components/ver-tareas/ver-tareas.component
 import { EntregarTareaComponent } from './components/entregar-tarea/entregar-tarea.component';
 import { UpdateTareaComponent } from './components/update-tarea/update-tarea.component';
 import { LoginComponent } from './components/login/login.component';
+import { VerExamenesComponent } from './components/ver-examenes/ver-examenes.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
       path: 'login',
       component: LoginComponent
+  },
+  {
+      path: 'ver-examenes',
+      component: VerExamenesComponent
   }
 ];
 

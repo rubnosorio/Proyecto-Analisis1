@@ -11,7 +11,7 @@ import { VerTareasComponent } from './ver-tareas.component';
 import { Tarea } from 'src/app/models/tarea';
 import { By } from '@angular/platform-browser';
 
-fdescribe('VerTareasComponent', () => {
+describe('VerTareasComponent', () => {
   let component: VerTareasComponent;
   let fixture: ComponentFixture<VerTareasComponent>;
 

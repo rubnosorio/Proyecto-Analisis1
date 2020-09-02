@@ -1,0 +1,71 @@
+.card {
+    min-width: 400px;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    margin-top: 2%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    border-radius: 30px;
+    justify-content: space-around;
+    background-color: #ABEBC6;
+}
+
+.div-title {
+    width: 40%;
+}
+
+mat-card {
+    width: 100%;
+    top: 40%;
+}
+
+.containertasks {
+    width: 50%;
+}
+
+.containertask {
+    display: block;
+    margin-bottom: 5px;
+}
+
+h3, p {
+    margin-top: 1%;
+}
+
+a {
+    text-decoration: none;
+}
+
+button {
+    margin-right: 0.8%;
+}
+
+@media(max-width: 700px) {
+    .card {
+        width: 90%;
+        padding-top: 1%;
+        padding-bottom: 3%;
+        margin-top: 2%;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        background-color: #ABEBC6;
+    }
+
+    .div-title {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        width: 100%;
+    }
+    
+    mat-card {
+        width: 90%;
+        margin: auto;
+    }
+    
+    .containertasks {
+        width: 90%;
+        margin: auto;
+    }
+}

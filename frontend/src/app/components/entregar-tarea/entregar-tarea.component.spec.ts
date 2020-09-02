@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { EntregarTareaComponent } from './entregar-tarea.component';
 import { Tarea } from 'src/app/models/tarea';
 
-fdescribe('EntregarTareaComponent', () => {
+describe('EntregarTareaComponent', () => {
   let component: EntregarTareaComponent;
   let fixture: ComponentFixture<EntregarTareaComponent>;
 

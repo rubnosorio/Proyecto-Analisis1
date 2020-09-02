@@ -1,0 +1,45 @@
+<div class="container">
+
+    <div class="card">
+        <div class="div-title">
+            <mat-card>
+                <h3><strong>Listado de Examenes creados en el este curso</strong></h3>
+            </mat-card>
+        </div>
+        <div class="containertasks">
+            <mat-accordion>
+                <mat-expansion-panel *ngFor="let examen of examenes" hideToggle>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            {{examen.nombre_examen}}
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            {{examen.fecha}}
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+
+                    <div class="containertask">
+                        <h1>{{examen.nombre_examen}}</h1>
+                        <mat-divider></mat-divider>
+                        <h3><strong>Numero de Preguntas: </strong>{{examen.num_preguntas}}</h3>
+                        <mat-divider></mat-divider>
+                        <h3><strong>Fecha de Realizacion: </strong>{{examen.fecha}}</h3>
+                        <mat-divider></mat-divider>
+                        <h3><strong>Puntep: </strong>{{examen.valor_examen}}</h3>
+                        <mat-divider></mat-divider>
+                        <h3><strong>Estado: </strong>{{examen.estado}}</h3>
+                        <mat-divider></mat-divider>
+                        <p>
+                            {{examen.descripcion}}
+                            
+                        </p>
+                    </div>
+
+                    <button mat-raised-button color="accent" (click)="edit(examen)">Editar</button>
+                    <button mat-raised-button color="warn" (click)="delete(examen)">Eliminar</button>
+
+                </mat-expansion-panel>
+            </mat-accordion>
+        </div>
+    </div>
+</div>
