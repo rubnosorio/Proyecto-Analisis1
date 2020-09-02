@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogoComponent } from '../../components/dialogo/dialogo.component';
+import { DialogoEliminarExamenComponent } from '../../components/dialogo-eliminar-examen/dialogo-eliminar-examen.component';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,14 @@ export class DialogService {
 
   openConfirmDialog(){
     return this.dialog.open(DialogoComponent,{
+      width: "390xp",
+      panelClass: 'confirm-dialog-container',
+      disableClose: true
+  });
+  }
+
+  openConfirmDialogEliminarExamen(){
+    return this.dialog.open(DialogoEliminarExamenComponent,{
       width: "390xp",
       panelClass: 'confirm-dialog-container',
       disableClose: true

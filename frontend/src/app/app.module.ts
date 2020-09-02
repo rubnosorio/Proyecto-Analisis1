@@ -34,6 +34,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatListModule } from '@angular/material/list';
 import { MatRadioModule } from '@angular/material/radio';
 
+import { DialogoEliminarExamenComponent } from './components/dialogo-eliminar-examen/dialogo-eliminar-examen.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,6 +48,7 @@ import { MatRadioModule } from '@angular/material/radio';
     UpdateExamenComponent,
     CrearExamenComponent,
     CrearPreguntaComponent,
+    DialogoEliminarExamenComponent,
   ],
   imports: [
     BrowserModule,

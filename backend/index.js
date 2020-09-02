@@ -53,5 +53,6 @@ const crear_clase = require('./endpoints/crear_clase')(app, connection,uuid);
 const ver_examenes = require('./endpoints/ver-examenes')(app,connection);
 const update_examen = require('./endpoints/update_examen')(app,connection);
 const get_examenes = require('./endpoints/obtener_examen')(app,connection);
+const eliminar_exmamen= require('./endpoints/eliminar_examen')(app,connection);
 
 app.listen(3000, () => console.log('escuchando en puerto 3000'));
