@@ -61,7 +61,7 @@ export class CrearExamenComponent implements OnInit {
     this.examForm = this.fb.group({
       exam_name: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(25)]],
       exam_date: ['', [Validators.required]],
-      exam_description: ['', [Validators.required], Validators.minLength(5), Validators.maxLength(255)],
+      exam_description: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(255)]],
       exam_grade: ['', [Validators.required]],
     });
   }
