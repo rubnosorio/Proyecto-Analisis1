@@ -48,5 +48,6 @@ const get_tarea = require('./endpoints/obtener_tarea')(app,connection);
 const login = require('./endpoints/login')(app,connection);
 const entregar_tarea = require('./endpoints/entregar_tarea')(app, s3, connection);
 const update_examen = require('./endpoints/update_examen')(app,connection);
+const get_examen = require('./endpoints/obtener_examen')(app,connection);
 
 app.listen(3000, () => console.log('escuchando en puerto 3000'));
