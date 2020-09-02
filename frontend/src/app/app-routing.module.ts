@@ -7,6 +7,7 @@ import { UpdateTareaComponent } from './components/update-tarea/update-tarea.com
 import { UpdateExamenComponent } from './components/update-examen/update-examen.component';
 import { LoginComponent } from './components/login/login.component';
 import { VerExamenesComponent } from './components/ver-examenes/ver-examenes.component';
+import { CrearExamenComponent } from './components/crear-examen/crear-examen.component';
 
 const routes: Routes = [
   {
@@ -15,15 +16,15 @@ const routes: Routes = [
   },
   {
     path: 'ver-tareas',
-    component: VerTareasComponent
+    component: VerTareasComponent,
   },
   {
     path: 'entregar-tarea',
-    component: EntregarTareaComponent
+    component: EntregarTareaComponent,
   },
   {
     path: 'update_tarea',
-    component: UpdateTareaComponent
+    component: UpdateTareaComponent,
   },
   {
     path: 'update_examen',
@@ -36,7 +37,11 @@ const routes: Routes = [
   {
       path: 'ver-examenes',
       component: VerExamenesComponent
-  }
+  },
+  {
+    path: 'crear_examen',
+    component: CrearExamenComponent,
+  },
 ];
 
 @NgModule({

@@ -27,6 +27,13 @@ import { LoginComponent } from './components/login/login.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { VerExamenesComponent } from './components/ver-examenes/ver-examenes.component';
 import { UpdateExamenComponent } from './components/update-examen/update-examen.component';
+import { CrearExamenComponent } from './components/crear-examen/crear-examen.component';
+import { CrearPreguntaComponent } from './components/crear-pregunta/crear-pregunta.component';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatSelectModule } from '@angular/material/select';
+import { MatListModule } from '@angular/material/list';
+import { MatRadioModule } from '@angular/material/radio';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +45,8 @@ import { UpdateExamenComponent } from './components/update-examen/update-examen.
     LoginComponent,
     VerExamenesComponent,
     UpdateExamenComponent,
+    CrearExamenComponent,
+    CrearPreguntaComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,6 +69,10 @@ import { UpdateExamenComponent } from './components/update-examen/update-examen.
     FormsModule,
     MatDialogModule, // <--- Aquí
     MatSnackBarModule,
+    MatStepperModule,
+    MatSelectModule,
+    MatListModule,
+    MatRadioModule,
   ],
   providers: [MatDatepickerModule],
   bootstrap: [AppComponent],
