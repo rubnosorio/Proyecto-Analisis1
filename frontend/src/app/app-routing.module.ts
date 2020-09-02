@@ -8,6 +8,7 @@ import { UpdateExamenComponent } from './components/update-examen/update-examen.
 import { LoginComponent } from './components/login/login.component';
 import { VerExamenesComponent } from './components/ver-examenes/ver-examenes.component';
 import { CrearExamenComponent } from './components/crear-examen/crear-examen.component';
+import { CrearClaseComponent } from './components/crear-clase/crear-clase.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,10 @@ const routes: Routes = [
   {
     path: 'crear_examen',
     component: CrearExamenComponent,
+  },
+  {
+    path: 'crear_clase',
+    component: CrearClaseComponent
   },
 ];
 
