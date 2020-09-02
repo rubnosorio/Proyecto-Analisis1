@@ -1,23 +1,74 @@
-<div class="cardconfig">
-    <div class="center">
-        <mat-card>
-            <mat-card-header>
-              <mat-card-title>Actualizar Examen</mat-card-title>
-            </mat-card-header>
-            <mat-card-content>
-                <p>
-                    <mat-form-field style="width: 500px;">
-                        <mat-label>Titulo: </mat-label>
-                        <mat-icon matSuffix>assignment</mat-icon>
-                        <input matInput>
-                    </mat-form-field>
-                </p>
-
-            </mat-card-content>
-            <mat-card-actions>
-                <button mat-raised-button (click)="actualizar()">Actualizar</button>
-                <button mat-raised-button (click)="cancelacion()">Cancelar</button>
-            </mat-card-actions>
-          </mat-card>
+<div class="container" style="width: 575px;">
+    <div class="row justify-content-md-center">
+        <div class="col-md-12">
+            <mat-card>
+                <mat-card-header>
+                  <mat-card-title>Actualizar Examen</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <p>
+                        <mat-form-field style="width: 500px;">
+                            <mat-label>Nombre Examen: </mat-label>
+                            <mat-icon matSuffix>assignment</mat-icon>
+                            <input matInput [(ngModel)]="examen.nombre_examen">
+                        </mat-form-field>
+                    </p>
+                    <p>
+                        <mat-form-field style="width: 500px;">
+                            <mat-label>Fecha de Finalizacion: </mat-label>
+                            <input matInput type="date" [(ngModel)]="examen.fecha">
+                          </mat-form-field>
+                    </p>
+                    <p>
+                        <mat-form-field style="width: 500px;">
+                            <mat-label>Descripcion: </mat-label>
+                            <mat-icon matSuffix>description</mat-icon>
+                            <input matInput [(ngModel)]="examen.descripcion">
+                        </mat-form-field>
+                    </p>
+                    <p>
+                        <mat-form-field style="width: 500px;">
+                            <mat-label>Valor: </mat-label>
+                            <mat-icon matSuffix>calculate</mat-icon>
+                            <input matInput [(ngModel)]="examen.valor_examen">
+                        </mat-form-field>
+                    </p>
+                    <p>
+                        <mat-form-field style="width: 500px;">
+                            <mat-label>Estado</mat-label>
+                            <mat-icon matSuffix>rule</mat-icon>
+                            <select matNativeControl [(ngModel)]="examen.estado">
+                              <option value="0">Inactivo</option>
+                              <option value="1">Activo</option>
+                            </select>
+                        </mat-form-field>
+                    </p>
+                </mat-card-content>
+              </mat-card>
+              <mat-card>
+                <mat-card-header>
+                    <mat-card-title>Preguntas</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <div *ngFor='let preguntas of examen.preguntas let i=index'>
+                        <mat-form-field style="width: 500px;">
+                            <mat-label>Pregunta {{i+1}}: </mat-label>
+                            <mat-icon matSuffix>live_help</mat-icon>
+                            <input matInput [(ngModel)]="preguntas.pregunta">
+                        </mat-form-field>
+                        <div *ngFor="let opciones of preguntas.opciones let j=index">
+                            <mat-form-field style="width: 500px;">
+                                <mat-label>Opción {{j+1}}: </mat-label>
+                                <input matInput [(ngModel)]="opciones.respuesta">
+                            </mat-form-field>  
+                        </div>
+                    </div>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-raised-button (click)="actualizar()">Actualizar</button>
+                    <button mat-raised-button (click)="cancelacion()">Cancelar</button>
+                </mat-card-actions>
+              </mat-card>
+        </div>
     </div>
 </div>

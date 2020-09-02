@@ -22,4 +22,11 @@ describe('UpdateExamenComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('Examen no nulo', () => {
+    expect(component.examen).not.toEqual(null);
+  });
+  it('Examen con Preguntas', () => {
+    expect(component.examen.num_preguntas).not.toEqual(0);
+  });
 });
