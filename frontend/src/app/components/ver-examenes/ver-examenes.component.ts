@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { VerExamenService } from '../../services/examen/ver-examen.service';
 import { Examen } from '../../models/examen'
 
 @Component({
@@ -11,7 +12,7 @@ export class VerExamenesComponent implements OnInit {
   examenes: Examen[]
   panelOpenState = false;
 
-  constructor() {
+  constructor(private examenService: VerExamenService) {
     this.gets()
   }
 
@@ -20,19 +21,9 @@ export class VerExamenesComponent implements OnInit {
 
   gets(){
     //obtener todos los examenes
-    this.examenes = [
-      new Examen(0,"Examen 0", '30/08/2020 13:26', "Estas son las instrucciones que debe tener un examen.", 4, 10, 0, 1, []),
-      new Examen(1,"Examen 1", '30/08/2020 13:26', "Estas son las instrucciones que debe tener un examen.", 4, 10, 0, 1, []),
-      new Examen(2,"Examen 2", '30/08/2020 13:26', "Estas son las instrucciones que debe tener un examen.", 4, 10, 0, 1, []),
-      new Examen(3,"Examen 3", '30/08/2020 13:26', "Estas son las instrucciones que debe tener un examen.", 4, 10, 0, 1, []),
-      new Examen(4,"Examen 4", '30/08/2020 13:26', "Estas son las instrucciones que debe tener un examen.", 4, 10, 0, 1, []),
-      new Examen(5,"Examen 5", '30/08/2020 13:26', "Estas son las instrucciones que debe tener un examen.", 4, 10, 0, 1, []),
-      new Examen(6,"Examen 6", '30/08/2020 13:26', "Estas son las instrucciones que debe tener un examen.", 4, 10, 0, 1, []),
-      new Examen(7,"Examen 7", '30/08/2020 13:26', "Estas son las instrucciones que debe tener un examen.", 4, 10, 0, 1, []),
-      new Examen(8,"Examen 8", '30/08/2020 13:26', "Estas son las instrucciones que debe tener un examen.", 4, 10, 0, 1, []),
-      new Examen(9,"Examen 9", '30/08/2020 13:26', "Estas son las instrucciones que debe tener un examen.", 4, 10, 0, 1, [])
-
-    ]
+    this.examenService.gets(1).subscribe((dataAPI: any) => {
+      this.examenes = dataAPI
+    })
   }
 
   edit(){
