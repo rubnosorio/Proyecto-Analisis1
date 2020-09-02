@@ -26,6 +26,7 @@ import { DialogoComponent } from './components/dialogo/dialogo.component';
 import { LoginComponent } from './components/login/login.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { VerExamenesComponent } from './components/ver-examenes/ver-examenes.component';
+import { UpdateExamenComponent } from './components/update-examen/update-examen.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,6 +37,7 @@ import { VerExamenesComponent } from './components/ver-examenes/ver-examenes.com
     DialogoComponent,
     LoginComponent,
     VerExamenesComponent,
+    UpdateExamenComponent,
   ],
   imports: [
     BrowserModule,
