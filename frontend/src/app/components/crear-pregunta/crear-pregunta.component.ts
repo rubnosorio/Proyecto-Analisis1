@@ -48,7 +48,7 @@ export class CrearPreguntaComponent implements OnInit {
         [
           Validators.required,
           Validators.minLength(5),
-          Validators.maxLength(25),
+          Validators.maxLength(255),
         ],
       ],
       question_type: ['', [Validators.required]],
@@ -58,7 +58,7 @@ export class CrearPreguntaComponent implements OnInit {
         '',
         [
           Validators.required,
-          Validators.minLength(5),
+          Validators.minLength(1),
           Validators.maxLength(255),
         ],
       ],

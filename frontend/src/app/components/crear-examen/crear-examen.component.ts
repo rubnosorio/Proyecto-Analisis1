@@ -3,6 +3,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { CrearPreguntaComponent } from '../crear-pregunta/crear-pregunta.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+import { CrearExamenService } from '../../services/crear_examen/crear-examen.service';
+
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 @Component({
   selector: 'app-crear-examen',
   templateUrl: './crear-examen.component.html',
@@ -16,7 +20,12 @@ export class CrearExamenComponent implements OnInit {
 
   examen: any = {};
 
-  constructor(private fb: FormBuilder, public dialog: MatDialog) {
+  constructor(
+    private fb: FormBuilder,
+    public dialog: MatDialog,
+    private crearexamenservice: CrearExamenService,
+    private _snackBar: MatSnackBar
+  ) {
     this.createForm();
   }
 
@@ -52,16 +61,48 @@ export class CrearExamenComponent implements OnInit {
     this.examen.descripcion = this.examForm.controls['exam_description'].value;
     this.examen.preguntas = this.preguntas;
 
-    console.log(JSON.stringify(this.examen));
+    this.crearexamenservice.crear_examen(this.examen).subscribe((res) => {
+      if (res.statusCode == 200) {
+        this._snackBar.open('Examen creado Correctamente', '', {
+          duration: 5000,
+        });
+        this.clean();
+      } else {
+        this._snackBar.open(
+          `Error ${res.statusCode} al procesar la solicitud`,
+          '',
+          {
+            duration: 5000,
+          }
+        );
+        this.clean();
+      }
+    });
   }
 
-  clean() {}
+  clean(): void {
+    this.examForm.reset();
+  }
 
   createForm(): void {
     this.examForm = this.fb.group({
-      exam_name: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(25)]],
+      exam_name: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(5),
+          Validators.maxLength(255),
+        ],
+      ],
       exam_date: ['', [Validators.required]],
-      exam_description: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(255)]],
+      exam_description: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(5),
+          Validators.maxLength(255),
+        ],
+      ],
       exam_grade: ['', [Validators.required]],
     });
   }
