@@ -1,12 +1,12 @@
 const request = require('request');
 const server = require('../index');
 
-const endpoint = 'http://localhost:3000/ver_tareas';
+const endpoint = 'http://localhost:3000/ver_examenes';
 
 fdescribe('tareas', function () {
     it('deberia retornar 404 en codigo de respuesta', function (done) {
         request.get(endpoint, function (error, response) {
-            expect(response.statusCode).toEqual(404);
+            expect(response.statusCode).toEqual(404)
             done();
         });
     });
