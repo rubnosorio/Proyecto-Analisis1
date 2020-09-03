@@ -15,7 +15,5 @@ export class DialogoEliminarExamenComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  OnResT(ll):string {
-    return '{"respuesta":true,"Clase":"'+ll+'"}';
-  }
+  
 }
