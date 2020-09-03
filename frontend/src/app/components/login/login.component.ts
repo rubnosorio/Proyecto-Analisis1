@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { LoginserviceService } from '../../services/login/loginservice.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { NavbarComponent } from "../navbar/navbar.component";
 
 @Component({
   selector: 'app-login',
@@ -31,12 +32,17 @@ export class LoginComponent implements OnInit {
     },
   };
 
+  //agregamos el menu que queremos ir modificando
   constructor(
     private fb: FormBuilder,
     private ls: LoginserviceService,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    public menu:NavbarComponent,
+    private router:Router
   ) {
     this.createForm();
+    //obtenemos el menu que queremos ir modificando
+    this.menu.fillerNav = JSON.parse(sessionStorage.getItem('menuPrincipal'));
   }
 
   ngOnInit(): void {}
@@ -94,6 +100,8 @@ export class LoginComponent implements OnInit {
           duration: 5000,
         });
         this.loginForm.reset();
+        this.modificarMenu();
+        this.irInicioUsuario();
       } else {
         this._snackBar.open(`Credenciales Incorrectas`, '', {
           duration: 5000,
@@ -101,5 +109,32 @@ export class LoginComponent implements OnInit {
         this.loginForm.reset();
       }
     });
+  }
+
+  //se agregó el una función para modificar el menú
+  modificarMenu(){
+    this.menu.fillerNav.length=0;
+    this.menu.fillerNav=[
+      {name:"home",route:"demo",icon:"home"},
+      {name:"Crear Tarea",route:"creartarea",icon:"add_box"},
+      {name:"Ver Tareas (profesor)",route:"ver-tareas",icon:"class"},
+      {name:"Actualizar Tareas (profesor)",route:"update_tarea",icon:"update"},
+      {name:"Crear Examen(profesor)",route:"crear_examen",icon:"create"},
+      {name:"Ver Examen(profesor)",route:"ver-examenes",icon:"pageview"},
+      {name:"Actualizar Examen(profesor)",route:"update_examen",icon:"sync_alt"},
+      {name:"Entregar tarea(estudiante)",route:"entregar-tarea",icon:"attachment"},
+      {name:"Cerrar Sesion",route:"",icon:"exit_to_app"}
+    ];
+    sessionStorage.removeItem("menuPrincipal");
+    sessionStorage.setItem("menuPrincipal",JSON.stringify(this.menu.fillerNav));
+  }
+
+  //agremos la ruta nueva a la que se movera
+  irInicioUsuario(){
+    this.router.navigate(['demo']);
+  }
+  
+  ngOnSignIn():void{
+
   }
 }

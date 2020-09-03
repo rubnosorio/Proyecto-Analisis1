@@ -45,7 +45,7 @@ export class EntregarTareaComponent implements OnInit {
   }
 
   sendTask(base: string) {
-    this.entregaService.sendTask(new EntregarTarea(1,1,1,"",this.files[0].name,base,0))
+    this.entregaService.sendTask(new EntregarTarea(1,1,12,"",this.files[0].name,base,0))
   }
 
 }

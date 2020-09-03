@@ -5,12 +5,14 @@ module.exports = (app,connection) => {
         var status={
             statusCode:200
         } 
-        connection.query(`select username, passwd from USUARIO`,function (err, rows, fields) {
+        //se cambio a recuperar toda la data para devolverla para fines de la demo
+        connection.query(`select * from USUARIO`,function (err, rows, fields) {
             if (!err) {
                 var Login = false;
                 for(var i=0; i<rows.length; i++){
                     if(user==rows[i].username && pass==rows[i].passwd){
                         Login = true;
+                        console.log(rows[i].id_usuario);
                     }
                 }
                 if(Login){
