@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Examen } from '../../models/examen'
+import { DialogService } from '../../services/shared/dialog.service';
+import { EliminarExamenService } from '../../services/eliminar_examen/eliminar-examen.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-ver-examenes',
@@ -11,7 +14,7 @@ export class VerExamenesComponent implements OnInit {
   examenes: Examen[]
   panelOpenState = false;
 
-  constructor() {
+  constructor(private toastr: ToastrService,private dialogService: DialogService,private eliminar_examen:EliminarExamenService) {
     this.gets()
   }
 
@@ -39,8 +42,23 @@ export class VerExamenesComponent implements OnInit {
     //llamar o redireccionar al componente de editar el examen
   }
 
-  delete(){
-    //llamar o redireccionar al componente de eliminar examen
+  delete(examen:Examen){
+    this.dialogService.openConfirmDialogEliminarExamen()
+    .afterClosed().subscribe(res => {
+      console.log(res);
+      if(res){
+        this.eliminar_examen.delete_Examen(examen).subscribe(
+          res => {
+            console.log(res);
+            
+          },
+          err => {
+            console.error(err);
+          }
+        );
+        this.toastr.success('El examen fue eliminado con exito!','Examen Eliminado');
+      }
+    })
   }
 
 }
