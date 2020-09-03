@@ -3,7 +3,15 @@ module.exports = (app,connection) => {
         var user=req.body.username;
         var pass=req.body.password;
         var status={
-            statusCode:200
+            statusCode:200,
+            usuario:{
+                id_usuario:0,
+                nombres:"",
+                apellidos:"",
+                username:"",
+                passwd:"",
+                correo:""
+            }
         } 
         //se cambio a recuperar toda la data para devolverla para fines de la demo
         connection.query(`select * from USUARIO`,function (err, rows, fields) {
@@ -12,7 +20,8 @@ module.exports = (app,connection) => {
                 for(var i=0; i<rows.length; i++){
                     if(user==rows[i].username && pass==rows[i].passwd){
                         Login = true;
-                        console.log(rows[i].id_usuario);
+                        status.usuario.id_usuario=rows[i].id_usuario;
+                        //console.log(rows[i].id_usuario);
                     }
                 }
                 if(Login){

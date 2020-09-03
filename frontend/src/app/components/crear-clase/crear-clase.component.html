@@ -1,0 +1,19 @@
+<div>
+    <div class="content-container">
+        <span class="content-span full-width">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            Creando clase
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </span>
+    </div>
+    <mat-form-field style="text-align: center;">
+        <input #pass matInput style="text-align: center;" id="in-class"  placeholder="Nombre de clase" style=" margin-left:15;" type="text" >
+    </mat-form-field>
+    <br>
+    <br>
+    <br>
+
+    <button mat-flat-button id="no-button"  [mat-dialog-close]= '{"resp":false}' >Cancelar</button>
+    <button mat-flat-button id="yes-button" [mat-dialog-close]= 'OnResT(pass.value)'> Crear</button>
+</div>
+

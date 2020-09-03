@@ -25,8 +25,23 @@ export class AppComponent {
     this.dialogService.openConfirmDialogEliminarExamen()
     .afterClosed().subscribe(res => {
       console.log(res);
-      if(res){
-        //realizar acción 
+      if(res.prueba){
+        console.log('entra acá');
+      }else{
+        
+      }
+    })
+  }
+
+  onPrueba3(){
+    this.dialogService.openCrearClase()
+    .afterClosed().subscribe(res => {
+      console.log(res);
+      console.log(res.resp);
+      if(res.resp){
+        console.log('entra acá');
+      }else{
+        
       }
     })
   }

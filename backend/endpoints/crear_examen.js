@@ -10,16 +10,19 @@ module.exports = (app, connection) => {
         var descripcion = req.body.descripcion;
         var preguntas = req.body.preguntas;
 
+        var status = {
+            statusCode: 200
+        }
+
         connection.query(`insert into EXAMEN(nombre_examen,id_clase,num_preguntas,valor_examen,fecha,estado,descripcion,preguntas) 
         values ('${nombre_examen}','${parseInt(id_clase)}','${parseInt(num_preguntas)}','${parseInt(valor_examen)}',
         STR_TO_DATE(REPLACE('${fecha}','/','.') ,GET_FORMAT(date,'EUR')),'${parseInt(estado)}','${descripcion}','${JSON.stringify(preguntas)}')`, function (err, rows, fields) {
-            console.log(err);
             if (!err) {
-                res.status(200).send("200 si salio")
+                res.status(200).send(status);
             }
             else {
-                //status.statusCode = 404;
-                res.status(404).send("404 no salio")
+                status.statusCode = 404;
+                res.status(404).send(status)
             }
         });
     })

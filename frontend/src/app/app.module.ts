@@ -35,6 +35,9 @@ import { MatListModule } from '@angular/material/list';
 import { MatRadioModule } from '@angular/material/radio';
 
 import { DialogoEliminarExamenComponent } from './components/dialogo-eliminar-examen/dialogo-eliminar-examen.component';
+import { CrearClaseComponent } from './components/crear-clase/crear-clase.component';
+import { MatDialogRef } from '@angular/material/dialog';
+import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { NavbarComponent } from './components/navbar/navbar.component';
 
 
@@ -84,6 +87,7 @@ import { DemoComponent } from './components/demo/demo.component';
     DialogoEliminarExamenComponent,
     NavbarComponent,
     DemoComponent,
+    CrearClaseComponent,
   ],
   imports: [
     BrowserModule,
@@ -141,10 +145,10 @@ import { DemoComponent } from './components/demo/demo.component';
 
 
   ],
-  providers: [MatDatepickerModule],
+  providers: [MatDatepickerModule, {provide: MatDialogRef, useValue: {}},{provide: MAT_DIALOG_DATA, useValue: []}],
   bootstrap: [AppComponent],
   entryComponents: [
     DialogoComponent, // <--- Aquí
-  ],
+  ]
 })
 export class AppModule {}
