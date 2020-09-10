@@ -20,8 +20,8 @@ fdescribe('Cuando se registra un usuario', function () {
             passwd: "passwd prueba",
             correo: "correo prueba",
         }
-        request.get(endpoint, {json: true, body: {usuario}}, function (error, response) {
-            var temp = JSON.parse(response.request.body).usuario
+        request.post(endpoint, {json: true, body: usuario}, function (error, response) {
+            var temp = JSON.parse(response.request.body)
             expect(temp.id_usuario).toEqual(usuario.id_usuario);
             expect(temp.nombres).toEqual(usuario.nombres);
             expect(temp.apellidos).toEqual(usuario.apellidos);
