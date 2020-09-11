@@ -40,19 +40,20 @@ app.get('/rol', (req, res) => {
 
 const crear_tarea = require('./endpoints/crear_tarea')(app, mysql, s3, connection);
 
-const ver_tareas = require('./endpoints/ver-tareas')(app,connection);
+const ver_tareas = require('./endpoints/ver-tareas')(app, connection);
 
-const eliminar_tarea = require('./endpoints/eliminar_tarea')(app,connection);
+const eliminar_tarea = require('./endpoints/eliminar_tarea')(app, connection);
 // server init
-const update_tarea = require('./endpoints/update_tarea')(app,connection);
-const get_tarea = require('./endpoints/obtener_tarea')(app,connection);
-const login = require('./endpoints/login')(app,connection);
+const update_tarea = require('./endpoints/update_tarea')(app, connection);
+const get_tarea = require('./endpoints/obtener_tarea')(app, connection);
+const login = require('./endpoints/login')(app, connection);
 const entregar_tarea = require('./endpoints/entregar_tarea')(app, s3, connection);
 const crear_examen = require('./endpoints/crear_examen')(app, connection);
-const crear_clase = require('./endpoints/crear_clase')(app, connection,uuid);
-const ver_examenes = require('./endpoints/ver-examenes')(app,connection);
-const update_examen = require('./endpoints/update_examen')(app,connection);
-const get_examenes = require('./endpoints/obtener_examen')(app,connection);
-const eliminar_exmamen= require('./endpoints/eliminar_examen')(app,connection);
+const crear_clase = require('./endpoints/crear_clase')(app, connection, uuid);
+const ver_examenes = require('./endpoints/ver-examenes')(app, connection);
+const update_examen = require('./endpoints/update_examen')(app, connection);
+const get_examenes = require('./endpoints/obtener_examen')(app, connection);
+const eliminar_exmamen = require('./endpoints/eliminar_examen')(app, connection);
+const getExamId = require('./endpoints/getExamenId')(app, connection);
 
 app.listen(3000, () => console.log('escuchando en puerto 3000'));
