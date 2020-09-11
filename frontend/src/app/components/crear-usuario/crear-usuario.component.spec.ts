@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CrearUsuarioComponent } from './crear-usuario.component';
-describe('CrearUsuarioComponent', () => {
+fdescribe('CrearUsuarioComponent', () => {
   let component: CrearUsuarioComponent;
   let fixture: ComponentFixture<CrearUsuarioComponent>;
 
@@ -24,5 +24,9 @@ describe('CrearUsuarioComponent', () => {
 
   it('Deberia existir un form group', () => {
     expect(component.userFG).toBeTruthy();
+  });
+
+  it('Deberia retornar true para un registro exitoso', () => {
+    expect(component.registrar()).toBeTruthy();
   });
 });
