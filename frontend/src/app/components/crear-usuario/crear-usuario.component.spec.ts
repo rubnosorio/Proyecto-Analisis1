@@ -29,4 +29,8 @@ fdescribe('CrearUsuarioComponent', () => {
   it('Deberia retornar true para un registro exitoso', () => {
     expect(component.registrar()).toBeTruthy();
   });
+
+  it('Deberia ser valido el from group', () => {
+    expect(component.userFG.valid).toBeTruthy();
+  });
 });
