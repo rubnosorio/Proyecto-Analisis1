@@ -11,6 +11,7 @@ import { Examen } from '../../models/examen';
 export class ControlNotasEstudianteComponent implements OnInit {
 
   estudiante: Usuario = new Usuario(1,'mario alejando','gonzales perez','mario123','1234','mario123@gmail.com');
+  tareas: Tarea [];
 
   constructor() { }
 

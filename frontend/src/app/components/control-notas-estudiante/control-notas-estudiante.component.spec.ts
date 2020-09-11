@@ -30,4 +30,8 @@ fdescribe('ControlNotasEstudianteComponent', () => {
       expect(component.obtenerEstudiante()).toBeTruthy(prueba);
   });
 
+  it('should Cantidad de tareas valido', () => {
+      expect(component.NoTareasValido()).toBeTrue();
+  });
+
 });
