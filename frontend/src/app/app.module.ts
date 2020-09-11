@@ -69,6 +69,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import { DemoComponent } from './components/demo/demo.component';
+import { ControlNotasEstudianteComponent } from './components/control-notas-estudiante/control-notas-estudiante.component';
 
 
 @NgModule({
@@ -88,6 +89,7 @@ import { DemoComponent } from './components/demo/demo.component';
     NavbarComponent,
     DemoComponent,
     CrearClaseComponent,
+    ControlNotasEstudianteComponent,
   ],
   imports: [
     BrowserModule,

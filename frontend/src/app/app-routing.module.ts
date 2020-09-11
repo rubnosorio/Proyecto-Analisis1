@@ -10,6 +10,7 @@ import { VerExamenesComponent } from './components/ver-examenes/ver-examenes.com
 import { CrearExamenComponent } from './components/crear-examen/crear-examen.component';
 import { DemoComponent } from "./components/demo/demo.component";
 import { CrearClaseComponent } from './components/crear-clase/crear-clase.component';
+import { ControlNotasEstudianteComponent } from './components/control-notas-estudiante/control-notas-estudiante.component';
 
 const routes: Routes = [
   {
@@ -51,6 +52,10 @@ const routes: Routes = [
   {
     path: 'crear_clase',
     component: CrearClaseComponent
+  },
+  {
+    path: 'control_notas_estudiante',
+    component: ControlNotasEstudianteComponent
   },
 ];
 
