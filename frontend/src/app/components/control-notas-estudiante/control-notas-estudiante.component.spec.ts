@@ -34,4 +34,8 @@ fdescribe('ControlNotasEstudianteComponent', () => {
       expect(component.NoTareasValido()).toBeTrue();
   });
 
+  it('should Cantidad de examenes valido', () => {
+    expect(component.NoExamenesValido()).toBeTrue();
+  });
+
 });
