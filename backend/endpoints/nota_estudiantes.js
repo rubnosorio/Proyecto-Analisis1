@@ -1,6 +1,6 @@
 module.exports = (app,connection) => {
     //var a = require('./examen.json');
-    app.post('/nota_estudiantes', (req, res) => {
+    app.get('/nota_estudiantes', (req, res) => {
         var id_clase = req.body.id_clase;
 
         connection.query(`select distinct CLASE.nombre_clase, TAREA.nombre_tarea, ENTREGA_TAREA.nota, USUARIO.id_usuario, USUARIO.nombres, USUARIO.apellidos
@@ -13,11 +13,12 @@ module.exports = (app,connection) => {
             //console.log(err);
             if (!err) {
                 //console.log(rows);
-                res.status(200).send("sip")
+                var response={
+                    lista_notas:[]
+                };
+                res.status(200).send(response);
             }
             else {
-                //status.statusCode = 404;
-                console.log("falso");
                 res.status(404).send("404 clase no creada")
             }
         });
