@@ -11,7 +11,7 @@ import { Examen } from '../../models/examen';
 export class ControlNotasEstudianteComponent implements OnInit {
 
   estudiante: Usuario = new Usuario(1,'mario alejando','gonzales perez','mario123','1234','mario123@gmail.com');
-  tareas: Tarea [];
+  tareas: Tarea[]=[];
 
   constructor() { }
 
@@ -20,6 +20,13 @@ export class ControlNotasEstudianteComponent implements OnInit {
 
   obtenerEstudiante(){
     return this.estudiante;
+  }
+
+  NoTareasValido(){
+    if(this.tareas.length >= 0){
+      return true;
+    }
+    return false;
   }
 
 }
