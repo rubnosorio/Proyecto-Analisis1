@@ -23,6 +23,6 @@ fdescribe('CrearUsuarioComponent', () => {
   });
 
   it('Deberia existir un form group', () => {
-    expect(!component).toBeTruthy();
+    expect(component.userFG).toBeTruthy();
   });
 });
