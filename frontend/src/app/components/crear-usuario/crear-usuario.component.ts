@@ -36,7 +36,7 @@ export class CrearUsuarioComponent implements OnInit {
   }
 
   registrar(){
-    return false;
+    return true;
   }
 
   get nombresFC() {
