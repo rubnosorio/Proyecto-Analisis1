@@ -3,7 +3,7 @@ module.exports = (app,connection) => {
     app.get('/nota_estudiantes', (req, res) => {
         var id_clase = req.body.id_clase;
 
-        connection.query(`select distinct CLASE.nombre_clase, TAREA.nombre_tarea, ENTREGA_TAREA.nota, USUARIO.id_usuario, USUARIO.nombres, USUARIO.apellidos
+        connection.query(`select distinct CLASE.nombre_clase, TAREA.id_tarea, TAREA.nombre_tarea, ENTREGA_TAREA.nota, USUARIO.id_usuario, USUARIO.nombres, USUARIO.apellidos
         from CLASE, TAREA, ENTREGA_TAREA, USUARIO_CLASE, USUARIO
         where TAREA.id_clase=CLASE.id_clase and
         CLASE.id_clase=${parseInt(id_clase)} and
@@ -55,6 +55,7 @@ module.exports = (app,connection) => {
                     for(let j=0;j<rows.length;j++){
                         if(rows[j].id_usuario==estudiante_notas.id_estudiante){
                             var tarea={
+                                id_tarea:rows[j].id_tarea,
                                 tarea:rows[j].nombre_tarea,
                                 nota:rows[j].nota
                             }
@@ -63,7 +64,7 @@ module.exports = (app,connection) => {
                     }
                     lista_notas.push(estudiante_notas);
                 }
-                //console.log(lista_notas[0].lista_tareas);
+                //console.log(lista_notas[0].lista_tareas[1]);
                 response.lista_notas=lista_notas;
                 res.status(200).send(response);
             }
