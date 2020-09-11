@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-crear-usuario',
@@ -9,9 +10,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class CrearUsuarioComponent implements OnInit {
 
   userFG = new FormGroup({
-    id_usuario: new FormControl('', [
-      Validators.required
-    ]),
     nombres: new FormControl('', [
       Validators.required
     ]),
@@ -30,12 +28,20 @@ export class CrearUsuarioComponent implements OnInit {
     ]),
   });
 
-  constructor() { }
+  constructor(
+    private toastr: ToastrService
+  ) { }
 
   ngOnInit(): void {
   }
 
   registrar(){
+    if(!this.userFG.valid){
+      this.toastr.error("Formulario Incorrecto.")
+      return
+    }
+    this.toastr.success("Registro Completado.")
+    console.log(this.userFG.value)
     return true;
   }
 

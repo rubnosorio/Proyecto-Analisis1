@@ -18,3 +18,21 @@ a {
 .mat-form-field {
     width: 100%;
 }
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.mar-l {
+    margin-left: 5%;
+}
+
+.mar-t {
+    margin-top: 4%;
+}
+
+.text-center {
+    text-align: center;
+    border-radius: 10rem;
+}
