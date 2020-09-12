@@ -50,4 +50,17 @@ describe('ResolverExamenComponent', () => {
   it('Prueba para obtener examen', () => {
     expect(component.obtenerexamen(1)).toEqual(examen1object);
   });
+
+  it('Prueba para verificar si es la ultima pregunta', () => {
+    component.indexactual = examen1object.num_preguntas - 1;
+    expect(component.esultimo()).toBeTruthy();
+    component.indexactual = 0;
+    expect(component.esultimo()).toBeFalsy();
+  });
+
+  it('Prueba para pasar a la siguiente pregunta', () => {
+    var valanterior = component.indexactual;
+    component.siguiente();
+    expect(component.indexactual).toEqual(valanterior + 1);
+  });
 });
