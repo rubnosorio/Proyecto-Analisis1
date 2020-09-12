@@ -38,4 +38,8 @@ fdescribe('ControlNotasEstudianteComponent', () => {
     expect(component.NoExamenesValido()).toBeTrue();
   });
 
+  it('should Nota del curso valida', () => {
+    expect(component.NotaValida(80)).toBeTrue();
+  });
+
 });
