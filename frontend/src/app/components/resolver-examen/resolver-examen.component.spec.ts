@@ -63,4 +63,17 @@ describe('ResolverExamenComponent', () => {
     component.siguiente();
     expect(component.indexactual).toEqual(valanterior + 1);
   });
+
+  it('Prueba para calificar el examen', () => {
+    component.examen = examen100pts;
+    expect(component.calificar()).toEqual(100);
+    component.examen = examen75pts;
+    expect(component.calificar()).toEqual(75);
+    component.examen = examen50pts;
+    expect(component.calificar()).toEqual(50);
+    component.examen = examen25pts;
+    expect(component.calificar()).toEqual(25);
+    component.examen = examen0pts;
+    expect(component.calificar()).toEqual(0);
+  });
 });
