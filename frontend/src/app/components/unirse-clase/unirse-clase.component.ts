@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-unirse-clase',
@@ -7,13 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UnirseClaseComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dialog: MatDialog) { }
 
   ngOnInit(): void {
+   
   }
 
-  CodigoValido (cod:string): boolean{
-    return true;
+  CodigoValido (cod:string):boolean{
+    if(cod.length==9){
+      return true;
+    }
+    return false;
+  }
+  
+
+
+  Unirse(cod:string){
+    if(this.CodigoValido(cod)){
+
+    }
   }
 
 }
