@@ -43,7 +43,11 @@ describe('ResolverExamenComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('Prueba componente', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('Prueba para obtener examen', () => {
+    expect(component.obtenerexamen(1)).toEqual(examen1object);
   });
 });
