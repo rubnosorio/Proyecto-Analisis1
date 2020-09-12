@@ -8,8 +8,9 @@ import { UpdateExamenComponent } from './components/update-examen/update-examen.
 import { LoginComponent } from './components/login/login.component';
 import { VerExamenesComponent } from './components/ver-examenes/ver-examenes.component';
 import { CrearExamenComponent } from './components/crear-examen/crear-examen.component';
-import { DemoComponent } from "./components/demo/demo.component";
+import { DemoComponent } from './components/demo/demo.component';
 import { CrearClaseComponent } from './components/crear-clase/crear-clase.component';
+import { ResolverExamenComponent } from './components/resolver-examen/resolver-examen.component';
 
 const routes: Routes = [
   {
@@ -30,15 +31,15 @@ const routes: Routes = [
   },
   {
     path: 'update_examen',
-    component: UpdateExamenComponent
+    component: UpdateExamenComponent,
   },
   {
-      path: 'login',
-      component: LoginComponent
+    path: 'login',
+    component: LoginComponent,
   },
   {
-      path: 'ver-examenes',
-      component: VerExamenesComponent
+    path: 'ver-examenes',
+    component: VerExamenesComponent,
   },
   {
     path: 'crear_examen',
@@ -50,7 +51,11 @@ const routes: Routes = [
   },
   {
     path: 'crear_clase',
-    component: CrearClaseComponent
+    component: CrearClaseComponent,
+  },
+  {
+    path: 'resolver_examen/:id',
+    component: ResolverExamenComponent,
   },
 ];
 
