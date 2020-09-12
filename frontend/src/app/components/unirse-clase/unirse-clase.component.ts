@@ -20,12 +20,19 @@ export class UnirseClaseComponent implements OnInit {
     }
     return false;
   }
-  
+  GuionCodValido(cod:string):boolean{
+    if(cod.charAt(4)=='-'){
+      return true;
+    }
+    return false;
+  }
 
 
   Unirse(cod:string){
     if(this.CodigoValido(cod)){
+      if(this.GuionCodValido(cod)){
 
+      }
     }
   }
 
