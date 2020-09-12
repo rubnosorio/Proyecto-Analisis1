@@ -47,4 +47,13 @@ export class ControlNotasEstudianteComponent implements OnInit {
     }
     return false;
   }
+
+  NotaValida(nota:number){
+    if(nota >= 0 && nota <=100){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
 }
