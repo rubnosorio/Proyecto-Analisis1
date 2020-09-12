@@ -34,6 +34,8 @@ fdescribe('UnirseClaseComponent', () => {
     expect(component.CodigoValido('asdfasdfa')).toBeTruthy();
   }));
 
-  
+  fit('Vérificar guión Código válido',()=>{
+    expect(component.GuionCodValido('abcd-ssde')).toBeTruthy();
+  });
 
 });
