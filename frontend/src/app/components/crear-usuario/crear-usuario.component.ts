@@ -35,13 +35,14 @@ export class CrearUsuarioComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  registrar(){
-    if(!this.userFG.valid){
+  registrar() {
+    if (!this.userFG.valid) {
       this.toastr.error("Formulario Incorrecto.")
       return
     }
     this.toastr.success("Registro Completado.")
     console.log(this.userFG.value)
+    this.userFG.reset();
     return true;
   }
 
