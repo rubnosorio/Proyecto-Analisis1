@@ -1,6 +1,6 @@
 .container {
     position: absolute;
-    margin-left: 28%;
+    margin-left: 21%;
     margin-top: 1%;
     border-radius: 5px;
     border: 2px solid #4b0082;
@@ -13,9 +13,24 @@
     font-family: "Courier New", Courier, monospace;
 }
 
+.mat-card-title2 {
+    -webkit-text-stroke: 1px #4b0082;
+    color: white;
+    font-size: large;
+    font-family: "Courier New", Courier, monospace;
+}
+
 .mat-form-field {
     width: 65%;
     border: 100px;
+}
+
+.tabla1 {
+    background-color:burlywood;
+}
+
+.tabla2 {
+    background-color:cornflowerblue;
 }
 
 @media only screen and (max-width: 600px) {

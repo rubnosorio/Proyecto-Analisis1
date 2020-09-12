@@ -1,13 +1,74 @@
-<div class="container" style="width: 575px;">
+<div class="container" style="width: 800px;">
     <div class="row justify-content-md-center">
         <div class="col-md-12">
             <mat-card>
                 <mat-card-header>
-                  <mat-card-title>Control Notas</mat-card-title>
+                  <mat-card-title style="margin-left:15px">Control Notas</mat-card-title>
                 </mat-card-header>
                 <mat-card-content>
+                    <mat-card>
+                      <mat-card-header>
+                        <mat-card-title class="mat-card-title2">{{estudiante.nombre_usuario + ' ' + estudiante.apellido_usuario}}</mat-card-title>
+                      </mat-card-header>
+                    </mat-card>
+                    <mat-card>
+                        <mat-card-header>
+                            <mat-card-title>Tareas</mat-card-title>
+                        </mat-card-header>
+                        <mat-card-content>
+                            <mat-table [dataSource]="tareas" class="tabla1">
+                                <ng-container matColumnDef="no">
+                                  <mat-header-cell *matHeaderCellDef>No.</mat-header-cell>
+                                  <mat-cell *matCellDef="let tarea">{{tarea.id_tarea}}</mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="nombre">
+                                  <mat-header-cell *matHeaderCellDef>Nombre Tarea</mat-header-cell>
+                                  <mat-cell *matCellDef="let tarea">{{tarea.nombre_tarea}}</mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="fecha">
+                                  <mat-header-cell *matHeaderCellDef>Fecha Entrega</mat-header-cell>
+                                  <mat-cell *matCellDef="let tarea">{{tarea.fecha_entrega}}</mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="nota">
+                                  <mat-header-cell *matHeaderCellDef>Nota</mat-header-cell>
+                                  <mat-cell *matCellDef="let tarea">{{10}}</mat-cell>
+                                </ng-container>
+                                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                              </mat-table>
+                        </mat-card-content>
+                    </mat-card>
+                    <mat-card>
+                        <mat-card-header>
+                            <mat-card-title>Examenes</mat-card-title>
+                        </mat-card-header>
+                        <mat-card-content>
+                            <mat-table [dataSource]="examenes" class="tabla2">
+                                <ng-container matColumnDef="no">
+                                  <mat-header-cell *matHeaderCellDef>No.</mat-header-cell>
+                                  <mat-cell *matCellDef="let examen">{{examen.id_examen}}</mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="nombre">
+                                  <mat-header-cell *matHeaderCellDef>Nombre Tarea</mat-header-cell>
+                                  <mat-cell *matCellDef="let examen">{{examen.nombre_examen}}</mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="fecha">
+                                  <mat-header-cell *matHeaderCellDef>Fecha Examen</mat-header-cell>
+                                  <mat-cell *matCellDef="let examen">{{examen.fecha}}</mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="nota">
+                                  <mat-header-cell *matHeaderCellDef>Nota</mat-header-cell>
+                                  <mat-cell *matCellDef="let examen">{{5}}</mat-cell>
+                                </ng-container>
+                                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                              </mat-table>
+                        </mat-card-content>
+                    </mat-card>
                     <mat-card-actions>
                         <button mat-raised-button color="warn" style="margin-left:20px">Volver</button>
+                        <mat-label style="margin-left:300px"><b>Total</b></mat-label>
+                        <mat-label style="margin-left:140px"><b>100</b></mat-label>
                     </mat-card-actions>
                 </mat-card-content>
             </mat-card>
