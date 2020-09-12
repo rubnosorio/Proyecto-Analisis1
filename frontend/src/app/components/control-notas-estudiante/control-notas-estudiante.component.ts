@@ -34,15 +34,8 @@ export class ControlNotasEstudianteComponent implements OnInit {
     return this.estudiante;
   }
 
-  NoTareasValido(){
-    if(this.tareas.length >= 0){
-      return true;
-    }
-    return false;
-  }
-
-  NoExamenesValido(){
-    if(this.examenes.length >= 0){
+  CantidadValida(tamanio:number){
+    if(tamanio >= 0){
       return true;
     }
     return false;
