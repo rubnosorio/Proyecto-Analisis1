@@ -2,6 +2,9 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ResolverExamenComponent } from './resolver-examen.component';
 
+import { ActivatedRoute } from '@angular/router';
+import { convertToParamMap } from '@angular/router';
+
 fdescribe('ResolverExamenComponent', () => {
   let component: ResolverExamenComponent;
   let fixture: ComponentFixture<ResolverExamenComponent>;
@@ -32,9 +35,18 @@ fdescribe('ResolverExamenComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ResolverExamenComponent ]
-    })
-    .compileComponents();
+      declarations: [ResolverExamenComponent],
+      providers: [
+        {
+          provide: ActivatedRoute,
+          useValue: {
+            snapshot: {
+              paramMap: convertToParamMap({ id: 1 }),
+            },
+          },
+        },
+      ],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
