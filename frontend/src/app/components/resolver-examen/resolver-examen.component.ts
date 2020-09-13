@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-resolver-examen',
@@ -9,8 +10,12 @@ export class ResolverExamenComponent implements OnInit {
   indexactual = 0;
 
   examen: any;
+  id_examen = -1;
 
-  constructor() {}
+  constructor(private route: ActivatedRoute) {
+    this.id_examen = Number(this.route.snapshot.paramMap.get('id'));
+    this.examen = this.obtenerexamen(this.id_examen);
+  }
 
   ngOnInit(): void {}
 
