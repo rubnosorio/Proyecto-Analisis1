@@ -4,6 +4,7 @@ import { ResolverExamenComponent } from './resolver-examen.component';
 
 import { ActivatedRoute } from '@angular/router';
 import { convertToParamMap } from '@angular/router';
+import { FormBuilder } from '@angular/forms';
 
 fdescribe('ResolverExamenComponent', () => {
   let component: ResolverExamenComponent;
@@ -45,6 +46,7 @@ fdescribe('ResolverExamenComponent', () => {
             },
           },
         },
+        FormBuilder,
       ],
     }).compileComponents();
   }));
