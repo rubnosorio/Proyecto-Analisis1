@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-resolver-examen',
@@ -12,12 +13,24 @@ export class ResolverExamenComponent implements OnInit {
   examen: any;
   id_examen = -1;
 
-  constructor(private route: ActivatedRoute) {
+  formtf: FormGroup;
+  formarea: FormGroup;
+
+  constructor(private route: ActivatedRoute, private fb: FormBuilder) {
     this.id_examen = Number(this.route.snapshot.paramMap.get('id'));
     this.examen = this.obtenerexamen(this.id_examen);
   }
 
   ngOnInit(): void {}
+
+  createForm(): void {
+    this.formtf = this.fb.group({
+      answer_res: ['', [Validators.required]],
+    });
+    this.formarea = this.fb.group({
+      answer_res: ['', [Validators.required]],
+    });
+  }
 
   obtenerexamen(id: number): any {
     if (id == 1) {
@@ -40,12 +53,28 @@ export class ResolverExamenComponent implements OnInit {
   }
 
   esultimo(): Boolean {
-    return null;
+    if (this.indexactual == this.examen.num_preguntas - 1) {
+      return true;
+    }
+    return false;
   }
 
   calificar(): Number {
     return -1;
   }
 
-  siguiente(): void {}
+  siguiente(): void {
+    if (this.examen.preguntas[this.indexactual].tipo_respuesta == 2) {
+      this.examen.preguntas[this.indexactual].res = this.formtf.controls[
+        'answer_res'
+      ].value;
+      this.formtf.reset();
+    } else if (this.examen.preguntas[this.indexactual].tipo_respuesta == 1) {
+      this.examen.preguntas[this.indexactual].res = this.formarea.controls[
+        'answer_res'
+      ].value;
+      this.formarea.reset();
+    }
+    this.indexactual++;
+  }
 }
