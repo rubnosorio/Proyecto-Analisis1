@@ -5,6 +5,7 @@ export class Tarea {
     url_directorio: string
     url_archivo_instruccion: string
     fecha_entrega: string
+    valor_tarea:number
 
     constructor(
         _id_tarea: number,
@@ -12,7 +13,8 @@ export class Tarea {
         _descripcion: string,
         _url_directorio: string,
         _url_archivo_instruccion: string,
-        _fecha_entrega: string
+        _fecha_entrega: string,
+        _valor_tarea:number
         ) {
         
         this.id_tarea = _id_tarea
@@ -21,5 +23,6 @@ export class Tarea {
         this.url_directorio = _url_directorio
         this.url_archivo_instruccion = _url_archivo_instruccion
         this.fecha_entrega = _fecha_entrega
+        this.valor_tarea=_valor_tarea
     }
 }
