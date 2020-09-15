@@ -13,4 +13,10 @@ describe('lista de actividades', function () {
             done();
         });
     });
+    it('deberia ser mayor o igual a 0 la lista de actividades de la clase', function (done) {
+        request.post(endpoint, { json: true, body: clase }, function (error, response) {
+            expect(response.body.lista_actividades.length).toBeGreaterThanOrEqual();
+            done();
+        });
+    });
 });
