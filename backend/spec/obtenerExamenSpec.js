@@ -30,4 +30,13 @@ describe('obtiene los examenes de X estudiante', function () {
             done();
         });
     });
+
+    it('verifica que los examenes tengan una nota valida', function (done) { 
+        request.post(endpoint, { json: true, body: data }, function (error, response) {
+            for(let i=0; i<response.body.Examenes.length; i++){
+                expect(response.body.Examenes[i].nota).toBeGreaterThanOrEqual(0);
+            }
+            done();
+        });
+    });
 });
