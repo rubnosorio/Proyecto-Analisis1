@@ -7,7 +7,7 @@ describe('unirse_a_clase', function () {
     
     it('Verificar conexión status 200', function (done) {
         request.post(endpoint, function (error, response) {
-            expect(response.statusCode1).toEqual(200);
+            expect(JSON.parse(response.body).statusCode1).toEqual(200);
             done();
         });
     });
