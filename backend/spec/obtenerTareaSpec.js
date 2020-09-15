@@ -30,4 +30,13 @@ describe('obtiene las tareas de X estudiante', function () {
             done();
         });
     });
+
+    it('verifica que las tareas tengan una nota valida', function (done) { 
+        request.post(endpoint, { json: true, body: data }, function (error, response) {
+            for(let i=0; i<response.body.Tareas.length; i++){
+                expect(response.body.Tareas[i].nota).toBeGreaterThanOrEqual(0);
+            }
+            done();
+        });
+    });
 });
