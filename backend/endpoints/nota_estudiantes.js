@@ -1,6 +1,6 @@
 module.exports = (app,connection) => {
     //var a = require('./examen.json');
-    app.get('/nota_estudiantes', (req, res) => {
+    app.post('/nota_estudiantes', (req, res) => {
         var id_clase = req.body.id_clase;
 
         connection.query(`select distinct CLASE.nombre_clase, TAREA.id_tarea, TAREA.nombre_tarea, ENTREGA_TAREA.nota, USUARIO.id_usuario, USUARIO.nombres, USUARIO.apellidos
