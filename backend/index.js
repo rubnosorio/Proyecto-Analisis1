@@ -55,5 +55,6 @@ const update_examen = require('./endpoints/update_examen')(app, connection);
 const get_examenes = require('./endpoints/obtener_examen')(app, connection);
 const eliminar_exmamen = require('./endpoints/eliminar_examen')(app, connection);
 const getExamId = require('./endpoints/getExamenId')(app, connection);
+const registrar_nota_examen = require('./endpoints/registrar_nota_examen')(app, connection);
 
 app.listen(3000, () => console.log('escuchando en puerto 3000'));

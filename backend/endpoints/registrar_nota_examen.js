@@ -1,5 +1,5 @@
 module.exports = (app, connection) => {
-    app.get('/get_exam_id', (req, res) => {
+    app.post('/registrar_nota_examen', (req, res) => {
         res.send('');
     });
-}
+};
