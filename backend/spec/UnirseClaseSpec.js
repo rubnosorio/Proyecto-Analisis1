@@ -12,7 +12,12 @@ describe('unirse_a_clase', function () {
         });
     });
 
-    
+    it('Verificar que la clase exista', function (done) {
+        request.post(endpoint, function (error, response) {
+            expect(JSON.parse(response.body).ExisteClase).toBeTruthy();
+            done();
+        });
+    });
 
 
 });
