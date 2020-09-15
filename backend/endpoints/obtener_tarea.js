@@ -5,15 +5,17 @@ module.exports = (app,connection) => {
         let data = [id_usuario,id_clase];
         connection.query(sql,data,function (err, rows, fields) {
             if (!err) {
-                let Tareas = [];
+                let resultados = {
+                    Tareas: []
+                }   // listado de tareas
                 for(let i=0; i<rows.length; i++){
                     var tarea = {
                         nombre_tarea: rows[i].nombre_tarea,
                         nota: rows[i].nota
                     }
-                    Tareas.push(tarea);
+                    resultados.Tareas.push(tarea); // guardado de tarea
                 }
-                res.status(200).send(Tareas);
+                res.status(200).send(resultados);
             }
             else {
                 res.status(404).send('clase o usuario no existe');
