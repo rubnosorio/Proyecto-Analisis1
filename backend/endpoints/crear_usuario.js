@@ -1,4 +1,7 @@
 module.exports=(app,connection)=>{
+
+    var users = []
+
     app.get('/crear_usuario',(req,res)=>{
         res.status(200).send()
     })
