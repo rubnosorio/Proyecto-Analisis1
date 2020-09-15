@@ -14,4 +14,8 @@ export class NotaEstudiantesComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  tamListaColumnas(){
+    return this.lista_columnas.length;
+  }
+
 }

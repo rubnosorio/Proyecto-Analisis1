@@ -29,6 +29,6 @@ fdescribe('NotaEstudiantesComponent', () => {
     expect(nota_estudiante).toEqual(new NotaEstudiante(1,'Erick', 'Lemus',[]));
   });
   it('Deberia ser mayor o igual a 0 la lista de tareas y examenes',()=>{
-    expect(component.tamListaColumnas()).toBeTrue();
+    expect(component.tamListaColumnas()).toBeGreaterThanOrEqual(0);
   });
 });
