@@ -1,0 +1,137 @@
+.example-card {
+    max-width: 1200px;
+    margin:auto;
+    border-style: outset;
+    /*background-image: url("https://static.vecteezy.com/system/resources/previews/000/625/953/non_2x/soft-abstract-background-in-light-colors-vector.jpg");*/
+    text-align: justify;
+  }
+  
+
+  body{
+	background-color: #632432;
+	font-family: Arial;
+}
+
+/*#main-container{
+	margin: 150px auto;
+	width: 600px;
+}*/
+
+table{
+	background-color: white;
+	text-align: left;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+th, td{
+	padding: 20px;
+}
+
+thead{
+	background-color: royalblue;
+	border-bottom: solid 5px #0F362D;
+	color: white;
+}
+
+tr:nth-child(even){
+	background-color: #ddd;
+}
+
+tr:hover td{
+	background-color: cadetblue;
+	color: white;
+}
+
+
+
+
+  .titulo2{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    color: black;
+  }
+
+  .row/*:after*/ {
+    display: table;
+    clear: both;
+  }
+  .rowSpinner/*:after*/ {
+    border: none;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+
+  .colSpinner{
+    border: 1px;
+  }
+
+  .column {
+    float: left;
+    width: 40%;
+    padding-left: 2.5%;
+    orientation: portrait;
+  }
+  .total {
+      font-size: 15px;
+      color: red;
+      font-weight: bold;
+      text-align: center;
+  }
+
+  .example-card2 {
+    max-width: 500px;
+    margin:auto;
+    border-style: outset;
+    /*background-image: url("https://static.vecteezy.com/system/resources/previews/000/625/953/non_2x/soft-abstract-background-in-light-colors-vector.jpg");*/
+    text-align: justify;
+  }
+
+  table {
+    width: 100%;
+  }
+  
+
+  .copyright {
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 15px;
+    color: black;
+    position:absolute;
+    width: auto;
+    left: 45%;
+    margin-left: -100px;
+    text-align: justify;
+  }
+
+
+.texto{
+    font-size: 15px;
+    color: black;
+    text-align: center;
+}
+
+
+@media screen and (min-width:320px) and (max-width:997px) and (orientation:landscape) {
+    .texto{
+        font-size: 9px;
+    }
+  }
+
+  @media screen and (max-width:997px){
+    .texto{
+        font-size: 9px;
+    }
+  }
+
+
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  
