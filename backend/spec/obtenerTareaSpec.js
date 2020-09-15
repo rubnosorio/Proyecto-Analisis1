@@ -21,4 +21,13 @@ describe('obtiene las tareas de X estudiante', function () {
             done();
         });
     });
+
+    it('verifica que las tareas tengan nombre', function (done) { 
+        request.post(endpoint, { json: true, body: data }, function (error, response) {
+            for(let i=0; i<response.body.Tareas.length; i++){
+                expect(response.body.Tareas[i].nombre_tarea.length).toBeGreaterThan(0);
+            }
+            done();
+        });
+    });
 });
