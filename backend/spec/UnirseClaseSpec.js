@@ -2,23 +2,26 @@ const request = require('request');
 const server = require('../index');
 
 const endpoint = 'http://localhost:3000/unirse_a_clase';
+var respues;
 
-describe('unirse_a_clase', function () {
-    
-    it('Verificar conexión status 200', function (done) {
-        request.post(endpoint, function (error, response) {
-            expect(JSON.parse(response.body).statusCode1).toEqual(200);
-            done();
-        });
-    });
-
-    it('Verificar que la clase exista', function (done) {
+fdescribe('unirse_a_clase', function () {
+    beforeAll((done) => {
         request.post(endpoint,{json: true, body:{"cod_clase":"abcdefghi"}}, function (error, response) {
-            expect(response.body.ExisteClase).toBeTruthy();
+            respues = JSON.stringify(response);
             done();
         });
+        
     });
 
+    it('Verificar conexión status 200', function () {
+            expect(JSON.parse(respues).body.statusCode1).toEqual(200);
+    });
+    
+    
+    it('Verificar que la clase exista', function () {
+        expect(JSON.parse(respues).body.ExisteClase).toBeTruthy();
+    });
+  
 
     
 });
