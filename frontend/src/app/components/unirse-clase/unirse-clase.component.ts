@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-unirse-clase',
@@ -8,7 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class UnirseClaseComponent implements OnInit {
 
-  constructor(private dialog: MatDialog) { }
+  constructor(private toastr: ToastrService,private dialog: MatDialog) { }
 
   ngOnInit(): void {
    
@@ -16,23 +17,20 @@ export class UnirseClaseComponent implements OnInit {
 
   CodigoValido (cod:string):boolean{
     if(cod.length==9){
-      return true;
+      if(cod.charAt(4)=='-'){
+        return true;
+      }
     }
     return false;
   }
-  GuionCodValido(cod:string):boolean{
-    if(cod.charAt(4)=='-'){
-      return true;
-    }
-    return false;
-  }
+
 
 
   Unirse(cod:string){
     if(this.CodigoValido(cod)){
-      if(this.GuionCodValido(cod)){
-
-      }
+      
+    }else{
+      this.toastr.error('Código incorrecto','Código invalido');
     }
   }
 
