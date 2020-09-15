@@ -8,7 +8,7 @@ module.exports = (app, connection) => {
         else if (req.body.id_examen == undefined || req.body.id_examen == '') {
             res.statusCode = 400;
             res.setHeader('Content-Type', 'application/json');
-            res.json({});
+            res.json({err:'err'});
         }
         else {
             connection.query(`select * from EXAMEN where id_examen = ${req.body.id_examen}`, function (err, rows, fields) {
