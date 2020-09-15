@@ -14,4 +14,11 @@ describe('obtiene los examenes de X estudiante', function () {
             done();
         });
     });
+
+    it('verifica que la cantidad de examenes obtenida sea valida', function (done) {
+        request.post(endpoint, { json: true, body: data }, function (error, response) {
+            expect(response.body.Examenes.length).toBeGreaterThanOrEqual(0);
+            done();
+        });
+    });
 });
