@@ -5,6 +5,8 @@ const endpoint = 'http://localhost:3000/crear_usuario';
 
 fdescribe('Cuando se registra un usuario', function () {
 
+    var usuarios = []
+
     it('deberia retornar 200 en codigo de respuesta', function (done) {
         request.get(endpoint, {json: true, body: {}}, function (error, response) {
             expect(response.statusCode).toEqual(200);
@@ -13,6 +15,7 @@ fdescribe('Cuando se registra un usuario', function () {
     });
 
     it('deberia recibir los parametros', function (done) {
+        var usuarios = []
         var usuario = {
             id_usuario: 0,
             nombres: "nombre prueba",
@@ -21,8 +24,8 @@ fdescribe('Cuando se registra un usuario', function () {
             passwd: "passwd prueba",
             correo: "correo prueba",
         }
-        request.post(endpoint, {json: true, body: usuario}, function (error, response) {
-            var temp = JSON.parse(response.request.body)
+        request.post(endpoint, {json: true, body: {usuario, users: usuarios}}, function (error, response) {
+            var temp = JSON.parse(response.request.body).usuario
             expect(temp.id_usuario).toEqual(usuario.id_usuario);
             expect(temp.nombres).toEqual(usuario.nombres);
             expect(temp.apellidos).toEqual(usuario.apellidos);
@@ -34,6 +37,7 @@ fdescribe('Cuando se registra un usuario', function () {
     });
 
     it('deberia ingresar el usuario al sistema', function (done) {
+        var usuarios = []
         var usuario = {
             id_usuario: 0,
             nombres: "nombre prueba",
@@ -42,10 +46,10 @@ fdescribe('Cuando se registra un usuario', function () {
             passwd: "passwd prueba",
             correo: "correo prueba",
         }
-        request.post(endpoint, {json: true, body: usuario}, function (error, response) {
-            
+        request.post(endpoint, {json: true, body: {usuario, users: usuarios}}, function (error, response) {
+            var temp = response.body.users
+            expect(temp.length).toEqual(1);
             done();
         });
-        expect(endpoint.users.length).toEqual(1)
     });
 });
