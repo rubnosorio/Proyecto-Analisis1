@@ -1,7 +1,7 @@
 const request = require('request');
 const server = require('../index');
 
-const endpoint = 'http://localhost:3000/get_examen_id';
+const endpoint = 'http://localhost:3000/get_exam_id';
 
 var testdata1 = { json: true, body: { id_examen: 1 } };
 var testdata2 = { json: true, body: { id_examen: -1 } };
