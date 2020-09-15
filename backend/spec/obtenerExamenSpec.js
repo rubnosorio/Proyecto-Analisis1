@@ -21,4 +21,13 @@ describe('obtiene los examenes de X estudiante', function () {
             done();
         });
     });
+
+    it('verifica que los examenes cuenten con un nombre', function (done) {
+        request.post(endpoint, { json: true, body: data }, function (error, response) {
+            for(let i=0; i<response.body.Examenes.length; i++){
+                expect(response.body.Examenes[i].nombre_examen.length).toBeGreaterThan(0);
+            }
+            done();
+        });
+    });
 });
