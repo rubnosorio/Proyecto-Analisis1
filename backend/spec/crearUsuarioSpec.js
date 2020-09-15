@@ -1,7 +1,7 @@
 const request = require('request');
 const server = require('../index');
 
-const endpoint = 'http://localhost:3000/crear_usuario';
+const endpoint = 'http://localhost:3000/crear_usuario-test';
 
 fdescribe('Cuando se registra un usuario', function () {
 
