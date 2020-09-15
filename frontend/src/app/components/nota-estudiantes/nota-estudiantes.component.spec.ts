@@ -28,7 +28,13 @@ fdescribe('NotaEstudiantesComponent', () => {
   it('Deberia ser estudiante creado con su lista de tareas',()=>{
     expect(nota_estudiante).toEqual(new NotaEstudiante(1,'Erick', 'Lemus',[]));
   });
+
   it('Deberia ser mayor o igual a 0 la lista de tareas y examenes',()=>{
     expect(component.tamListaColumnas()).toBeGreaterThanOrEqual(0);
   });
+
+  it('Deberia ser mayor o igual a 0 la lista de estudiantes',()=>{
+    expect(component.tamListaEstudiantes()).toBeGreaterThanOrEqual(0);
+  });
+
 });
