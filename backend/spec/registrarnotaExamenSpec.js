@@ -6,7 +6,7 @@ const endpoint = 'http://localhost:3000/registrar_nota_examen';
 var testdata1 = {
     json: true,
     body: {
-        id_usuario: 1,
+        id_usuario: 2,
         id_clase: 1,
         id_examen: 1,
         nota_examen: 100,

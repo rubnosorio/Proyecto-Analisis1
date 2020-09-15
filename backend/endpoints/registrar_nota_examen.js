@@ -6,7 +6,7 @@ module.exports = (app, connection) => {
         var nota_examen = req.body.nota_examen;
         var examen_respuesta = req.body.examen_respuesta;
 
-        if (id_usuario == (undefined || '') || id_clase == (undefined || '') || id_examen == (undefined || '') || nota_examen == (undefined || '') || examen_respuesta == (undefined || '')) {
+        if (id_usuario == undefined || id_usuario == '' || id_clase == undefined || id_clase == '' || id_examen == undefined || id_examen == '' || nota_examen == undefined || nota_examen == '' || examen_respuesta == undefined || examen_respuesta == '') {
             res.statusCode = 400;
             res.setHeader('Content-Type', 'application/json');
             res.json({});
