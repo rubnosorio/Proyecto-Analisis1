@@ -13,30 +13,8 @@
                         <th *ngFor="let lista of lista_columnas; let i = index">{{lista}}</th>
                     </tr>
                 </thead>
-
-                <tr>
-                    <td>Agua</td>
-                    <td>Enero</td>
-                    <td>$ 3,000</td>
-                    <td>$ 3,000</td>
-                </tr>
-                <tr>
-                    <td>Luz</td>
-                    <td>Febrero</td>
-                    <td>$ 5,500</td>
-                    <td>$ 5,500</td>
-                </tr>
-                <tr>
-                    <td>Coche</td>
-                    <td>Marzo</td>
-                    <td>$ 10,100</td>
-                    <td>$ 10,100</td>
-                </tr>
-                <tr>
-                    <td>Internet</td>
-                    <td>Abril</td>
-                    <td>$ 450</td>
-                    <td>$ 450</td>
+                <tr *ngFor="let lista of alguito;">
+                    <td *ngFor="let lista2 of lista.lista;">{{lista2}}</td>
                 </tr>
             </table>
         </div>
