@@ -23,5 +23,9 @@ export class NotaEstudiantesComponent implements OnInit {
     return this.lista_estudiantes.length;
   }
 
+  obtenerColumnas(){
+    return true;
+  }
+
 
 }
