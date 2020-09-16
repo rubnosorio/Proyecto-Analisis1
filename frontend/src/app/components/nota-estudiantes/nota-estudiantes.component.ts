@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ListaActividades } from "../../models/lista-actividades";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nota-estudiantes',
@@ -7,10 +9,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NotaEstudiantesComponent implements OnInit {
 
-  lista_columnas: string[]=['Tarea 1', 'Tarea 2', '1er Parcial', '2do Parcial']
+  lista_columnas: string[]=[]
   lista_estudiantes:string[]=[];
 
-  constructor() { }
+  constructor(private router:Router) { 
+    var actividad1=new ListaActividades('actividad1');
+    var actividad2=new ListaActividades('actividad2');
+    var actividad3=new ListaActividades('actividad3');
+    var actividad4=new ListaActividades('actividad4');
+    var actividad5=new ListaActividades('actividad5');
+    var actividad6=new ListaActividades('actividad6');
+    var lista_actividades:ListaActividades[]=[];
+    lista_actividades.push(actividad1);
+    lista_actividades.push(actividad2);
+    lista_actividades.push(actividad3);
+    lista_actividades.push(actividad4);
+    lista_actividades.push(actividad5);
+    lista_actividades.push(actividad6);
+    this.obtenerColumnas(lista_actividades);
+  }
 
   ngOnInit(): void {
   }
@@ -23,7 +40,10 @@ export class NotaEstudiantesComponent implements OnInit {
     return this.lista_estudiantes.length;
   }
 
-  obtenerColumnas(){
+  obtenerColumnas(lista:ListaActividades[]){
+    for(let i=0;i<lista.length;i++){
+      this.lista_columnas.push(lista[i].actividad);
+    }
     return true;
   }
 
