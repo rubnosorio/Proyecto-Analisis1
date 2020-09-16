@@ -43,6 +43,7 @@ describe('nota de estudiantes', function () {
         request.post(endpoint, { json: true, body: clase }, function (error, response) {
             if(response.body.lista_notas.length>0){
                 var nota_examen=0;
+                console.log(response.body.lista_notas[0]);
                 for(let i=0;i<response.body.lista_notas[0].lista_examenes.length;i++){
                     nota_examen+=response.body.lista_notas[0].lista_examenes[i].nota;
                 }
