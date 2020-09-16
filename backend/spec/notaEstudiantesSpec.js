@@ -39,4 +39,16 @@ describe('nota de estudiantes', function () {
             }
         });
     });
+    it('debe ser mayor o igual a 0 la lista de examenes',function(done){
+        request.post(endpoint, { json: true, body: clase }, function (error, response) {
+            if(response.body.lista_notas.length>0){
+                var nota_examen=0;
+                for(let i=0;i<response.body.lista_notas[0].lista_examenes.length;i++){
+                    nota_examen+=response.body.lista_notas[0].lista_examenes[i].nota;
+                }
+                expect(nota_examen).toBeGreaterThanOrEqual(0);
+                done();
+            }
+        });
+    });
 });
