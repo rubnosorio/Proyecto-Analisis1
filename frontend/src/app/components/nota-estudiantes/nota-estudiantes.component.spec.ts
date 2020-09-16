@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NotaEstudiantesComponent } from './nota-estudiantes.component';
 import { NotaEstudiante } from "../../models/nota-estudiante";
 
-describe('NotaEstudiantesComponent', () => {
+fdescribe('NotaEstudiantesComponent', () => {
   let component: NotaEstudiantesComponent;
   let fixture: ComponentFixture<NotaEstudiantesComponent>;
 
@@ -35,6 +35,10 @@ describe('NotaEstudiantesComponent', () => {
 
   it('Deberia ser mayor o igual a 0 la lista de estudiantes',()=>{
     expect(component.tamListaEstudiantes()).toBeGreaterThanOrEqual(0);
+  });
+  
+  it('Deberia devolver true si la funcion fue exitosa',()=>{
+    expect(component.obtenerColumnas()).toBeTruthy();
   });
 
 });
