@@ -16,7 +16,7 @@ fdescribe('NotaEstudiantesComponent', () => {
     .compileComponents();
   }));
 
-  var nota_estudiante:NotaEstudiante=new NotaEstudiante(1,'Erick', 'Lemus',[]);
+  var nota_estudiante:NotaEstudiante=new NotaEstudiante(1,'Erick', 'Lemus',[],[]);
   beforeEach(() => {
     fixture = TestBed.createComponent(NotaEstudiantesComponent);
     component = fixture.componentInstance;
@@ -40,7 +40,7 @@ fdescribe('NotaEstudiantesComponent', () => {
   });
 
   it('Deberia ser estudiante creado con su lista de tareas',()=>{
-    expect(nota_estudiante).toEqual(new NotaEstudiante(1,'Erick', 'Lemus',[]));
+    expect(nota_estudiante).toEqual(new NotaEstudiante(1,'Erick', 'Lemus',[],[]));
   });
 
   it('Deberia ser mayor o igual a 0 la lista de tareas y examenes',()=>{
