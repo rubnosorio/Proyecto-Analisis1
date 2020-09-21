@@ -12,6 +12,7 @@ import { DemoComponent } from "./components/demo/demo.component";
 import { CrearClaseComponent } from './components/crear-clase/crear-clase.component';
 import { NotaEstudiantesComponent } from "./components/nota-estudiantes/nota-estudiantes.component";
 import { CrearUsuarioComponent } from './components/crear-usuario/crear-usuario.component';
+import {UnirseClaseComponent} from './components/unirse-clase/unirse-clase.component';
 
 const routes: Routes = [
   {
@@ -61,6 +62,10 @@ const routes: Routes = [
   {
     path: 'crear-usuario',
     component: CrearUsuarioComponent
+  },
+  {
+    path: 'unirse_clase',
+    component: UnirseClaseComponent
   },
 ];
 

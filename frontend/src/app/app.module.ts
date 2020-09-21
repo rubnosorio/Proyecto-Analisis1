@@ -71,6 +71,7 @@ import {MatTreeModule} from '@angular/material/tree';
 import { DemoComponent } from './components/demo/demo.component';
 import { NotaEstudiantesComponent } from './components/nota-estudiantes/nota-estudiantes.component';
 import { CrearUsuarioComponent } from './components/crear-usuario/crear-usuario.component';
+import { UnirseClaseComponent } from './components/unirse-clase/unirse-clase.component';
 
 
 @NgModule({
@@ -92,6 +93,7 @@ import { CrearUsuarioComponent } from './components/crear-usuario/crear-usuario.
     CrearClaseComponent,
     NotaEstudiantesComponent,
     CrearUsuarioComponent,
+    UnirseClaseComponent,
   ],
   imports: [
     BrowserModule,
