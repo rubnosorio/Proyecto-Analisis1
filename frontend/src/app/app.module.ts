@@ -73,6 +73,7 @@ import { NotaEstudiantesComponent } from './components/nota-estudiantes/nota-est
 import { CrearUsuarioComponent } from './components/crear-usuario/crear-usuario.component';
 import { UnirseClaseComponent } from './components/unirse-clase/unirse-clase.component';
 import { ControlNotasEstudianteComponent } from './components/control-notas-estudiante/control-notas-estudiante.component';
+import { ResolverExamenComponent } from './components/resolver-examen/resolver-examen.component';
 
 
 @NgModule({
@@ -96,6 +97,7 @@ import { ControlNotasEstudianteComponent } from './components/control-notas-estu
     CrearUsuarioComponent,
     UnirseClaseComponent,
     ControlNotasEstudianteComponent,
+    ResolverExamenComponent,
   ],
   imports: [
     BrowserModule,

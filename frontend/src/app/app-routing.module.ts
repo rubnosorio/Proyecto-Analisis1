@@ -8,12 +8,13 @@ import { UpdateExamenComponent } from './components/update-examen/update-examen.
 import { LoginComponent } from './components/login/login.component';
 import { VerExamenesComponent } from './components/ver-examenes/ver-examenes.component';
 import { CrearExamenComponent } from './components/crear-examen/crear-examen.component';
-import { DemoComponent } from "./components/demo/demo.component";
+import { DemoComponent } from './components/demo/demo.component';
 import { CrearClaseComponent } from './components/crear-clase/crear-clase.component';
 import { NotaEstudiantesComponent } from "./components/nota-estudiantes/nota-estudiantes.component";
 import { CrearUsuarioComponent } from './components/crear-usuario/crear-usuario.component';
 import {UnirseClaseComponent} from './components/unirse-clase/unirse-clase.component';
 import { ControlNotasEstudianteComponent } from './components/control-notas-estudiante/control-notas-estudiante.component';
+import { ResolverExamenComponent } from './components/resolver-examen/resolver-examen.component';
 
 const routes: Routes = [
   {
@@ -34,15 +35,15 @@ const routes: Routes = [
   },
   {
     path: 'update_examen',
-    component: UpdateExamenComponent
+    component: UpdateExamenComponent,
   },
   {
-      path: 'login',
-      component: LoginComponent
+    path: 'login',
+    component: LoginComponent,
   },
   {
-      path: 'ver-examenes',
-      component: VerExamenesComponent
+    path: 'ver-examenes',
+    component: VerExamenesComponent,
   },
   {
     path: 'crear_examen',
@@ -54,7 +55,7 @@ const routes: Routes = [
   },
   {
     path: 'crear_clase',
-    component: CrearClaseComponent
+    component: CrearClaseComponent,
   },
   {
     path: 'notas_estudiantes',
@@ -71,6 +72,10 @@ const routes: Routes = [
   {
     path: 'control_notas_estudiante',
     component: ControlNotasEstudianteComponent
+  },
+  {
+    path: 'resolver_examen/:id',
+    component: ResolverExamenComponent,
   },
 ];
 
