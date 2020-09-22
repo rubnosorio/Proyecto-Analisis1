@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { CrearUsuarioService } from '../../services/crear-usuario/crear-usuario.service'
 
 @Component({
   selector: 'app-crear-usuario',
@@ -29,21 +30,29 @@ export class CrearUsuarioComponent implements OnInit {
   });
 
   constructor(
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private crearU: CrearUsuarioService
   ) { }
 
   ngOnInit(): void {
   }
 
-  registrar() {
+  registrar() : any {
+    this.toastr.success("Registro Completado.")
+    return true;
+  }
+
+  registrarAPI() {
     if (!this.userFG.valid) {
       this.toastr.error("Formulario Incorrecto.")
       return
     }
-    this.toastr.success("Registro Completado.")
-    console.log(this.userFG.value)
+    this.crearU.postUser(this.userFG.value).subscribe(res => {
+      this.toastr.success("Registro Completado.")
+    }, err => {
+      this.toastr.error("No se pudo registrar al usuario.")
+    })
     this.userFG.reset();
-    return true;
   }
 
   get nombresFC() {

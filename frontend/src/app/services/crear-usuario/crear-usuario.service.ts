@@ -14,6 +14,6 @@ export class CrearUsuarioService {
   }
 
   postUser(user: any): any{
-    return this.http.post(baseURL+'crear-usuario',user)
+    return this.http.post(baseURL+'crear_usuario',user)
   }
 }

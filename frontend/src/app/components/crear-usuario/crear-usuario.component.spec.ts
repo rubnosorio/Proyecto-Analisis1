@@ -1,5 +1,8 @@
+import { HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ToastrModule } from 'ngx-toastr';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { CrearUsuarioComponent } from './crear-usuario.component';
 describe('CrearUsuarioComponent', () => {
@@ -8,6 +11,10 @@ describe('CrearUsuarioComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        ToastrModule.forRoot(),
+        HttpClientTestingModule
+      ],
       declarations: [ CrearUsuarioComponent ]
     })
     .compileComponents();

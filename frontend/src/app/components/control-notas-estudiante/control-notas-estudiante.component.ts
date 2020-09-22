@@ -11,11 +11,11 @@ import { Examen } from '../../models/examen';
 export class ControlNotasEstudianteComponent implements OnInit {
 
   estudiante: Usuario = new Usuario(1,'mario alejando','gonzales perez','mario123','1234','mario123@gmail.com');
-  t1: Tarea = new Tarea(1,'tarea 1','descripcion tarea 1',' ',' ','2020-08-03',4);
-  t2: Tarea = new Tarea(2,'tarea 2','descripcion tarea 2',' ',' ','2020-08-05',4);
-  t3: Tarea = new Tarea(3,'tarea 3','descripcion tarea 3',' ',' ','2020-08-12',4);
-  t4: Tarea = new Tarea(4,'tarea 4','descripcion tarea 4',' ',' ','2020-08-17',4);
-  t5: Tarea = new Tarea(5,'tarea 5','descripcion tarea 5',' ',' ','2020-08-28',4);
+  t1: Tarea = new Tarea(1,'tarea 1','descripcion tarea 1',' ',' ','2020-08-03');
+  t2: Tarea = new Tarea(2,'tarea 2','descripcion tarea 2',' ',' ','2020-08-05');
+  t3: Tarea = new Tarea(3,'tarea 3','descripcion tarea 3',' ',' ','2020-08-12');
+  t4: Tarea = new Tarea(4,'tarea 4','descripcion tarea 4',' ',' ','2020-08-17');
+  t5: Tarea = new Tarea(5,'tarea 5','descripcion tarea 5',' ',' ','2020-08-28');
   tareas: Tarea[]=[this.t1,this.t2,this.t3,this.t4,this.t5];
   e1: Examen = new Examen(1,'examen 1','2020-08-01','descripcion examen 1',0,5,0,1,[]);
   e2: Examen = new Examen(2,'examen 2','2020-08-10','descripcion examen 2',0,7,0,1,[]);

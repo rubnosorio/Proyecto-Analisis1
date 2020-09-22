@@ -3,7 +3,7 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { CrearUsuarioService } from './crear-usuario.service';
 import { Usuario } from '../../models/usuario'
 
-fdescribe('Given que se quiere mandar usuarios al servidor', () => {
+describe('Given que se quiere mandar usuarios al servidor', () => {
   let service: CrearUsuarioService;
   let httpMock: HttpTestingController;
 
@@ -38,7 +38,7 @@ fdescribe('Given que se quiere mandar usuarios al servidor', () => {
     .subscribe(resAPI =>{
       res = resAPI
     })
-    const req = httpMock.expectOne(service.getbaseURL()+'crear-usuario');
+    const req = httpMock.expectOne(service.getbaseURL()+'crear_usuario');
     req.flush(mockRes);
     console.log(req)
     expect(res).toEqual(200);
