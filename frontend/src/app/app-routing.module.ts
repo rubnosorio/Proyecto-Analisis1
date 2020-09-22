@@ -11,6 +11,7 @@ import { CrearExamenComponent } from './components/crear-examen/crear-examen.com
 import { DemoComponent } from "./components/demo/demo.component";
 import { CrearClaseComponent } from './components/crear-clase/crear-clase.component';
 import { NotaEstudiantesComponent } from "./components/nota-estudiantes/nota-estudiantes.component";
+import { CrearUsuarioComponent } from './components/crear-usuario/crear-usuario.component';
 
 const routes: Routes = [
   {
@@ -56,6 +57,10 @@ const routes: Routes = [
   {
     path: 'notas_estudiantes',
     component: NotaEstudiantesComponent
+  },
+  {
+    path: 'crear-usuario',
+    component: CrearUsuarioComponent
   },
 ];
 

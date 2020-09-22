@@ -70,6 +70,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import { DemoComponent } from './components/demo/demo.component';
 import { NotaEstudiantesComponent } from './components/nota-estudiantes/nota-estudiantes.component';
+import { CrearUsuarioComponent } from './components/crear-usuario/crear-usuario.component';
 
 
 @NgModule({
@@ -90,6 +91,7 @@ import { NotaEstudiantesComponent } from './components/nota-estudiantes/nota-est
     DemoComponent,
     CrearClaseComponent,
     NotaEstudiantesComponent,
+    CrearUsuarioComponent,
   ],
   imports: [
     BrowserModule,
