@@ -74,6 +74,7 @@ import { CrearUsuarioComponent } from './components/crear-usuario/crear-usuario.
 import { UnirseClaseComponent } from './components/unirse-clase/unirse-clase.component';
 import { ControlNotasEstudianteComponent } from './components/control-notas-estudiante/control-notas-estudiante.component';
 import { ResolverExamenComponent } from './components/resolver-examen/resolver-examen.component';
+import { UnirseAClaseService } from './services/unirse_a_clase/unirse-a-clase.service';
 
 
 @NgModule({
