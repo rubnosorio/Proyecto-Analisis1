@@ -4,7 +4,7 @@ import { Tarea } from '../../models/tarea';
 import { Examen } from '../../models/examen';
 import { Usuario } from 'src/app/models/usuario';
 
-fdescribe('ControlNotasEstudianteComponent', () => {
+describe('ControlNotasEstudianteComponent', () => {
   let component: ControlNotasEstudianteComponent;
   let fixture: ComponentFixture<ControlNotasEstudianteComponent>;
 
