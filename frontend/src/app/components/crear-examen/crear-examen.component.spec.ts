@@ -14,7 +14,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
-fdescribe('CrearExamenComponent', () => {
+describe('CrearExamenComponent', () => {
   let component: CrearExamenComponent;
   let fixture: ComponentFixture<CrearExamenComponent>;
 

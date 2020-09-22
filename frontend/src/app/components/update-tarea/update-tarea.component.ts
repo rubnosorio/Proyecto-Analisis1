@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 
 export class UpdateTareaComponent implements OnInit {
 
-  tarea: Tarea = new Tarea(11,"tarea231","esta es la tarea 231","","","2020-09-30");
+  tarea: Tarea = new Tarea(11,"tarea231","esta es la tarea 231","","","2020-09-30",10);
 
   constructor(private toastr: ToastrService, private update_tarea:UpdateTareaService, private router:Router) { }
 
