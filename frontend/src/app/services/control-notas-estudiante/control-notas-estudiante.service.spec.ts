@@ -29,5 +29,12 @@ fdescribe('ControlNotasEstudianteService', () => {
         done();
       });
     });
+
+    it('And Obtencion de Examenes', (done) => {
+      service.get_examenes(data).subscribe((res) => {
+        expect(res).toBeDefined();
+        done();
+      });
+    });
   });
 });
