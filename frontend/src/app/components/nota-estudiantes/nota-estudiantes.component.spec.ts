@@ -6,7 +6,7 @@ import { ListaActividades } from "../../models/lista-actividades";
 import { NotaTarea } from '../../models/nota-tarea';
 import { NotaExamen } from '../../models/nota-examen';
 
-fdescribe('NotaEstudiantesComponent', () => {
+describe('NotaEstudiantesComponent', () => {
   let component: NotaEstudiantesComponent;
   let fixture: ComponentFixture<NotaEstudiantesComponent>;
   var lista_actividades:ListaActividades[]=[];

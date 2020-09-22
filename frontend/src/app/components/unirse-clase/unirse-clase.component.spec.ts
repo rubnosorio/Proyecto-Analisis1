@@ -4,7 +4,7 @@ import { UnirseClaseComponent } from './unirse-clase.component';
 import { MatCardModule } from '@angular/material/card';
 import { ToastrService } from 'ngx-toastr';
 
-fdescribe('UnirseClaseComponent', () => {
+describe('UnirseClaseComponent', () => {
   let component: UnirseClaseComponent;
   let fixture: ComponentFixture<UnirseClaseComponent>;
 

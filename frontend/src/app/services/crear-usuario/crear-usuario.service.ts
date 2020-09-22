@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { baseURL } from '../shared/baseURL';
 
 @Injectable({
   providedIn: 'root'
@@ -6,4 +7,8 @@ import { Injectable } from '@angular/core';
 export class CrearUsuarioService {
 
   constructor() { }
+
+  getbaseURL(): any{
+    return baseURL
+  }
 }
