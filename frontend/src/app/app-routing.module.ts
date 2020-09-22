@@ -13,6 +13,7 @@ import { CrearClaseComponent } from './components/crear-clase/crear-clase.compon
 import { NotaEstudiantesComponent } from "./components/nota-estudiantes/nota-estudiantes.component";
 import { CrearUsuarioComponent } from './components/crear-usuario/crear-usuario.component';
 import {UnirseClaseComponent} from './components/unirse-clase/unirse-clase.component';
+import { ControlNotasEstudianteComponent } from './components/control-notas-estudiante/control-notas-estudiante.component';
 
 const routes: Routes = [
   {
@@ -66,6 +67,10 @@ const routes: Routes = [
   {
     path: 'unirse_clase',
     component: UnirseClaseComponent
+  },
+  {
+    path: 'control_notas_estudiante',
+    component: ControlNotasEstudianteComponent
   },
 ];
 
