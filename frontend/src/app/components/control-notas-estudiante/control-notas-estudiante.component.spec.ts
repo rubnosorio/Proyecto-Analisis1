@@ -3,13 +3,17 @@ import { ControlNotasEstudianteComponent } from './control-notas-estudiante.comp
 import { Tarea } from '../../models/tarea';
 import { Examen } from '../../models/examen';
 import { Usuario } from 'src/app/models/usuario';
+import { ControlNotasEstudianteService } from '../../services/control-notas-estudiante/control-notas-estudiante.service'
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 
-fdescribe('ControlNotasEstudianteComponent', () => {
+describe('ControlNotasEstudianteComponent', () => {
   let component: ControlNotasEstudianteComponent;
   let fixture: ComponentFixture<ControlNotasEstudianteComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [HttpClientModule],
+      providers: [ControlNotasEstudianteService, HttpClient],
       declarations: [ ControlNotasEstudianteComponent ]
     })
     .compileComponents();

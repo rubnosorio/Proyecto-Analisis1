@@ -7,5 +7,9 @@ import { baseURL } from '../shared/baseURL';
 })
 export class ControlNotasEstudianteService {
 
-  constructor() { }
+  constructor(private  http:HttpClient) { }
+
+  get_tareas(data: any){
+    return this.http.post(baseURL+'get_tareas',data); 
+  }
 }
