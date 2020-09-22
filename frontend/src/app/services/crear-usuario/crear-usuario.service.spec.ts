@@ -1,12 +1,16 @@
 import { TestBed } from '@angular/core/testing';
-
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CrearUsuarioService } from './crear-usuario.service';
 
 fdescribe('Given que se quiere mandar usuarios al servidor', () => {
   let service: CrearUsuarioService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      imports: [
+        HttpClientTestingModule,
+      ]
+    });
     service = TestBed.inject(CrearUsuarioService);
   });
 
