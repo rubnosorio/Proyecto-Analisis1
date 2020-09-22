@@ -21,8 +21,7 @@ fdescribe('ControlNotasEstudianteService', () => {
     expect(service).toBeTruthy();
   });
 
-  describe('When Obtencion de Tareas y Examenes', () => {
-
+  describe('When Obtencion de Tareas y Examenes Exitosa', () => {
     it('And Obtencion de Tareas', (done) => {
       service.get_tareas(data).subscribe((res) => {
         expect(res).toBeDefined();
@@ -35,6 +34,6 @@ fdescribe('ControlNotasEstudianteService', () => {
         expect(res).toBeDefined();
         done();
       });
-    });
+    }); 
   });
 });

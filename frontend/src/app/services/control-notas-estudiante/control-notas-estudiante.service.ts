@@ -12,4 +12,8 @@ export class ControlNotasEstudianteService {
   get_tareas(data: any){
     return this.http.post(baseURL+'get_tareas',data); 
   }
+
+  get_examenes(data: any){
+    return this.http.post(baseURL+'get_examenes',data); 
+  }
 }
