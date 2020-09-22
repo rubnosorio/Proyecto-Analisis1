@@ -14,8 +14,13 @@ fdescribe('Given que se quiere mandar usuarios al servidor', () => {
     expect(service).toBeTruthy();
   });
 
-  it('deberia existir la importacion de la url de la api', () => {
+  it('when la URL existe', () => {
     let base64 = service.getbaseURL()
     expect(base64).toBeTruthy();
+  });
+
+  it('And el metodo para postear el usuario existe', () => {
+    let res = service.postUser
+    expect(res).toBeTruthy();
   });
 });
