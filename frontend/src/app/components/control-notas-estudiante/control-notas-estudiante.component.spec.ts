@@ -4,7 +4,7 @@ import { Tarea } from '../../models/tarea';
 import { Examen } from '../../models/examen';
 import { Usuario } from 'src/app/models/usuario';
 
-fdescribe('ControlNotasEstudianteComponent', () => {
+describe('ControlNotasEstudianteComponent', () => {
   let component: ControlNotasEstudianteComponent;
   let fixture: ComponentFixture<ControlNotasEstudianteComponent>;
 
@@ -30,9 +30,9 @@ fdescribe('ControlNotasEstudianteComponent', () => {
       expect(component.obtenerEstudiante()).toBeTruthy(prueba);
   });
 
-  it('should Cantidad de tareas valido', () => {
+  /*it('should Cantidad de tareas valido', () => {
       expect(component.CantidadValida(component.tareas.length)).toBeTrue();
-  });
+  });*/
 
   it('should Cantidad de examenes valido', () => {
     expect(component.CantidadValida(component.examenes.length)).toBeTrue();
