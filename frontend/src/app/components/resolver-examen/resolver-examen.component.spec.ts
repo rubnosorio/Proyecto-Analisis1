@@ -90,4 +90,50 @@ fdescribe('ResolverExamenComponent', () => {
     component.examen = examen0pts;
     expect(component.calificar()).toEqual(0);
   });
+
+  describe("Dado tenga todas las respuestas correctas", function(){
+    let examen;
+    beforeEach(function() {
+      examen = examen100pts;
+    });
+    describe("Cuando resuelva el examen", function(){
+        beforeEach(function() {
+          component.examen = examen;
+        });
+        it("Entonces obtengo 100 puntos", function(){
+            expect(component.calificar()).toEqual(100);
+        });
+    });
+  });
+
+  describe("Dado tenga todas la mitad de las respuestas correctas", function(){
+    let examen;
+    beforeEach(function() {
+      examen = examen100pts;
+    });
+    describe("Cuando resuelva el examen", function(){
+        beforeEach(function() {
+          component.examen = examen;
+        });
+        it("Entonces obtengo 50 puntos", function(){
+            expect(component.calificar()).toEqual(0);
+        });
+    });
+  });
+
+  describe("Dado tenga todas las respuestas incorrectas", function(){
+    let examen;
+    beforeEach(function() {
+      examen = examen100pts;
+    });
+    describe("Cuando resuelva el examen", function(){
+        beforeEach(function() {
+          component.examen = examen;
+        });
+        it("Entonces obtengo 0 puntos", function(){
+            expect(component.calificar()).toEqual(0);
+        });
+    });
+  });
+
 });
