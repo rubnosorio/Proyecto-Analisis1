@@ -135,5 +135,4 @@ fdescribe('ResolverExamenComponent', () => {
         });
     });
   });
-
 });
