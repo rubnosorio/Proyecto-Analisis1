@@ -60,5 +60,6 @@ const crear_usuario = require('./endpoints/crear_usuario')(app,connection);
 const unirse_clase= require('./endpoints/unirse_clase')(app,connection);
 const getExamId = require('./endpoints/getExamenId')(app, connection);
 const registrar_nota_examen = require('./endpoints/registrar_nota_examen')(app, connection);
+const notas_estudiante = require('./endpoints/nota_estudiante')(app,connection);
 
 app.listen(3000, () => console.log('escuchando en puerto 3000'));
