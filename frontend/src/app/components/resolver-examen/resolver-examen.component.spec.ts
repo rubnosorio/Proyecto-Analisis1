@@ -109,7 +109,7 @@ fdescribe('ResolverExamenComponent', () => {
   describe("Dado tenga todas la mitad de las respuestas correctas", function(){
     let examen;
     beforeEach(function() {
-      examen = examen100pts;
+      examen = examen50pts;
     });
     describe("Cuando resuelva el examen", function(){
         beforeEach(function() {
@@ -124,7 +124,7 @@ fdescribe('ResolverExamenComponent', () => {
   describe("Dado tenga todas las respuestas incorrectas", function(){
     let examen;
     beforeEach(function() {
-      examen = examen100pts;
+      examen = examen0pts;
     });
     describe("Cuando resuelva el examen", function(){
         beforeEach(function() {
