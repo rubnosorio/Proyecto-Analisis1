@@ -35,5 +35,16 @@ fdescribe('ControlNotasEstudianteService', () => {
         done();
       });
     }); 
+
+    it('And Obtencion de Nota total', (done) => {
+      service.get_notas(data).subscribe((res) => {
+        let total = {
+          nota: 0
+        }
+        total = JSON.parse(JSON.stringify(res));
+        expect(total.nota).toBeGreaterThanOrEqual(0);
+        done();
+      });
+    }); 
   });
 });
