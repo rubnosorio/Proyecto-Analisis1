@@ -3,13 +3,17 @@ import { ControlNotasEstudianteComponent } from './control-notas-estudiante.comp
 import { Tarea } from '../../models/tarea';
 import { Examen } from '../../models/examen';
 import { Usuario } from 'src/app/models/usuario';
+import { ControlNotasEstudianteService } from '../../services/control-notas-estudiante/control-notas-estudiante.service'
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 
-fdescribe('ControlNotasEstudianteComponent', () => {
+describe('ControlNotasEstudianteComponent', () => {
   let component: ControlNotasEstudianteComponent;
   let fixture: ComponentFixture<ControlNotasEstudianteComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [HttpClientModule],
+      providers: [ControlNotasEstudianteService, HttpClient],
       declarations: [ ControlNotasEstudianteComponent ]
     })
     .compileComponents();
@@ -23,11 +27,6 @@ fdescribe('ControlNotasEstudianteComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
-  });
-
-  it('should Obtener Estudiante', () => {
-      let prueba = new Usuario(1,'mario alejando','gonzales perez','mario123','1234','mario123@gmail.com');
-      expect(component.obtenerEstudiante()).toBeTruthy(prueba);
   });
 
   it('should Cantidad de tareas valido', () => {
