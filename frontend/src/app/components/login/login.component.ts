@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, resolveForwardRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { LoginserviceService } from '../../services/login/loginservice.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { NavbarComponent } from "../navbar/navbar.component";
+import { ConstantPool } from '@angular/compiler';
 
 @Component({
   selector: 'app-login',
@@ -37,15 +38,15 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private ls: LoginserviceService,
     private _snackBar: MatSnackBar,
-    public menu:NavbarComponent,
-    private router:Router
+    public menu: NavbarComponent,
+    private router: Router
   ) {
     this.createForm();
     //obtenemos el menu que queremos ir modificando
     this.menu.fillerNav = JSON.parse(sessionStorage.getItem('menuPrincipal'));
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   createForm() {
     this.loginForm = this.fb.group({
@@ -93,48 +94,65 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  onSubmit() {
-    this.ls.login(this.loginForm.value).subscribe((res) => {
-      if (res.statusCode == 200) {
+  loginpromise() {
+    return new Promise((resolve, reject) => {
+      this.ls.login(this.loginForm.value).subscribe(async (res) => {
+        if (res.statusCode == 200) {
+          resolve(true);
+        } else {
+          resolve(false);
+        }
+      })
+    });
+  }
+
+  async onSubmit() {
+    var ress;
+    await this.loginpromise().then(res => {
+      if (res) {
         this._snackBar.open('Credenciales Correctas', '', {
           duration: 5000,
         });
         this.loginForm.reset();
         this.modificarMenu();
         this.irInicioUsuario();
-      } else {
+        ress = true;
+      }
+      else {
         this._snackBar.open(`Credenciales Incorrectas`, '', {
           duration: 5000,
         });
         this.loginForm.reset();
+        ress = false;
       }
     });
+    return ress;
   }
 
   //se agregó el una función para modificar el menú
-  modificarMenu(){
-    this.menu.fillerNav.length=0;
-    this.menu.fillerNav=[
-      {name:"home",route:"demo",icon:"home"},
-      {name:"Crear Tarea",route:"creartarea",icon:"add_box"},
-      {name:"Ver Tareas (profesor)",route:"ver-tareas",icon:"class"},
-      {name:"Actualizar Tareas (profesor)",route:"update_tarea",icon:"update"},
-      {name:"Crear Examen(profesor)",route:"crear_examen",icon:"create"},
-      {name:"Ver Examen(profesor)",route:"ver-examenes",icon:"pageview"},
-      {name:"Actualizar Examen(profesor)",route:"update_examen",icon:"sync_alt"},
-      {name:"Entregar tarea(estudiante)",route:"entregar-tarea",icon:"attachment"},
-      {name:"Cerrar Sesion",route:"",icon:"exit_to_app"}
+  modificarMenu() {
+    this.menu.fillerNav.length = 0;
+    this.menu.fillerNav = [
+      { name: "home", route: "demo", icon: "home" },
+      { name: "Crear Tarea", route: "creartarea", icon: "add_box" },
+      { name: "Ver Tareas (profesor)", route: "ver-tareas", icon: "class" },
+      { name: "Actualizar Tareas (profesor)", route: "update_tarea", icon: "update" },
+      { name: "Crear Examen(profesor)", route: "crear_examen", icon: "create" },
+      { name: "Ver Examen(profesor)", route: "ver-examenes", icon: "pageview" },
+      { name: "Actualizar Examen(profesor)", route: "update_examen", icon: "sync_alt" },
+      { name: "Entregar tarea(estudiante)", route: "entregar-tarea", icon: "attachment" },
+      { name: "Cerrar Sesion", route: "", icon: "exit_to_app" }
     ];
     sessionStorage.removeItem("menuPrincipal");
-    sessionStorage.setItem("menuPrincipal",JSON.stringify(this.menu.fillerNav));
+    sessionStorage.setItem("menuPrincipal", JSON.stringify(this.menu.fillerNav));
   }
 
   //agremos la ruta nueva a la que se movera
-  irInicioUsuario(){
+  irInicioUsuario() {
     this.router.navigate(['demo']);
   }
-  
-  ngOnSignIn():void{
+
+  ngOnSignIn(): void {
 
   }
 }
