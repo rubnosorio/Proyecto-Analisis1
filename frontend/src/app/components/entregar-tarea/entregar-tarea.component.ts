@@ -11,7 +11,7 @@ import { EntregarTarea } from 'src/app/models/entregar-tarea';
 export class EntregarTareaComponent implements OnInit {
 
   tarea: Tarea
-  files: File[] = [];
+  files: any[] = [];
 
   constructor(private entregaService: EntregarTareaService) {
     this.getTask()
@@ -44,8 +44,10 @@ export class EntregarTareaComponent implements OnInit {
     }.bind(this);
   }
 
-  sendTask(base: string) {
-    this.entregaService.sendTask(new EntregarTarea(1,1,12,"",this.files[0].name,base,0))
+  sendTask(base: string): any {
+    this.entregaService.sendTask(new EntregarTarea(1,1,12,"",this.files[0].name,base,0)).subscribe((res: any) => {
+      return res
+    })
   }
 
 }

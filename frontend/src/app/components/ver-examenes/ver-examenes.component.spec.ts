@@ -17,7 +17,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 
-fdescribe('Dado solicito los examenes creados', () => {
+describe('Dado solicito los examenes creados', () => {
   let component: VerExamenesComponent;
   let fixture: ComponentFixture<VerExamenesComponent>;
 
