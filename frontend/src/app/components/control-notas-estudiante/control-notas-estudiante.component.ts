@@ -17,7 +17,7 @@ export class ControlNotasEstudianteComponent implements OnInit {
   t4: Tarea = new Tarea(4,'tarea 4','descripcion tarea 4',' ',' ','2020-08-17');
   t5: Tarea = new Tarea(5,'tarea 5','descripcion tarea 5',' ',' ','2020-08-28');
   */
-  tareas: Tarea[]=[this.t1,this.t2,this.t3,this.t4,this.t5];
+  //tareas: Tarea[]=[this.t1,this.t2,this.t3,this.t4,this.t5];
   e1: Examen = new Examen(1,'examen 1','2020-08-01','descripcion examen 1',0,5,0,1,[]);
   e2: Examen = new Examen(2,'examen 2','2020-08-10','descripcion examen 2',0,7,0,1,[]);
   e3: Examen = new Examen(3,'examen 3','2020-08-15','descripcion examen 3',0,3,0,1,[]);

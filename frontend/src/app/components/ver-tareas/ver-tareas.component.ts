@@ -12,11 +12,11 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class VerTareasComponent implements OnInit {
 
-  tareas: Tarea[]
+  tareas: Tarea[] = []
   panelOpenState = false;
 
   constructor(private toastr: ToastrService,private dialogService: DialogService, private eliminar_task:EliminarTareaService,
-  private tareaService: VerTareaService) {
+  public tareaService: VerTareaService) {
     //consumir el servicio para obtener las tareas
     this.getTasks()
   }
