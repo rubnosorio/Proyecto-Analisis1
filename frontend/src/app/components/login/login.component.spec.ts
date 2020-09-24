@@ -77,4 +77,39 @@ describe('Login Component', () => {
     component.onValueChanged(component.loginForm.value);
     expect(component.loginForm.valid).toBeTruthy();
   });
+  describe("Dado inicie sesion", function () {
+    let credenciales = { username: '', password: '' };
+    beforeEach(function () {
+      credenciales.username = 'erick123';
+      credenciales.password = '123456';
+    });
+    describe("Cuando tenga credenciales correctas", function () {
+      beforeEach(function () {
+        component.loginForm.setValue(credenciales);
+      });
+      it("Entonces inicio sesion", async function (done) {
+        component.loginForm.setValue(credenciales);
+        expect(await component.onSubmit()).toBeTruthy();
+        done();
+      });
+    });
+  });
+
+  describe("Dado inicie sesion", function () {
+    let credenciales = { username: '', password: '' };
+    beforeEach(function () {
+      credenciales.username = 'erick123s';
+      credenciales.password = '123456';
+    });
+    describe("Cuando tenga credenciales incorrectas", function () {
+      beforeEach(function () {
+        component.loginForm.setValue(credenciales);
+      });
+      it("Entonces no inicio sesion", async function (done) {
+        component.loginForm.setValue(credenciales);
+        expect(await component.onSubmit()).toBeFalsy();
+        done();
+      });
+    });
+  });
 });
