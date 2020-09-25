@@ -3,6 +3,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { UnirseClaseComponent } from './unirse-clase.component';
 import { MatCardModule } from '@angular/material/card';
 import { ToastrService } from 'ngx-toastr';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+
 
 fdescribe('UnirseClaseComponent', () => {
   let component: UnirseClaseComponent;
@@ -12,10 +14,11 @@ fdescribe('UnirseClaseComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         MatDialogModule,
-        MatCardModule
+        MatCardModule,
+        HttpClientModule
       ],
       providers: [
-        {provide: ToastrService, useValue: ToastrService}
+        {provide: ToastrService, useValue: ToastrService},HttpClient
       ],
       declarations: [ UnirseClaseComponent ]
     })
