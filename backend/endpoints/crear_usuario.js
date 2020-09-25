@@ -22,10 +22,10 @@ module.exports = (app, connection) => {
         } = req.body
         connection.query(`insert into USUARIO(nombres, apellidos, username, passwd, correo) values ('${nombres}','${apellidos}','${username}','${passwd}','${correo}')`, function (err, rows, fields) {
             if (!err) {
-                res.status(200).send(200)
+                res.status(200).send({message: "Registro completo."})
             }
             else {
-                res.status(404).send(404)
+                res.status(404).send({message: "No se pudo Registrar el usuario"})
             }
         });
     })
