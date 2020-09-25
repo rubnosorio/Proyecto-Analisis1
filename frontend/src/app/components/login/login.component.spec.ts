@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LoginComponent } from './login.component';
+import { NavbarComponent } from '../navbar/navbar.component';
 import { FormBuilder } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -9,8 +10,12 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { RouterTestingModule } from '@angular/router/testing';
 
-describe('Login Component', () => {
+fdescribe('Login Component', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
   beforeEach(async(() => {
@@ -22,8 +27,12 @@ describe('Login Component', () => {
         MatIconModule,
         ReactiveFormsModule,
         BrowserAnimationsModule,
+        HttpClientModule,
+        MatSnackBarModule,
+        MatToolbarModule,
+        RouterTestingModule.withRoutes([])
       ],
-      providers: [FormBuilder],
+      providers: [FormBuilder, HttpClient, NavbarComponent],
       declarations: [LoginComponent],
     }).compileComponents();
   }));
@@ -77,4 +86,58 @@ describe('Login Component', () => {
     component.onValueChanged(component.loginForm.value);
     expect(component.loginForm.valid).toBeTruthy();
   });
+
+  describe("Dado inicie sesion", function () {
+    let credenciales = { username: '', password: '' };
+    beforeEach(function () {
+      credenciales.username = 'erick123';
+      credenciales.password = '123456';
+    });
+    describe("Cuando tenga credenciales correctas", function () {
+      beforeEach(function () {
+        component.loginForm.setValue(credenciales);
+      });
+      it("Entonces inicio sesion", function () {
+        component.loginForm.setValue(credenciales);
+        expect(component.onSubmit()).toBeTruthy();
+      });
+    });
+  });
+
+  describe("Dado inicie sesion", function () {
+    let credenciales = { username: '', password: '' };
+    beforeEach(function () {
+      credenciales.username = 'erick123';
+      credenciales.password = '123456';
+    });
+    describe("Cuando tenga credenciales correctas", function () {
+      beforeEach(function () {
+        component.loginForm.setValue(credenciales);
+      });
+      it("Entonces inicio sesion", async function (done) {
+        component.loginForm.setValue(credenciales);
+        expect(await component.onSubmit()).toBeTruthy();
+        done();
+      });
+    });
+  });
+
+  describe("Dado inicie sesion", function () {
+    let credenciales = { username: '', password: '' };
+    beforeEach(function () {
+      credenciales.username = 'erick123s';
+      credenciales.password = '123456';
+    });
+    describe("Cuando tenga credenciales incorrectas", function () {
+      beforeEach(function () {
+        component.loginForm.setValue(credenciales);
+      });
+      it("Entonces no inicio sesion", async function (done) {
+        component.loginForm.setValue(credenciales);
+        expect(await component.onSubmit()).toBeFalsy();
+        done();
+      });
+    });
+  });
+
 });

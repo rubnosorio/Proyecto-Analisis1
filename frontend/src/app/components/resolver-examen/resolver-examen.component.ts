@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { RegistrarNotaExamenService } from '../../services/registrar_nota_examen/registrar-nota-examen.service';
+import { GetExamenIdService } from '../../services/get_examen_id/get-examen-id.service';
 
 @Component({
   selector: 'app-resolver-examen',
@@ -18,7 +20,7 @@ export class ResolverExamenComponent implements OnInit {
   formtf: FormGroup;
   formarea: FormGroup;
 
-  constructor(private route: ActivatedRoute, private fb: FormBuilder) {
+  constructor(private route: ActivatedRoute, private fb: FormBuilder, private rne: RegistrarNotaExamenService, private gex: GetExamenIdService) {
     this.id_examen = Number(this.route.snapshot.paramMap.get('id'));
     this.examen = this.obtenerexamen(this.id_examen);
     this.createForm();
@@ -35,25 +37,15 @@ export class ResolverExamenComponent implements OnInit {
     });
   }
 
-  obtenerexamen(id: number): any {
-    if (id == 1) {
-      var examen = {
-        id_examen: 66,
-        nombre_examen: '1er Parcial',
-        id_clase: 1,
-        num_preguntas: 4,
-        valor_examen: 15,
-        fecha: '2020-08-15T06:00:00.000Z',
-        estado: 1,
-        descripcion: 'este campo es obligatorio',
-        preguntas:
-          '[{"opciones": [{"respuesta": "lunes", "es_correcta": 1}, {"respuesta": "martes", "es_correcta": 0}, {"respuesta": "miercoles", "es_correcta": 0}, {"respuesta": "ninguna de las anteriores es correcta", "es_correcta": 0}], "pregunta": "¿Que día es hoy?", "num_correctas": 1, "tipo_respuesta": 0}, {"opciones": [{"respuesta": "Overwatch", "es_correcta": 1}, {"respuesta": "COD", "es_correcta": 1}, {"respuesta": "PUBG", "es_correcta": 1}, {"respuesta": "Free Fire", "es_correcta": 0}], "pregunta": "¿Que juego(s) juega Erick?", "num_correctas": 3, "tipo_respuesta": 0}, {"opciones": [{"respuesta": "Alexander", "es_correcta": 1}], "pregunta": "¿Cual es el segundo nombre de Erick", "num_correctas": 1, "tipo_respuesta": 1}, {"opciones": [{"respuesta": "Verdadero", "es_correcta": 1}, {"respuesta": "Falso", "es_correcta": 0}], "pregunta": "¿Sale el semestre?", "num_correctas": 1, "tipo_respuesta": 2}]',
-      };
-      examen.preguntas = JSON.parse(examen.preguntas);
-      return examen;
-    }
-    return null;
+  obtenerexamen(id: number) {
+    this.gex.get_examen_id(id).subscribe((data) => {
+      data = data[0];
+      data.preguntas = JSON.parse(data.preguntas);
+      this.examen = data;
+      console.log(this.examen);
+    });
   }
+
 
   esultimo(): Boolean {
     if (this.indexactual == this.examen.num_preguntas - 1) {
@@ -89,10 +81,10 @@ export class ResolverExamenComponent implements OnInit {
           this.respuestas.push({ pregunta: this.examen.preguntas[i].pregunta, respuesta: this.examen.preguntas[i].res });
           if (this.examen.preguntas[i].res != undefined) {
             for (var j = 0; j < this.examen.preguntas[i].opciones.length; j++) {
-              if (this.examen.preguntas[i].opciones[j].respuesta == 'Verdadero' && this.examen.preguntas[i].opciones[j].es_correcta == 1 && this.examen.preguntas[i].res == 1) {
+              if (this.examen.preguntas[i].opciones[j].respuesta == 'Verdadero' && this.examen.preguntas[i].opciones[j].es_correcto == 1 && this.examen.preguntas[i].res == 1) {
                 correctas++;
                 break;
-              } else if (this.examen.preguntas[i].opciones[j].respuesta == 'Falso' && this.examen.preguntas[i].opciones[j].es_correcta == 1 && this.examen.preguntas[i].res == 0) {
+              } else if (this.examen.preguntas[i].opciones[j].respuesta == 'Falso' && this.examen.preguntas[i].opciones[j].es_correcto == 1 && this.examen.preguntas[i].res == 0) {
                 correctas++;
                 break;
               }
@@ -105,7 +97,7 @@ export class ResolverExamenComponent implements OnInit {
           for (var j = 0; j < this.examen.preguntas[i].opciones.length; j++) {
             if (!(this.examen.preguntas[i].opciones[j].res == false || this.examen.preguntas[i].opciones[j].res == undefined)) {
               this.respuestas[this.respuestas.length - 1].respuesta.push(this.examen.preguntas[i].opciones[j].respuesta);
-              if (this.examen.preguntas[i].opciones[j].es_correcta == 1 && this.examen.preguntas[i].opciones[j].res == true) {
+              if (this.examen.preguntas[i].opciones[j].es_correcto == 1 && this.examen.preguntas[i].opciones[j].res == true) {
                 internas++;
               } else {
                 internas = this.examen.preguntas[i].num_correctas + 1;
@@ -119,7 +111,20 @@ export class ResolverExamenComponent implements OnInit {
           break;
       }
     }
-    console.log(this.respuestas)
+
+    var infoexamen: any = {};
+    infoexamen.id_usuario = 1;
+    infoexamen.id_clase = 1;
+    infoexamen.id_examen = this.id_examen;
+    infoexamen.nota_examen = Math.round((correctas / this.examen.preguntas.length) * this.examen.valor_examen);
+    infoexamen.examen_respuesta = JSON.stringify(this.respuestas);
+
+    this.rne.registrar_nota_examen(infoexamen).subscribe((data) => {
+      if (data.affectedRows == 1) {
+        console.log('Exito Siuuuuuuu')
+      }
+    });
+    console.log(Math.round((correctas / this.examen.preguntas.length) * 100))
     return Math.round((correctas / this.examen.preguntas.length) * 100);
   }
 
