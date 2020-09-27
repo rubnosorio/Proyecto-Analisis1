@@ -29,9 +29,14 @@ describe('ControlNotasEstudianteComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should Cantidad de tareas valido', () => {
-      expect(component.CantidadValida(component.tareas.length)).toBeTrue();
+  it('should Obtener Estudiante', () => {
+      let prueba = new Usuario(1,'mario alejando','gonzales perez','mario123','1234','mario123@gmail.com');
+      expect(component.obtenerEstudiante()).toBeTruthy(prueba);
   });
+
+  /*it('should Cantidad de tareas valido', () => {
+      expect(component.CantidadValida(component.tareas.length)).toBeTrue();
+  });*/
 
   it('should Cantidad de examenes valido', () => {
     expect(component.CantidadValida(component.examenes.length)).toBeTrue();
