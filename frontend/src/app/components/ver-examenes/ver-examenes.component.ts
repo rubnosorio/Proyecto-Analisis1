@@ -4,6 +4,7 @@ import { Examen } from '../../models/examen'
 import { DialogService } from '../../services/shared/dialog.service';
 import { EliminarExamenService } from '../../services/eliminar_examen/eliminar-examen.service';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-ver-examenes',
@@ -14,24 +15,33 @@ export class VerExamenesComponent implements OnInit {
 
   examenes: Examen[]
   panelOpenState = false;
+  idclase = 0;
 
   constructor(private toastr: ToastrService,private dialogService: DialogService,private eliminar_examen:EliminarExamenService,
-  private examenService: VerExamenService) {
-    this.gets()
+  private examenService: VerExamenService,
+  private router: Router) {
+    if(!localStorage.getItem("username")
+     && !localStorage.getItem("idclase")){
+      this.router.navigate(['/login']);
+    }
+    this.idclase = Number(localStorage.getItem("idclase"))
   }
 
   ngOnInit(): void {
+    this.gets();
   }
 
   gets(){
     //obtener todos los examenes
-    this.examenService.gets(1).subscribe((dataAPI: any) => {
+    this.examenService.gets(this.idclase).subscribe((dataAPI: any) => {
       this.examenes = dataAPI
     })
   }
 
-  edit(){
+  edit(examen: Examen){
     //llamar o redireccionar al componente de editar el examen
+    localStorage.setItem("examenactual",JSON.stringify(examen));
+    this.router.navigate(['/update_examen']);
   }
 
   delete(examen:Examen){

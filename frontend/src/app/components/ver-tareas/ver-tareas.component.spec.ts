@@ -21,7 +21,7 @@ import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { LoginComponent } from '../login/login.component';
 import { UpdateTareaComponent } from '../update-tarea/update-tarea.component';
 
-fdescribe('Dado solicito las tareas creadas', () => {
+describe('Dado solicito las tareas creadas', () => {
   let component: VerTareasComponent;
   let fixture: ComponentFixture<VerTareasComponent>;
   var array

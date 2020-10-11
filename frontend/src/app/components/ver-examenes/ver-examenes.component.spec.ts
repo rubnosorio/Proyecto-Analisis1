@@ -16,6 +16,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { RouterTestingModule } from '@angular/router/testing';
+import { LoginComponent } from '../login/login.component';
+import { UpdateExamenComponent } from '../update-examen/update-examen.component';
 
 describe('Dado solicito los examenes creados', () => {
   let component: VerExamenesComponent;
@@ -42,7 +45,19 @@ describe('Dado solicito los examenes creados', () => {
         MatExpansionModule,
         ToastrModule.forRoot(),
         HttpClientTestingModule,
-        MatDialogModule
+        MatDialogModule,
+        RouterTestingModule.withRoutes(
+          [
+            {
+              path: 'login',
+              component: LoginComponent
+            },
+            {
+              path: 'update_examen',
+              component: UpdateExamenComponent
+            }
+          ]
+        ),
       ],
       declarations: [ VerExamenesComponent ],
       providers: [MatDatepickerModule, {provide: MatDialogRef, useValue: {}},{provide: MAT_DIALOG_DATA, useValue: []}],
