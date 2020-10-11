@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { UpdateTareaService } from './update-tarea.service';
 
-fdescribe('Given UpdateTareaService', () => {
+describe('Given UpdateTareaService', () => {
   let service: UpdateTareaService;
   let MockDB;
   let mockupdate = jasmine.createSpy().and.callFake(function(tarea,dbmock){

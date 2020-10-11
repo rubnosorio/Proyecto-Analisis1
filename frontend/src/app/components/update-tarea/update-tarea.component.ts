@@ -15,7 +15,15 @@ export class UpdateTareaComponent implements OnInit {
 
   tarea: Tarea = new Tarea(11,"tarea231","esta es la tarea 231","","","2020-09-30",10);
 
-  constructor(private toastr: ToastrService, private update_tarea:UpdateTareaService, private router:Router) { }
+  constructor(private toastr: ToastrService, private update_tarea:UpdateTareaService, private router:Router) {
+    if(!localStorage.getItem("username")){
+      this.router.navigate(['/login']);
+    }
+    if(!localStorage.getItem("tareaactual")){
+      this.router.navigate(['/ver-tareas']);
+    }
+    this.tarea = JSON.parse(localStorage.getItem("tareaactual"))
+  }
 
   ngOnInit(): void {
   }

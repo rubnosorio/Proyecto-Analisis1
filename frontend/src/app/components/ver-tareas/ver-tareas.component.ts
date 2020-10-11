@@ -4,6 +4,7 @@ import { VerTareaService } from '../../services/tarea/ver-tarea.service'
 import { DialogService } from '../../services/shared/dialog.service';
 import {EliminarTareaService} from '../../services/eliminar-tarea.service';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-ver-tareas',
@@ -14,27 +15,34 @@ export class VerTareasComponent implements OnInit {
 
   tareas: Tarea[] = []
   panelOpenState = false;
+  idclase = 0;
 
   constructor(private toastr: ToastrService,private dialogService: DialogService, private eliminar_task:EliminarTareaService,
-  public tareaService: VerTareaService) {
+  public tareaService: VerTareaService,
+  private router: Router) {
     //consumir el servicio para obtener las tareas
-    this.getTasks()
+    if(!localStorage.getItem("username")
+     && !localStorage.getItem("idclase")){
+      this.router.navigate(['/login']);
+    }
+    this.idclase = Number(localStorage.getItem("idclase"))
   }
 
   ngOnInit(): void {
+    this.getTasks()
   }
 
   getTasks() {
     //funcion que consume el servicio para obtener todas las tareas
-    this.tareaService.getTasks(1).subscribe((data_api: any) => {
+    this.tareaService.getTasks(this.idclase).subscribe((data_api: any) => {
       this.tareas = data_api;
     })
   }
 
   editTask(tarea: Tarea){
     //metodo donde se abre un componente Dialod o Bottom Sheet
-    console.log("editar tarea")
-    console.log(tarea)
+    localStorage.setItem("tareaactual",JSON.stringify(tarea));
+    this.router.navigate(['/update_tarea']);
   }
 
   deleteTask(tarea: Tarea){

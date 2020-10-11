@@ -16,9 +16,12 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { RouterTestingModule } from '@angular/router/testing';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { LoginComponent } from '../login/login.component';
+import { UpdateTareaComponent } from '../update-tarea/update-tarea.component';
 
-describe('Dado solicito las tareas creadas', () => {
+fdescribe('Dado solicito las tareas creadas', () => {
   let component: VerTareasComponent;
   let fixture: ComponentFixture<VerTareasComponent>;
   var array
@@ -42,6 +45,18 @@ describe('Dado solicito las tareas creadas', () => {
         MatExpansionModule,
         ToastrModule.forRoot(),
         HttpClientTestingModule,
+        RouterTestingModule.withRoutes(
+          [
+            {
+              path: 'login',
+              component: LoginComponent
+            },
+            {
+              path: 'update_tarea',
+              component: UpdateTareaComponent
+            }
+          ]
+        ),
         MatDialogModule
       ],
       declarations: [VerTareasComponent],

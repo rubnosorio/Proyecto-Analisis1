@@ -13,7 +13,7 @@ import { Examen } from '../../models/examen'
 import { ToastrModule } from 'ngx-toastr';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
-fdescribe('Dado que quiero entregar una tarea', () => {
+describe('Dado que quiero entregar una tarea', () => {
   let component: EntregarTareaComponent;
   let fixture: ComponentFixture<EntregarTareaComponent>;
 
