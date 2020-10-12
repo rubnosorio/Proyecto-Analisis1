@@ -66,6 +66,10 @@ export class LoginComponent implements OnInit {
           Validators.maxLength(25),
         ],
       ],
+      escatedratico: [
+        false,
+        []
+      ]
     });
     this.loginForm.valueChanges.subscribe((data) => {
       this.onValueChanged(data);
@@ -98,6 +102,13 @@ export class LoginComponent implements OnInit {
     return new Promise((resolve, reject) => {
       this.ls.login(this.loginForm.value).subscribe(async (res) => {
         if (res.statusCode == 200) {
+          sessionStorage.setItem('id_usuario', res.usuario.id_usuario)
+          if (this.loginForm.value.escatedratico) {
+            sessionStorage.setItem('tipo_usuario', 'catedratico')
+          }
+          else {
+            sessionStorage.setItem('tipo_usuario', 'estudiante')
+          }
           resolve(true);
         } else {
           resolve(false);
