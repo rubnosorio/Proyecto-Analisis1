@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core'; 
 import { ControlNotasEstudianteService } from '../../services/control-notas-estudiante/control-notas-estudiante.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-control-notas-estudiante',
@@ -18,7 +19,17 @@ export class ControlNotasEstudianteComponent implements OnInit {
     id_clase: 1
   }
   
-  constructor(private controlnotas: ControlNotasEstudianteService) {}
+  constructor(private controlnotas: ControlNotasEstudianteService,
+    private router: Router) {
+      if(!sessionStorage.getItem("id_usuario")){
+        this.router.navigate(['/login']);
+      }
+      if(!sessionStorage.getItem("id_clase")){
+        this.router.navigate(['/']);
+      }
+      this.data.id_usuario = Number(sessionStorage.getItem("id_usuario"));
+      this.data.id_clase = Number(sessionStorage.getItem("id_clase"));
+    }
 
   ngOnInit(): void {
     this.controlnotas.get_tareas(this.data).subscribe(res => {

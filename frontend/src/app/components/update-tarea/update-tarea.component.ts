@@ -16,13 +16,13 @@ export class UpdateTareaComponent implements OnInit {
   tarea: Tarea = new Tarea(11,"tarea231","esta es la tarea 231","","","2020-09-30",10);
 
   constructor(private toastr: ToastrService, private update_tarea:UpdateTareaService, private router:Router) {
-    if(!localStorage.getItem("username")){
+    if(!sessionStorage.getItem("id_usuario")){
       this.router.navigate(['/login']);
     }
-    if(!localStorage.getItem("tareaactual")){
-      this.router.navigate(['/ver-tareas']);
+    if(!sessionStorage.getItem("tareaactual")){
+      this.router.navigate(['/']);
     }
-    this.tarea = JSON.parse(localStorage.getItem("tareaactual"))
+    this.tarea = JSON.parse(sessionStorage.getItem("tareaactual"))
   }
 
   ngOnInit(): void {

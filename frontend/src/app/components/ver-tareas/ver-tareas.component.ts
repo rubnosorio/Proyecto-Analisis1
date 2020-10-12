@@ -21,11 +21,13 @@ export class VerTareasComponent implements OnInit {
   public tareaService: VerTareaService,
   private router: Router) {
     //consumir el servicio para obtener las tareas
-    if(!localStorage.getItem("username")
-     && !localStorage.getItem("idclase")){
+    if(!sessionStorage.getItem("id_usuario")){
       this.router.navigate(['/login']);
     }
-    this.idclase = Number(localStorage.getItem("idclase"))
+    if(!sessionStorage.getItem("id_clase")){
+      this.router.navigate(['/']);
+    }
+    this.idclase = Number(sessionStorage.getItem("id_clase"))
   }
 
   ngOnInit(): void {
@@ -41,7 +43,7 @@ export class VerTareasComponent implements OnInit {
 
   editTask(tarea: Tarea){
     //metodo donde se abre un componente Dialod o Bottom Sheet
-    localStorage.setItem("tareaactual",JSON.stringify(tarea));
+    sessionStorage.setItem("tareaactual",JSON.stringify(tarea));
     this.router.navigate(['/update_tarea']);
   }
 
