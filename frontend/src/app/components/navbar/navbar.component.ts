@@ -14,6 +14,8 @@ export class NavbarComponent implements OnInit {
   private _mobileQueryListener: () => void;
   public fillerNav = [
     {name:"Iniciar sesión",route:"/login",icon:"login"},
+    {name:"Mis notas",route:"/control_notas_estudiante",icon:"insert_drive_file"},
+    {name:"Mis tareas",route:"/entregar-tarea",icon:"assignment"},
   ];
 
   constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {

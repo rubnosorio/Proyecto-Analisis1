@@ -1,0 +1,16 @@
+<mat-grid-list class="grid" cols="2" rowHeight="2:1">
+    <mat-grid-tile (click)='redirect("/control_notas_estudiante")'>
+        <div class="card">
+            <img src="assets/bg-principal.jpg">
+            <mat-divider></mat-divider>
+            <h1>Mis Notas</h1>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile (click)='redirect("/entregar-tarea")'>
+        <div class="card">
+            <img src="assets/bg-principal.jpg">
+            <mat-divider></mat-divider>
+            <h1>Mis Tareas</h1>
+        </div>
+    </mat-grid-tile>
+</mat-grid-list>

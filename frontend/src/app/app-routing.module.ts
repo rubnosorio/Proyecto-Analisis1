@@ -15,6 +15,7 @@ import { CrearUsuarioComponent } from './components/crear-usuario/crear-usuario.
 import {UnirseClaseComponent} from './components/unirse-clase/unirse-clase.component';
 import { ControlNotasEstudianteComponent } from './components/control-notas-estudiante/control-notas-estudiante.component';
 import { ResolverExamenComponent } from './components/resolver-examen/resolver-examen.component';
+import { PrincipalEstudianteComponent } from './components/principal-estudiante/principal-estudiante.component';
 
 const routes: Routes = [
   {
@@ -76,6 +77,10 @@ const routes: Routes = [
   {
     path: 'resolver_examen/:id',
     component: ResolverExamenComponent,
+  },
+  {
+    path: 'principal_estudiante',
+    component: PrincipalEstudianteComponent,
   },
 ];
 
