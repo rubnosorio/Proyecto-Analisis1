@@ -21,6 +21,7 @@ export class VerTareasComponent implements OnInit {
   public tareaService: VerTareaService,
   private router: Router) {
     //consumir el servicio para obtener las tareas
+    sessionStorage.setItem("id_clase","1");
     if(!sessionStorage.getItem("id_usuario")){
       this.router.navigate(['/login']);
     }
