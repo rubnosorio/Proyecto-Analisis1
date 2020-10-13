@@ -28,6 +28,7 @@ export class InicioProfesorComponent implements OnInit {
       this.router.navigate(['/login']);
     }
     else {
+      sessionStorage.setItem("id_clase","1");
       this.menu.fillerNav = [];
       var menuActtual = [
         { name: "Crear Tarea", route: "/creartarea", icon: "add_task" },
