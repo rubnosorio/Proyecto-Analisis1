@@ -23,6 +23,10 @@ export class InicioProfesorComponent implements OnInit {
       this.openSnackBar("No ha iniciado sesión", "Cerrar");
       this.router.navigate(['/login']);
     }
+    else if (sessionStorage.getItem("tipo_usuario") == "estudiante") {
+      this.openSnackBar("Su sesión no es de tipo Profesor", "Cerrar");
+      this.router.navigate(['/login']);
+    }
     else {
       this.menu.fillerNav = [];
       var menuActtual = [
