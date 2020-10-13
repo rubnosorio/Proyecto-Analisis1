@@ -69,4 +69,8 @@ export class ControlNotasEstudianteComponent implements OnInit {
       return false;
     }
   }
+
+  Regresar(){
+    this.router.navigate(['/principal_estudiante']);
+  }
 }

@@ -15,7 +15,10 @@ export class VerCursosEstudianteComponent implements OnInit {
   clases:any[];
 
   constructor(private router: Router, private get_clases:VerClasesEstudianteService) { 
-    if(!sessionStorage.getItem("id_usuario") && sessionStorage.getItem("tipo_usuario")!='estudiante'){
+    if(!sessionStorage.getItem("id_usuario")){
+      this.router.navigate(['/login']);
+    }
+    if(sessionStorage.getItem("tipo_usuario") != 'estudiante'){
       this.router.navigate(['/login']);
     }
     this.user.id_usuario = Number(sessionStorage.getItem("id_usuario"));
@@ -33,7 +36,7 @@ export class VerCursosEstudianteComponent implements OnInit {
 
   IraClase(clase:any){
     sessionStorage.setItem('id_clase',JSON.stringify(clase.id_clase));
-    this.router.navigate(['/']); // Interior clase usuario
+    this.router.navigate(['/principal_estudiante']); // Interior clase usuario
   }
 
   DarmedeBaja(clase:any){
