@@ -105,7 +105,7 @@ export class CrearTareaComponent implements OnInit {
 
   onSubmit(): void {
     let fecha = this.homeworkForm.controls['fecha_entrega'].value;
-    let idClase=sessionStorage.getItem("id_clase");
+
     this.readFilePromise().then((abase64) => {
       let envio = {
         nombre_tarea: this.homeworkForm.controls['nombre_tarea'].value,
@@ -117,8 +117,8 @@ export class CrearTareaComponent implements OnInit {
           '/' +
           fecha.getFullYear(),
         archivo: abase64,
-        id_clase: Number(idClase),
-        nombre_clase: idClase,
+        id_clase: 1,
+        nombre_clase: 'analisis2',
       };
       this.creartareaservice.crear_tarea(envio).subscribe((res) => {
         if (res.statusCode == 200) {
