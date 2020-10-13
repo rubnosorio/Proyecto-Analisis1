@@ -13,7 +13,16 @@ export class UpdateExamenComponent implements OnInit {
   
   examen: Examen = new Examen(1,'Prueba Actualizacion','2020-08-01','Examen de Prueba', 4, 15, 0, 1,JSON.parse('[ {\"opciones\": [{\"respuesta\": \"lunes\", \"es_correcta\": 1}, {\"respuesta\": \"martes\", \"es_correcta\": 0}, {\"respuesta\": \"miercoles\", \"es_correcta\": 0}, {\"respuesta\": \"ninguna de las anteriores es correcta\", \"es_correcta\": 0}], \"pregunta\": \"¿Que día es hoy?\", \"num_correctas\": 1, \"tipo_respuesta\": 0}, {\"opciones\": [{\"respuesta\": \"Overwatch\", \"es_correcta\": 1}, {\"respuesta\": \"COD\", \"es_correcta\": 1}, {\"respuesta\": \"PUBG\", \"es_correcta\": 1}, {\"respuesta\": \"Free Fire\", \"es_correcta\": 0}], \"pregunta\": \"¿Que juego(s) juega Erick?\", \"num_correctas\": 3, \"tipo_respuesta\": 0}, {\"opciones\": [{\"respuesta\": \"Alexander\", \"es_correcta\": 1}], \"pregunta\": \"¿Cual es el segundo nombre de Erick\", \"num_correctas\": 1, \"tipo_respuesta\": 1}, {\"opciones\": [{\"respuesta\": \"Verdadero\", \"es_correcta\": 1}, {\"respuesta\": \"Falso\", \"es_correcta\": 0}], \"pregunta\": \"¿Sale el semestre?\", \"num_correctas\": 1, \"tipo_respuesta\": 2}]'));
   
-  constructor(private toastr: ToastrService, private update_examen:UpdateExamenService, private router:Router) { }
+  constructor(private toastr: ToastrService, private update_examen:UpdateExamenService, private router:Router) {
+    if(!sessionStorage.getItem("id_usuario")){
+      this.router.navigate(['/login']);
+    }
+    if(!sessionStorage.getItem("examenactual")){
+      this.router.navigate(['/']);
+    }
+    this.examen = JSON.parse(sessionStorage.getItem('examenactual'))
+    this.examen.preguntas = JSON.parse(this.examen.preguntas)
+  }
 
   ngOnInit(): void {
   }

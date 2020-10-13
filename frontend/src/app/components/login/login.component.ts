@@ -66,6 +66,10 @@ export class LoginComponent implements OnInit {
           Validators.maxLength(25),
         ],
       ],
+      escatedratico: [
+        false,
+        []
+      ]
     });
     this.loginForm.valueChanges.subscribe((data) => {
       this.onValueChanged(data);
@@ -98,9 +102,19 @@ export class LoginComponent implements OnInit {
     return new Promise((resolve, reject) => {
       this.ls.login(this.loginForm.value).subscribe(async (res) => {
         if (res.statusCode == 200) {
-          resolve(true);
+          sessionStorage.setItem('id_usuario', res.usuario.id_usuario)
+          var tipo = 0;
+          if (this.loginForm.value.escatedratico) {
+            sessionStorage.setItem('tipo_usuario', 'catedratico')
+            tipo = 1;
+          }
+          else {
+            sessionStorage.setItem('tipo_usuario', 'estudiante')
+            tipo = 2;
+          }
+          resolve({ res: true, res2: tipo });
         } else {
-          resolve(false);
+          resolve({ res: tipo, res2: tipo });
         }
       })
     });
@@ -108,14 +122,23 @@ export class LoginComponent implements OnInit {
 
   async onSubmit() {
     var ress;
-    await this.loginpromise().then(res => {
-      if (res) {
+    await this.loginpromise().then((res:any) => {
+      if (res.res) {
         this._snackBar.open('Credenciales Correctas', '', {
           duration: 5000,
         });
         this.loginForm.reset();
-        this.modificarMenu();
-        this.irInicioUsuario();
+        if(res.res2==1)
+        {
+          this.router.navigate(['principal_profesor']);
+        }
+        else
+        {
+          this.modificarMenu();
+          this.irInicioUsuario();
+        }
+        //this.modificarMenu();
+        //this.irInicioUsuario();
         ress = true;
       }
       else {

@@ -14,6 +14,7 @@ export class NavbarComponent implements OnInit {
   private _mobileQueryListener: () => void;
   public fillerNav = [
     {name:"Iniciar sesión",route:"/login",icon:"login"},
+    {name:"Registrarme",route:"/crear-usuario",icon:"how_to_reg"},
   ];
 
   constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {

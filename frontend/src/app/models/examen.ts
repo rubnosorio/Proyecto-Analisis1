@@ -7,7 +7,7 @@ export class Examen {
     valor_examen: number
     estado: number
     id_clase: number
-    preguntas: any[]
+    preguntas: string
 
     constructor(
         _id_examen: number,
@@ -18,7 +18,7 @@ export class Examen {
         _valor_examen: number,
         _estado: number,
         _id_clase: number,
-        _preguntas: any[]
+        _preguntas: string
     ) {
         this.id_examen = _id_examen
         this.nombre_examen = _nombre_examen

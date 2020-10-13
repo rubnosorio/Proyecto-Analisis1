@@ -20,11 +20,13 @@ export class VerExamenesComponent implements OnInit {
   constructor(private toastr: ToastrService,private dialogService: DialogService,private eliminar_examen:EliminarExamenService,
   private examenService: VerExamenService,
   private router: Router) {
-    if(!localStorage.getItem("username")
-     && !localStorage.getItem("idclase")){
+    if(!sessionStorage.getItem("id_usuario")){
       this.router.navigate(['/login']);
     }
-    this.idclase = Number(localStorage.getItem("idclase"))
+    if(!sessionStorage.getItem("id_clase")){
+      this.router.navigate(['/']);
+    }
+    this.idclase = Number(sessionStorage.getItem("id_clase"))
   }
 
   ngOnInit(): void {
@@ -40,7 +42,7 @@ export class VerExamenesComponent implements OnInit {
 
   edit(examen: Examen){
     //llamar o redireccionar al componente de editar el examen
-    localStorage.setItem("examenactual",JSON.stringify(examen));
+    sessionStorage.setItem("examenactual",JSON.stringify(examen));
     this.router.navigate(['/update_examen']);
   }
 

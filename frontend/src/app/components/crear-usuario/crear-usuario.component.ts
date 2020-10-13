@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { CrearUsuarioService } from '../../services/crear-usuario/crear-usuario.service'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-crear-usuario',
@@ -31,7 +32,8 @@ export class CrearUsuarioComponent implements OnInit {
 
   constructor(
     private toastr: ToastrService,
-    private crearU: CrearUsuarioService
+    private crearU: CrearUsuarioService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -49,6 +51,7 @@ export class CrearUsuarioComponent implements OnInit {
     }
     this.crearU.postUser(this.userFG.value).subscribe(res => {
       this.toastr.success("Registro Completado.")
+      this.irInicioUsuario();
     }, err => {
       this.toastr.error("No se pudo registrar al usuario.")
     })
@@ -69,5 +72,9 @@ export class CrearUsuarioComponent implements OnInit {
   }
   get correoFC() {
     return this.userFG.get('correo');
+  }
+
+  irInicioUsuario() {
+    this.router.navigate(['login']);
   }
 }
