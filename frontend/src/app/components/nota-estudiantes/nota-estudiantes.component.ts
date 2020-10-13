@@ -5,6 +5,7 @@ import { NotaEstudiante } from "../../models/nota-estudiante";
 import { NotaTarea } from "../../models/nota-tarea";
 import { NotaExamen } from "../../models/nota-examen";
 import { NotasEstudiantesService } from "../../services/notas_estudiantes/notas-estudiantes.service";
+import {MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition,} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-nota-estudiantes',
@@ -18,14 +19,36 @@ export class NotaEstudiantesComponent implements OnInit {
   lista_estudiantes:string[]=[];
   lista_notas:NotaEstudiante[]=[];
   alguito:any[]=[];
+  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
 
-  constructor(private notaEstudiantesService:NotasEstudiantesService) { 
-    var id_clase=Number(sessionStorage.getItem('id_clase'));
-    this.notaEstudiantesService.getNotasEstudiantes(id_clase).subscribe((res:any)=>{
-      this.lista_notas=res.lista_notas;
-      this.obtenerColumnas(this.columnas(this.lista_notas));
-      this.obtenerInfoTabla(this.lista_notas);
-      console.log(this.columnas(this.lista_notas));
+  constructor(private notaEstudiantesService:NotasEstudiantesService,private _snackBar: MatSnackBar,private router: Router) { 
+    //consumir el servicio para obtener las tareas
+    if (!sessionStorage.getItem("id_usuario")) {
+      this.openSnackBar("No ha iniciado sesión", "Cerrar");
+      this.router.navigate(['/login']);
+    }
+    else if (sessionStorage.getItem("tipo_usuario") == "estudiante") {
+      this.openSnackBar("Su sesión no es de tipo Profesor", "Cerrar");
+      this.router.navigate(['/login']);
+    }
+    else {
+      //agregar redireccion a la vista anterior
+      var id_clase=Number(sessionStorage.getItem('id_clase'));
+      this.notaEstudiantesService.getNotasEstudiantes(id_clase).subscribe((res:any)=>{
+        this.lista_notas=res.lista_notas;
+        this.obtenerColumnas(this.columnas(this.lista_notas));
+        this.obtenerInfoTabla(this.lista_notas);
+        console.log(this.columnas(this.lista_notas));
+      });
+    }
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 2000,
+      horizontalPosition: this.horizontalPosition,
+      verticalPosition: this.verticalPosition,
     });
   }
 
