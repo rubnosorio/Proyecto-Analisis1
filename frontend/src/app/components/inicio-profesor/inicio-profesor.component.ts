@@ -30,7 +30,7 @@ export class InicioProfesorComponent implements OnInit {
     else {
       this.menu.fillerNav = [];
       var menuActtual = [
-        { name: "Ver Tareas", route: "/ver-tareas", icon: "work" },
+        { name: "Crear Tarea", route: "/creartarea", icon: "add_task" },
         { name: "Cerrar Session", route: "/login", icon: "exit_to_app" }
       ]
       this.menu.fillerNav = menuActtual;
