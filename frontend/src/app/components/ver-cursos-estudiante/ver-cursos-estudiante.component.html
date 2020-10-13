@@ -1,0 +1,19 @@
+<div>
+    <br>
+    <button mat-flat-button color="primary" style="margin-left: 20px;" (click)="UnirseaClase()">Unirme a un curso</button>
+    <br>
+    <br>
+</div>
+<div fxLayout="row" fxFlex.md="70" style="margin-left: 20px;" fxLayoutWrap class="card-deck-container mat-elevation-z4">
+    <div fxFlex *ngFor="let clase of clases" class="card-item">
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>{{clase.nombre_clase}}</mat-card-title>              
+            </mat-card-header>
+            <mat-card-actions>
+              <button mat-flat-button color="primary">Ir a curso</button>
+              <button mat-flat-button color="warn" style="margin-left: 20px;">Darme de baja</button>
+            </mat-card-actions>
+          </mat-card> 
+    </div>
+</div> 

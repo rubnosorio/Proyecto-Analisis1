@@ -12,9 +12,10 @@ import { DemoComponent } from './components/demo/demo.component';
 import { CrearClaseComponent } from './components/crear-clase/crear-clase.component';
 import { NotaEstudiantesComponent } from "./components/nota-estudiantes/nota-estudiantes.component";
 import { CrearUsuarioComponent } from './components/crear-usuario/crear-usuario.component';
-import {UnirseClaseComponent} from './components/unirse-clase/unirse-clase.component';
+import { UnirseClaseComponent} from './components/unirse-clase/unirse-clase.component';
 import { ControlNotasEstudianteComponent } from './components/control-notas-estudiante/control-notas-estudiante.component';
 import { ResolverExamenComponent } from './components/resolver-examen/resolver-examen.component';
+import { VerCursosEstudianteComponent } from './components/ver-cursos-estudiante/ver-cursos-estudiante.component';
 
 const routes: Routes = [
   {
@@ -76,6 +77,10 @@ const routes: Routes = [
   {
     path: 'resolver_examen/:id',
     component: ResolverExamenComponent,
+  },
+  {
+    path: 'ver_clases_estudiante',
+    component: VerCursosEstudianteComponent
   },
 ];
 
