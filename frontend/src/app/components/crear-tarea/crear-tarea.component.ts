@@ -75,6 +75,9 @@ export class CrearTareaComponent implements OnInit {
       ],
       archivo: ['', []],
       fecha_entrega: ['', [Validators.required]],
+      valor_tarea: [0, [Validators.required,
+      Validators.min(0),
+      Validators.max(100)]],
     });
     this.homeworkForm.valueChanges.subscribe((data) => {
       this.onValueChanged(data);
@@ -106,10 +109,13 @@ export class CrearTareaComponent implements OnInit {
   onSubmit(): void {
     let fecha = this.homeworkForm.controls['fecha_entrega'].value;
 
+    let idClase = sessionStorage.getItem("id_clase");
+
     this.readFilePromise().then((abase64) => {
       let envio = {
         nombre_tarea: this.homeworkForm.controls['nombre_tarea'].value,
         descripcion: this.homeworkForm.controls['descripcion'].value,
+        valor_tarea: this.homeworkForm.controls['valor_tarea'].value,
         fecha_entrega:
           fecha.getDate() +
           '/' +
@@ -117,8 +123,8 @@ export class CrearTareaComponent implements OnInit {
           '/' +
           fecha.getFullYear(),
         archivo: abase64,
-        id_clase: 1,
-        nombre_clase: 'analisis2',
+        id_clase: Number(idClase),
+        nombre_clase: idClase,
       };
       this.creartareaservice.crear_tarea(envio).subscribe((res) => {
         if (res.statusCode == 200) {
