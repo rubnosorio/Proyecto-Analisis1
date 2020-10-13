@@ -31,6 +31,7 @@ export class InicioProfesorComponent implements OnInit {
       sessionStorage.setItem("id_clase","1");
       this.menu.fillerNav = [];
       var menuActtual = [
+        { name: "Notas", route: "/notas_estudiantes", icon: "receipt_long" },
         { name: "Crear Tarea", route: "/creartarea", icon: "add_task" },
         { name: "Ver Tareas", route: "/ver-tareas", icon: "work" },
         { name: "Cerrar Session", route: "/login", icon: "exit_to_app" }

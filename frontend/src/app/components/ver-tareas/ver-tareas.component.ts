@@ -35,13 +35,6 @@ export class VerTareasComponent implements OnInit {
     }
     else {
       //agregar redireccion a la vista anterior
-      this.menu.fillerNav = [];
-      var menuActtual = [
-        { name: "Crear Tarea", route: "/creartarea", icon: "add_task" },
-        { name: "Ver Tareas", route: "/ver-tareas", icon: "work" },
-        { name: "Cerrar Session", route: "/login", icon: "exit_to_app" }
-      ]
-      this.menu.fillerNav = menuActtual;
       this.idclase = Number(sessionStorage.getItem("id_clase"))
     }
   }

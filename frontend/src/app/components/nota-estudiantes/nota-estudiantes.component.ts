@@ -4,12 +4,14 @@ import { Router } from '@angular/router';
 import { NotaEstudiante } from "../../models/nota-estudiante";
 import { NotaTarea } from "../../models/nota-tarea";
 import { NotaExamen } from "../../models/nota-examen";
+import { NotasEstudiantesService } from "../../services/notas_estudiantes/notas-estudiantes.service";
 
 @Component({
   selector: 'app-nota-estudiantes',
   templateUrl: './nota-estudiantes.component.html',
   styleUrls: ['./nota-estudiantes.component.scss']
 })
+
 export class NotaEstudiantesComponent implements OnInit {
 
   lista_columnas: string[]=[]
@@ -17,53 +19,50 @@ export class NotaEstudiantesComponent implements OnInit {
   lista_notas:NotaEstudiante[]=[];
   alguito:any[]=[];
 
-  constructor() { 
-    var actividad1=new ListaActividades('tarea 1');
-    var actividad2=new ListaActividades('tarea 2');
-    var actividad3=new ListaActividades('tarea 3');
-    var actividad4=new ListaActividades('primer parcial');
-    var actividad5=new ListaActividades('segundo parcial');
-    var lista_actividades:ListaActividades[]=[];
-    lista_actividades.push(actividad1);
-    lista_actividades.push(actividad2);
-    lista_actividades.push(actividad3);
-    lista_actividades.push(actividad4);
-    lista_actividades.push(actividad5);
-    this.obtenerColumnas(lista_actividades);
-    var estudiante1=new NotaEstudiante(1,'Erick','Lemus',[],[]);
-    var estudiante2=new NotaEstudiante(2,'Carlos','Garcia',[],[]);
-    var tarea1e1=new NotaTarea(1,'tarea 1',5);
-    var tarea2e1=new NotaTarea(2,'tarea 2',4);
-    var tarea3e1=new NotaTarea(3,'tarea 3',6);
-    var tarea1e2=new NotaTarea(1,'tarea 1',3);
-    var tarea2e2=new NotaTarea(2,'tarea 2',7);
-    var tarea3e2=new NotaTarea(3,'tarea 3',5);
-    var examen1e1=new NotaExamen(1,'primer parcial',8);
-    var examen2e1=new NotaExamen(2,'segundo parcial',10);
-    var examen1e2=new NotaExamen(1,'primer parcial',8);
-    var examen2e2=new NotaExamen(2,'segundo parcial',10);
-    estudiante1.lista_tareas.push(tarea1e1);
-    estudiante1.lista_tareas.push(tarea2e1);
-    estudiante1.lista_tareas.push(tarea3e1);
-    estudiante2.lista_tareas.push(tarea1e2);
-    estudiante2.lista_tareas.push(tarea2e2);
-    estudiante2.lista_tareas.push(tarea3e2);
-    estudiante1.lista_examenes.push(examen1e1);
-    estudiante1.lista_examenes.push(examen2e1);
-    estudiante2.lista_examenes.push(examen1e2);
-    estudiante2.lista_examenes.push(examen2e2);
-    this.lista_notas.push(estudiante1);
-    this.lista_notas.push(estudiante2);
-    console.log(this.lista_notas);
-    /*var algo={
-      lista:['1','2','3','4','5','6','7']
-    };
-    var alg2={
-      lista:['12','22','32','42','52','62','72']
-    };
-    this.alguito.push(algo);
-    this.alguito.push(alg2);*/
-    this.obtenerInfoTabla(this.lista_notas);
+  constructor(private notaEstudiantesService:NotasEstudiantesService) { 
+    var id_clase=Number(sessionStorage.getItem('id_clase'));
+    this.notaEstudiantesService.getNotasEstudiantes(id_clase).subscribe((res:any)=>{
+      this.lista_notas=res.lista_notas;
+      this.obtenerColumnas(this.columnas(this.lista_notas));
+      this.obtenerInfoTabla(this.lista_notas);
+      console.log(this.columnas(this.lista_notas));
+    });
+  }
+
+  columnas(lnotas:NotaEstudiante[]){
+    var la:string[]=[];
+    for(let i=0;i<lnotas.length;i++){
+      for(let j=0;j<lnotas[i].lista_tareas.length;j++){
+        var bo=false;
+        for(let k=0;k<la.length;k++){
+          if(la[k]==lnotas[i].lista_tareas[j].tarea){
+            bo=true;
+            break;
+          }
+        }
+        if(bo==false){
+          la.push(lnotas[i].lista_tareas[j].tarea);
+        }
+      }
+      for(let j=0;j<lnotas[i].lista_examenes.length;j++){
+        var bo=false;
+        for(let k=0;k<la.length;k++){
+          if(la[k]==lnotas[i].lista_examenes[j].examen){
+            bo=true;
+            break;
+          }
+        }
+        if(bo==false){
+          la.push(lnotas[i].lista_examenes[j].examen);
+        }
+      }
+    }
+    var lcol:ListaActividades[]=[];
+    for(let i=0;i<la.length;i++){
+      var newlc:ListaActividades=new ListaActividades(la[i]);
+      lcol.push(newlc)
+    }
+    return lcol;
   }
 
   ngOnInit(): void {
@@ -85,6 +84,7 @@ export class NotaEstudiantesComponent implements OnInit {
   }
 
   obtenerInfoTabla(listaNotas:NotaEstudiante[]){
+    console.log(listaNotas);
     for(let i=0;i<listaNotas.length;i++){
       var datos={
         lista:[]
