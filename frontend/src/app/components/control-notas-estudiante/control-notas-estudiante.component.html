@@ -46,7 +46,7 @@
                     </mat-card>
                     <mat-card-actions>
                       <button mat-raised-button color="primary" style="margin-left:20px" (click)="CalcularNota()">Calcular Nota</button>
-                        <button mat-raised-button color="warn">Volver</button>
+                        <button mat-raised-button color="warn" (click)="Regresar()">Volver</button>
                         <mat-label *ngIf="nota" style="margin-left:170px"><b>Total </b></mat-label>
                         <mat-label *ngIf="nota" style="margin-left:50px"><b>{{NotaTotal}}</b></mat-label>
                     </mat-card-actions>
