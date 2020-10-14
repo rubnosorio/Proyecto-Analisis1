@@ -16,6 +16,7 @@ import {UnirseClaseComponent} from './components/unirse-clase/unirse-clase.compo
 import { ControlNotasEstudianteComponent } from './components/control-notas-estudiante/control-notas-estudiante.component';
 import { ResolverExamenComponent } from './components/resolver-examen/resolver-examen.component';
 import { PrincipalEstudianteComponent } from './components/principal-estudiante/principal-estudiante.component';
+import {VistaCursosProfesorComponent} from './components/vista-cursos-profesor/vista-cursos-profesor.component';
 
 const routes: Routes = [
   {
@@ -81,6 +82,10 @@ const routes: Routes = [
   {
     path: 'principal_estudiante',
     component: PrincipalEstudianteComponent,
+  },
+  {
+    path: 'Cursos_Profesor',
+    component: VistaCursosProfesorComponent,
   },
 ];
 

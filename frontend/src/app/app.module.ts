@@ -76,6 +76,7 @@ import { ControlNotasEstudianteComponent } from './components/control-notas-estu
 import { ResolverExamenComponent } from './components/resolver-examen/resolver-examen.component';
 import { UnirseAClaseService } from './services/unirse_a_clase/unirse-a-clase.service';
 import { PrincipalEstudianteComponent } from './components/principal-estudiante/principal-estudiante.component';
+import { VistaCursosProfesorComponent } from './components/vista-cursos-profesor/vista-cursos-profesor.component';
 
 
 @NgModule({
@@ -101,6 +102,7 @@ import { PrincipalEstudianteComponent } from './components/principal-estudiante/
     ControlNotasEstudianteComponent,
     ResolverExamenComponent,
     PrincipalEstudianteComponent,
+    VistaCursosProfesorComponent,
   ],
   imports: [
     BrowserModule,

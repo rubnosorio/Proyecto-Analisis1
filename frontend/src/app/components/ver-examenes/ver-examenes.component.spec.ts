@@ -27,10 +27,10 @@ describe('Dado solicito los examenes creados', () => {
   var array
   let httpMock: HttpTestingController;
   const mockRes = [
-    new Examen(1,"1","1","1",1,1,1,1,[]),
-    new Examen(2,"2","2","2",2,2,2,2,[]),
-    new Examen(3,"3","3","3",3,3,3,3,[]),
-    new Examen(4,"4","4","4",4,4,4,4,[]),
+    new Examen(1,"1","1","1",1,1,1,1,""),
+    new Examen(2,"2","2","2",2,2,2,2,""),
+    new Examen(3,"3","3","3",3,3,3,3,""),
+    new Examen(4,"4","4","4",4,4,4,4,""),
   ];
 
   beforeEach(async(() => {

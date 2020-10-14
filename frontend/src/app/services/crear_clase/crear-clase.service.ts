@@ -11,13 +11,13 @@ export class CrearClaseService {
 
   constructor(private http: HttpClient) { }
 
-  CrearClase(NombreClase): Observable<any> {
+  CrearClase(NombreClase,IdUsuario:number): Observable<any> {
 
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
       }),
     };
-    return this.http.post<any>(baseURL + 'crear_clase', {nombre_clase: NombreClase,id_usuario: 1} , httpOptions);
+    return this.http.post<any>(baseURL + 'crear_clase', {nombre_clase: NombreClase,id_usuario: IdUsuario} , httpOptions);
   }
 }
