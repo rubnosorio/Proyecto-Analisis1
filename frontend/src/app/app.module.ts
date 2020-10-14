@@ -75,7 +75,9 @@ import { UnirseClaseComponent } from './components/unirse-clase/unirse-clase.com
 import { ControlNotasEstudianteComponent } from './components/control-notas-estudiante/control-notas-estudiante.component';
 import { ResolverExamenComponent } from './components/resolver-examen/resolver-examen.component';
 import { UnirseAClaseService } from './services/unirse_a_clase/unirse-a-clase.service';
+import { VerCursosEstudianteComponent } from './components/ver-cursos-estudiante/ver-cursos-estudiante.component';
 import { PrincipalEstudianteComponent } from './components/principal-estudiante/principal-estudiante.component';
+import { InicioProfesorComponent } from './components/inicio-profesor/inicio-profesor.component';
 import { VistaCursosProfesorComponent } from './components/vista-cursos-profesor/vista-cursos-profesor.component';
 
 
@@ -101,7 +103,9 @@ import { VistaCursosProfesorComponent } from './components/vista-cursos-profesor
     UnirseClaseComponent,
     ControlNotasEstudianteComponent,
     ResolverExamenComponent,
+    VerCursosEstudianteComponent,
     PrincipalEstudianteComponent,
+    InicioProfesorComponent,
     VistaCursosProfesorComponent,
   ],
   imports: [

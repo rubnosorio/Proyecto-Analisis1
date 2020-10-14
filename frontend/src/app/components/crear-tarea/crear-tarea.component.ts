@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { NavbarComponent } from "../navbar/navbar.component";
 import { ServiceCrearTareaService } from '../../services/crear_tarea/service-crear-tarea.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import {MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition,} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-crear-tarea',
@@ -14,6 +14,8 @@ export class CrearTareaComponent implements OnInit {
   minDate: Date;
 
   homeworkForm: FormGroup;
+  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
 
   formErrors = {
     nombre_tarea: '',
@@ -41,9 +43,31 @@ export class CrearTareaComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private creartareaservice: ServiceCrearTareaService,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private menu:NavbarComponent,
+    private router:Router
   ) {
-    this.createForm();
+    if (!sessionStorage.getItem("id_usuario")) {
+      this.openSnackBar("No ha iniciado sesión", "Cerrar");
+      this.router.navigate(['/login']);
+    }
+    else if (sessionStorage.getItem("tipo_usuario") == "estudiante") {
+      this.openSnackBar("Su sesión no es de tipo Profesor", "Cerrar");
+      this.router.navigate(['/login']);
+    }
+    else {
+      sessionStorage.setItem("id_clase","1");
+      //agregar redireccion a la vista anterior
+      this.createForm();
+    }
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 2000,
+      horizontalPosition: this.horizontalPosition,
+      verticalPosition: this.verticalPosition,
+    });
   }
 
   ngOnInit(): void {
@@ -75,6 +99,9 @@ export class CrearTareaComponent implements OnInit {
       ],
       archivo: ['', []],
       fecha_entrega: ['', [Validators.required]],
+      valor_tarea: [0, [Validators.required,
+      Validators.min(0),
+      Validators.max(100)]],
     });
     this.homeworkForm.valueChanges.subscribe((data) => {
       this.onValueChanged(data);
@@ -106,10 +133,13 @@ export class CrearTareaComponent implements OnInit {
   onSubmit(): void {
     let fecha = this.homeworkForm.controls['fecha_entrega'].value;
 
+    let idClase = sessionStorage.getItem("id_clase");
+
     this.readFilePromise().then((abase64) => {
       let envio = {
         nombre_tarea: this.homeworkForm.controls['nombre_tarea'].value,
         descripcion: this.homeworkForm.controls['descripcion'].value,
+        valor_tarea: this.homeworkForm.controls['valor_tarea'].value,
         fecha_entrega:
           fecha.getDate() +
           '/' +
@@ -117,8 +147,8 @@ export class CrearTareaComponent implements OnInit {
           '/' +
           fecha.getFullYear(),
         archivo: abase64,
-        id_clase: 1,
-        nombre_clase: 'analisis2',
+        id_clase: Number(idClase),
+        nombre_clase: idClase,
       };
       this.creartareaservice.crear_tarea(envio).subscribe((res) => {
         if (res.statusCode == 200) {

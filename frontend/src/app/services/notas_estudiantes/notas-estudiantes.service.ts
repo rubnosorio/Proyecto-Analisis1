@@ -11,17 +11,16 @@ export class NotasEstudiantesService {
 
   constructor(private http: HttpClient) { }
 
-  /*getReservaciones():Observable<NotaEstudiante[]>{
-    return this.http.get<NotaEstudiante[]>(baseURL+'ver_reservaciones');
-  }*/
-
-  getNotasEstudiantes(id_clase:number): Observable<NotaEstudiante[]> {
+  getNotasEstudiantes(id_clase:number): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
       }),
     };
-    return this.http.post<NotaEstudiante[]>(baseURL + 'nota_estudiantes', id_clase, httpOptions);
+    var id_Clase={
+      id_clase:id_clase
+    }
+    return this.http.post<any>(baseURL + 'nota_estudiantes', id_Clase, httpOptions);
   }
 
 }
