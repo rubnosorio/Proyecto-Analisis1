@@ -5,6 +5,9 @@ import { Examen } from '../../models/examen';
 import { Usuario } from 'src/app/models/usuario';
 import { ControlNotasEstudianteService } from '../../services/control-notas-estudiante/control-notas-estudiante.service'
 import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { RouterTestingModule } from '@angular/router/testing';
+import { LoginComponent } from '../login/login.component';
+import { PrincipalEstudianteComponent } from '../principal-estudiante/principal-estudiante.component';
 
 describe('ControlNotasEstudianteComponent', () => {
   let component: ControlNotasEstudianteComponent;
@@ -12,7 +15,20 @@ describe('ControlNotasEstudianteComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientModule],
+      imports: [HttpClientModule,
+        RouterTestingModule.withRoutes(
+          [
+            {
+              path: 'login',
+              component: LoginComponent
+            },
+            {
+              path: 'principal_estudiante',
+              component: PrincipalEstudianteComponent
+            }
+          ]
+        ),
+      ],
       providers: [ControlNotasEstudianteService, HttpClient],
       declarations: [ ControlNotasEstudianteComponent ]
     })
@@ -20,9 +36,16 @@ describe('ControlNotasEstudianteComponent', () => {
   }));
 
   beforeEach(() => {
+    sessionStorage.setItem("id_usuario","1");
+    sessionStorage.setItem("id_clase","1");
     fixture = TestBed.createComponent(ControlNotasEstudianteComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+  });
+
+  beforeEach(() => {
+    sessionStorage.removeItem("id_usuario");
+    sessionStorage.removeItem("id_clase");
   });
 
   it('should create', () => {

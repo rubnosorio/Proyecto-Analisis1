@@ -20,6 +20,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { LoginComponent } from '../login/login.component';
 import { UpdateTareaComponent } from '../update-tarea/update-tarea.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 describe('Dado solicito las tareas creadas', () => {
   let component: VerTareasComponent;
@@ -37,6 +38,7 @@ describe('Dado solicito las tareas creadas', () => {
     TestBed.configureTestingModule({
       imports: [
         BrowserAnimationsModule,
+        MatSnackBarModule,
         MatCardModule,
         MatDividerModule,
         ReactiveFormsModule,
@@ -66,10 +68,17 @@ describe('Dado solicito las tareas creadas', () => {
   }));
 
   beforeEach(() => {
+    sessionStorage.setItem("id_usuario","1");
+    sessionStorage.setItem("id_clase","1");
     fixture = TestBed.createComponent(VerTareasComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
     httpMock = TestBed.inject(HttpTestingController)
+  });
+
+  afterEach(() => {
+    sessionStorage.removeItem("id_usuario");
+    sessionStorage.removeItem("id_clase");
   });
 
   it('should create', () => {

@@ -32,8 +32,8 @@ describe('Login Component', () => {
         MatToolbarModule,
         RouterTestingModule.withRoutes([])
       ],
-      providers: [FormBuilder, HttpClient, NavbarComponent],
-      declarations: [LoginComponent],
+      providers: [FormBuilder, HttpClient],
+      declarations: [LoginComponent, NavbarComponent],
     }).compileComponents();
   }));
   beforeEach(() => {

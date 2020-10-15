@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavbarComponent } from "../navbar/navbar.component";
@@ -41,10 +41,10 @@ export class CrearTareaComponent implements OnInit {
   };
 
   constructor(
+    public menu:NavbarComponent,
     private fb: FormBuilder,
     private creartareaservice: ServiceCrearTareaService,
     private _snackBar: MatSnackBar,
-    private menu:NavbarComponent,
     private router:Router
   ) {
     if (!sessionStorage.getItem("id_usuario")) {

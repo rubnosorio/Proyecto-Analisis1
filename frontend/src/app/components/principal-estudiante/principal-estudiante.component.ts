@@ -13,6 +13,7 @@ export class PrincipalEstudianteComponent implements OnInit {
   horizontalPosition: MatSnackBarHorizontalPosition = 'center';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
 
+
   constructor(private router: Router, private _snackBar: MatSnackBar, private menu: NavbarComponent) {
     if (!sessionStorage.getItem("id_usuario")) {
       this.openSnackBar("No ha iniciado sesión", "Cerrar");

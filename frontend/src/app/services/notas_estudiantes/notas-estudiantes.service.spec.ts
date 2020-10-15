@@ -8,7 +8,11 @@ describe('NotasEstudiantesService', () => {
   let service: NotasEstudiantesService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      imports: [
+        HttpClientTestingModule,
+      ],
+    });
     service = TestBed.inject(NotasEstudiantesService);
   });
 
@@ -17,7 +21,7 @@ describe('NotasEstudiantesService', () => {
   });
 });
 
-fdescribe('Dada la clase de id 1', () => {
+describe('Dada la clase de id 1', () => {
   let service: NotasEstudiantesService;
   let httpMock: HttpTestingController;
   var id_clase:number=1;

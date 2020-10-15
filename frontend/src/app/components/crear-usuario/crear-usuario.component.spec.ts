@@ -1,10 +1,12 @@
-import { HttpClientModule } from '@angular/common/http';
-import { Component } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ToastrModule } from 'ngx-toastr';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { LoginComponent } from '../login/login.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { CrearUsuarioComponent } from './crear-usuario.component';
+
 describe('CrearUsuarioComponent', () => {
   let component: CrearUsuarioComponent;
   let fixture: ComponentFixture<CrearUsuarioComponent>;
@@ -13,7 +15,16 @@ describe('CrearUsuarioComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         ToastrModule.forRoot(),
-        HttpClientTestingModule
+        HttpClientTestingModule,
+        BrowserAnimationsModule,
+        RouterTestingModule.withRoutes(
+          [
+            {
+              path: 'login',
+              component: LoginComponent
+            }
+          ]
+        ),
       ],
       declarations: [ CrearUsuarioComponent ]
     })

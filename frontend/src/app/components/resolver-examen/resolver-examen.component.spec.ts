@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ResolverExamenComponent } from './resolver-examen.component';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 import { ActivatedRoute } from '@angular/router';
 import { convertToParamMap } from '@angular/router';
@@ -36,6 +37,9 @@ describe('ResolverExamenComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        HttpClientTestingModule,
+      ],
       declarations: [ResolverExamenComponent],
       providers: [
         {

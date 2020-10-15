@@ -33,7 +33,7 @@ describe('UnirseClaseComponent', () => {
 
  
 
-  fit('Vérificar longitud Código válido',()=>{
+  it('Vérificar longitud Código válido',()=>{
     expect(component.CodigoValido('abcd-ssde')).toBeTruthy();
   });
 

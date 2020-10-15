@@ -33,6 +33,7 @@ export class LoginComponent implements OnInit {
     },
   };
 
+
   //agregamos el menu que queremos ir modificando
   constructor(
     private fb: FormBuilder,
@@ -43,7 +44,7 @@ export class LoginComponent implements OnInit {
   ) {
     this.createForm();
     //obtenemos el menu que queremos ir modificando
-    this.menu.fillerNav = JSON.parse(sessionStorage.getItem('menuPrincipal'));
+    //this.menu.fillerNav = JSON.parse(sessionStorage.getItem('menuPrincipal'));
   }
 
   ngOnInit(): void { }

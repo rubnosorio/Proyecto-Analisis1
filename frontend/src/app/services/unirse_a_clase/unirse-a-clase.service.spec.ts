@@ -33,9 +33,9 @@ describe('UnirseAClaseService', () => {
     expect(service).toBeTruthy();
   });
 
-  fdescribe("Given Servicio y DB unirse a clase", ()=> {
-    fdescribe("When llamo metodo post a backend ", ()=> {
-      fit("Then debería verificar si existe esa clase e insertarlo", function(done) {
+  describe("Given Servicio y DB unirse a clase", ()=> {
+    describe("When llamo metodo post a backend ", ()=> {
+      it("Then debería verificar si existe esa clase e insertarlo", function(done) {
         service.PostFakeServiceDB().subscribe((res:any[])=>{
           var mockdb=res;var i:number;
           var mockPost= jasmine.createSpy().and.callFake(function(nombre:string){
