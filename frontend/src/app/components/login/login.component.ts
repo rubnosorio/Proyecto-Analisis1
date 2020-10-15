@@ -131,7 +131,7 @@ export class LoginComponent implements OnInit {
         this.loginForm.reset();
         if(res.res2==1)
         {
-          this.router.navigate(['principal_profesor']);
+          this.router.navigate(['Cursos_Profesor']);
         }
         else
         {

@@ -4,8 +4,9 @@ import { CrearPreguntaComponent } from '../crear-pregunta/crear-pregunta.compone
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { CrearExamenService } from '../../services/crear_examen/crear-examen.service';
-
+import { Router } from '@angular/router'
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { NavbarComponent } from "../navbar/navbar.component";
 
 @Component({
   selector: 'app-crear-examen',
@@ -19,14 +20,29 @@ export class CrearExamenComponent implements OnInit {
   preguntas: any[] = [];
 
   examen: any = {};
+  idclase = 0;
 
   constructor(
     private fb: FormBuilder,
     public dialog: MatDialog,
     private crearexamenservice: CrearExamenService,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private menu:NavbarComponent,
+    private router: Router
   ) {
-    this.createForm();
+    if (!sessionStorage.getItem("id_usuario")) {
+      this.menu.openSnackBar("No ha iniciado sesión", "Cerrar");
+      this.router.navigate(['/login']);
+    }
+    else if (sessionStorage.getItem("tipo_usuario") == "estudiante") {
+      this.menu.openSnackBar("Su sesión no es de tipo Profesor", "Cerrar");
+      this.router.navigate(['/login']);
+    }
+    else {
+      //agregar redireccion a la vista anterior
+      this.idclase = Number(sessionStorage.getItem("id_clase"))
+      this.createForm();
+    }
   }
 
   ngOnInit(): void {
@@ -46,7 +62,7 @@ export class CrearExamenComponent implements OnInit {
     let fecha = this.examForm.controls['exam_date'].value;
 
     this.examen.nombre_examen = this.examForm.controls['exam_name'].value;
-    this.examen.id_clase = 1;
+    this.examen.id_clase = this.idclase;
     this.examen.num_preguntas = this.preguntas.length;
     this.examen.valor_examen = Number(
       this.examForm.controls['exam_grade'].value

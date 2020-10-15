@@ -56,7 +56,6 @@ export class CrearTareaComponent implements OnInit {
       this.router.navigate(['/login']);
     }
     else {
-      sessionStorage.setItem("id_clase","1");
       //agregar redireccion a la vista anterior
       this.createForm();
     }

@@ -5,6 +5,7 @@ import {VistaCursosPofesorService} from '../../services/vista_cursos_profesor/vi
 import { DialogService } from '../../services/shared/dialog.service';
 import { CrearClaseService } from '../../services/crear_clase/crear-clase.service';
 import { ToastrService } from 'ngx-toastr';
+import { NavbarComponent } from "../navbar/navbar.component";
 
 @Component({
   selector: 'app-vista-cursos-profesor',
@@ -16,12 +17,19 @@ export class VistaCursosProfesorComponent implements OnInit {
   clases: PClase[]=[];
   idUsuario=0;
 
-  constructor(private toastr: ToastrService,private router: Router, public CursosProfesor:VistaCursosPofesorService,private dialogService: DialogService,private crear_clase:CrearClaseService ) { 
+  constructor(private toastr: ToastrService,private router: Router, public CursosProfesor:VistaCursosPofesorService,private dialogService: DialogService,
+    private crear_clase:CrearClaseService, private menu: NavbarComponent, ) { 
     if(!sessionStorage.getItem("id_usuario")){
+      menu.openSnackBar("No ha iniciado sesión", "Cerrar");
       this.router.navigate(['/login']);
     }
     
     this.idUsuario = Number(sessionStorage.getItem("id_usuario"))
+    this.menu.fillerNav = [];
+      var menuActtual = [
+        { name: "Cerrar Session", route: "/login", icon: "exit_to_app" }
+      ]
+      this.menu.fillerNav = menuActtual;
   }
 
   ngOnInit(): void {
