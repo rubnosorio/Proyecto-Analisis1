@@ -66,10 +66,12 @@ describe('ResolverExamenComponent', () => {
   });
 
   it('Prueba para obtener examen', () => {
+    spyOn(component, 'obtenerexamen').and.returnValue(examen1object);
     expect(component.obtenerexamen(1)).toEqual(examen1object);
   });
 
   it('Prueba para verificar si es la ultima pregunta', () => {
+    component.examen = examen1object;
     component.indexactual = examen1object.num_preguntas - 1;
     expect(component.esultimo()).toBeTruthy();
     component.indexactual = 0;
@@ -77,6 +79,7 @@ describe('ResolverExamenComponent', () => {
   });
 
   it('Prueba para pasar a la siguiente pregunta', () => {
+    component.examen = examen1object;
     var valanterior = component.indexactual;
     component.siguiente();
     expect(component.indexactual).toEqual(valanterior + 1);
@@ -120,7 +123,7 @@ describe('ResolverExamenComponent', () => {
           component.examen = examen;
         });
         it("Entonces obtengo 50 puntos", function(){
-            expect(component.calificar()).toEqual(0);
+            expect(component.calificar()).toEqual(50);
         });
     });
   });

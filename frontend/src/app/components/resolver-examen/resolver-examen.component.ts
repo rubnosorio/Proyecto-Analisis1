@@ -81,10 +81,10 @@ export class ResolverExamenComponent implements OnInit {
           this.respuestas.push({ pregunta: this.examen.preguntas[i].pregunta, respuesta: this.examen.preguntas[i].res });
           if (this.examen.preguntas[i].res != undefined) {
             for (var j = 0; j < this.examen.preguntas[i].opciones.length; j++) {
-              if (this.examen.preguntas[i].opciones[j].respuesta == 'Verdadero' && this.examen.preguntas[i].opciones[j].es_correcto == 1 && this.examen.preguntas[i].res == 1) {
+              if (this.examen.preguntas[i].opciones[j].respuesta == 'Verdadero' && this.examen.preguntas[i].opciones[j].es_correcta == 1 && this.examen.preguntas[i].res == 1) {
                 correctas++;
                 break;
-              } else if (this.examen.preguntas[i].opciones[j].respuesta == 'Falso' && this.examen.preguntas[i].opciones[j].es_correcto == 1 && this.examen.preguntas[i].res == 0) {
+              } else if (this.examen.preguntas[i].opciones[j].respuesta == 'Falso' && this.examen.preguntas[i].opciones[j].es_correcta == 1 && this.examen.preguntas[i].res == 0) {
                 correctas++;
                 break;
               }
@@ -97,7 +97,7 @@ export class ResolverExamenComponent implements OnInit {
           for (var j = 0; j < this.examen.preguntas[i].opciones.length; j++) {
             if (!(this.examen.preguntas[i].opciones[j].res == false || this.examen.preguntas[i].opciones[j].res == undefined)) {
               this.respuestas[this.respuestas.length - 1].respuesta.push(this.examen.preguntas[i].opciones[j].respuesta);
-              if (this.examen.preguntas[i].opciones[j].es_correcto == 1 && this.examen.preguntas[i].opciones[j].res == true) {
+              if (this.examen.preguntas[i].opciones[j].es_correcta == 1 && this.examen.preguntas[i].opciones[j].res == true) {
                 internas++;
               } else {
                 internas = this.examen.preguntas[i].num_correctas + 1;
