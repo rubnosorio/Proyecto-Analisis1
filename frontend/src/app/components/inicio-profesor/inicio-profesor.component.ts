@@ -13,6 +13,7 @@ export class InicioProfesorComponent implements OnInit {
   horizontalPosition: MatSnackBarHorizontalPosition = 'center';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
 
+
   constructor
     (
       private menu: NavbarComponent,

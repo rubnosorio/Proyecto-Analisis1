@@ -35,12 +35,12 @@ describe('CrearClaseComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  fdescribe('Given a string', () => {
-    fdescribe('when i send true', () => {
-      fit('then  convert into json the result resp.resp is true', () => {
+  describe('Given a string', () => {
+    describe('when i send true', () => {
+      it('then  convert into json the result resp.resp is true', () => {
         expect(component.OnResT('ejemplo1').resp).toBeTruthy();
       });
-      fit('then  convert into json the result resp.Clase is 2', () => {
+      it('then  convert into json the result resp.Clase is 2', () => {
         expect(component.OnResT('ejemplo1').Clase).toEqual('ejemplo1');
       });
     });

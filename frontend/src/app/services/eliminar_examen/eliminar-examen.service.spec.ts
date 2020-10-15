@@ -1,12 +1,17 @@
 import { TestBed } from '@angular/core/testing';
 
 import { EliminarExamenService } from './eliminar-examen.service';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 describe('EliminarExamenService', () => {
   let service: EliminarExamenService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      imports: [
+        HttpClientTestingModule,
+      ],
+    });
     service = TestBed.inject(EliminarExamenService);
   });
 

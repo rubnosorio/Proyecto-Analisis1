@@ -13,6 +13,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 describe('CrearExamenComponent', () => {
   let component: CrearExamenComponent;
@@ -29,6 +31,8 @@ describe('CrearExamenComponent', () => {
         MatDatepickerModule,
         MatNativeDateModule,
         ReactiveFormsModule,
+        HttpClientTestingModule,
+        MatSnackBarModule,
       ],
     }).compileComponents();
   }));

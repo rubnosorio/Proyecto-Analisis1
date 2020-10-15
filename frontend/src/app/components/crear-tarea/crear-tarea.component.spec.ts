@@ -14,14 +14,21 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { NgxMatFileInputModule } from '@angular-material-components/file-input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { RouterTestingModule } from '@angular/router/testing';
+import { LoginComponent } from '../login/login.component';
+import { NavbarComponent } from "../navbar/navbar.component";
 
-describe('Crear Tarea Component', () => {
+fdescribe('Crear Tarea Component', () => {
   let component: CrearTareaComponent;
   let fixture: ComponentFixture<CrearTareaComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
+        HttpClientTestingModule,
+        MatSnackBarModule,
         MatCardModule,
         MatInputModule,
         MatButtonModule,
@@ -32,16 +39,32 @@ describe('Crear Tarea Component', () => {
         NgxMatFileInputModule,
         ReactiveFormsModule,
         BrowserAnimationsModule,
+        RouterTestingModule.withRoutes(
+          [
+            {
+              path: 'login',
+              component: LoginComponent
+            }
+          ]
+        ),
       ],
-      declarations: [CrearTareaComponent],
-      providers: [FormBuilder],
+      declarations: [CrearTareaComponent,NavbarComponent,],
     }).compileComponents();
   }));
 
   beforeEach(() => {
+    sessionStorage.setItem("id_usuario","1")
+    sessionStorage.setItem("tipo_usuario","profesor")
+    sessionStorage.setItem("id_clase","1");
     fixture = TestBed.createComponent(CrearTareaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+  });
+
+  afterEach(() => {
+    sessionStorage.removeItem("id_usuario")
+    sessionStorage.removeItem("tipo_usuario")
+    sessionStorage.removeItem("id_clase");
   });
 
   it('Deberia crearse el componente', () => {

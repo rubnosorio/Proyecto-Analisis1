@@ -9,7 +9,7 @@ import { LoginComponent } from '../login/login.component';
 import { PrincipalEstudianteComponent } from '../principal-estudiante/principal-estudiante.component';
 import { MatDialogModule } from '@angular/material/dialog';
 
-fdescribe('VistaCursosProfesorComponent', () => {
+describe('VistaCursosProfesorComponent', () => {
   let component: VistaCursosProfesorComponent;
   let fixture: ComponentFixture<VistaCursosProfesorComponent>;
   let service: VistaCursosPofesorService;
@@ -41,18 +41,23 @@ fdescribe('VistaCursosProfesorComponent', () => {
   }));
 
   beforeEach(() => {
+    sessionStorage.setItem("id_usuario","1");
     fixture = TestBed.createComponent(VistaCursosProfesorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+  });
+
+  afterEach(() => {
+    sessionStorage.removeItem("id_usuario");
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  fdescribe('Given a list of clases', () => {
-    fdescribe('when i want to see the list', () => {
-      fit('then get the clases', function (done) {
+  describe('Given a list of clases', () => {
+    describe('when i want to see the list', () => {
+      it('then get the clases', function (done) {
         service.getFakeClasesDB().subscribe((res:any[])=>{
           var mockdb=res;var i:number;
           var mockGet= jasmine.createSpy().and.callFake(function(){

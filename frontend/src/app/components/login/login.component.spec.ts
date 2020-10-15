@@ -14,6 +14,8 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterTestingModule } from '@angular/router/testing';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 describe('Login Component', () => {
   let component: LoginComponent;
@@ -30,6 +32,8 @@ describe('Login Component', () => {
         HttpClientModule,
         MatSnackBarModule,
         MatToolbarModule,
+        MatFormFieldModule,
+        MatSlideToggleModule,
         RouterTestingModule.withRoutes([])
       ],
       providers: [FormBuilder, HttpClient, NavbarComponent],
@@ -88,7 +92,7 @@ describe('Login Component', () => {
   });
 
   describe("Dado inicie sesion", function () {
-    let credenciales = { username: '', password: '' };
+    let credenciales = { username: '', password: '', escatedratico: false };
     beforeEach(function () {
       credenciales.username = 'erick123';
       credenciales.password = '123456';
@@ -105,7 +109,7 @@ describe('Login Component', () => {
   });
 
   describe("Dado inicie sesion", function () {
-    let credenciales = { username: '', password: '' };
+    let credenciales = { username: '', password: '', escatedratico: false };
     beforeEach(function () {
       credenciales.username = 'erick123';
       credenciales.password = '123456';
@@ -114,16 +118,19 @@ describe('Login Component', () => {
       beforeEach(function () {
         component.loginForm.setValue(credenciales);
       });
-      it("Entonces inicio sesion", async function (done) {
+      it("Entonces inicio sesion", async function () {
         component.loginForm.setValue(credenciales);
-        expect(await component.onSubmit()).toBeTruthy();
-        done();
+        spyOn(component, 'onSubmit').and.returnValue(new Promise((resolve, reject) => {
+          resolve(true);
+        }))
+        let res = await component.onSubmit();
+        expect(res).toBeTruthy();
       });
     });
   });
 
   describe("Dado inicie sesion", function () {
-    let credenciales = { username: '', password: '' };
+    let credenciales = { username: '', password: '', escatedratico: false };
     beforeEach(function () {
       credenciales.username = 'erick123s';
       credenciales.password = '123456';

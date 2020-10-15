@@ -1,10 +1,15 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NotaEstudiantesComponent } from './nota-estudiantes.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NotaEstudiante } from "../../models/nota-estudiante";
 import { ListaActividades } from "../../models/lista-actividades";
 import { NotaTarea } from '../../models/nota-tarea';
 import { NotaExamen } from '../../models/nota-examen';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { RouterTestingModule } from '@angular/router/testing';
+import { LoginComponent } from '../login/login.component';
 
 describe('NotaEstudiantesComponent', () => {
   let component: NotaEstudiantesComponent;
@@ -14,16 +19,26 @@ describe('NotaEstudiantesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NotaEstudiantesComponent ]
+      declarations: [ NotaEstudiantesComponent ],
+      imports: [
+        HttpClientTestingModule,
+        MatSnackBarModule,
+        BrowserAnimationsModule,
+        RouterTestingModule.withRoutes(
+          [
+            {
+              path: 'login',
+              component: LoginComponent
+            }
+          ]
+        ),
+      ],
     })
     .compileComponents();
   }));
 
   var nota_estudiante:NotaEstudiante=new NotaEstudiante(1,'Erick', 'Lemus',[],[]);
   beforeEach(() => {
-    fixture = TestBed.createComponent(NotaEstudiantesComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
     var actividad1=new ListaActividades('actividad1');
     var actividad2=new ListaActividades('actividad2');
     var actividad3=new ListaActividades('actividad3');
@@ -60,6 +75,9 @@ describe('NotaEstudiantesComponent', () => {
     estudiante2.lista_examenes.push(examen2e2);
     lista_notas.push(estudiante1);
     lista_notas.push(estudiante2);
+    fixture = TestBed.createComponent(NotaEstudiantesComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
   });
 
   it('should create', () => {
