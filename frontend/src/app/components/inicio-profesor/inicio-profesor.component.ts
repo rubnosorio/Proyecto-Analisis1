@@ -33,6 +33,7 @@ export class InicioProfesorComponent implements OnInit {
         { name: "Notas", route: "/notas_estudiantes", icon: "receipt_long" },
         { name: "Crear Tarea", route: "/creartarea", icon: "add_task" },
         { name: "Ver Tareas", route: "/ver-tareas", icon: "work" },
+        { name: "Crear Examen", route: "/crear_examen", icon: "create" },
         { name: "Ver Examenes", route: "/ver-examenes", icon: "assignment" },
         { name: "Mis Cursos", route: "/Cursos_Profesor", icon: "list" },
         { name: "Cerrar Session", route: "/login", icon: "exit_to_app" }
