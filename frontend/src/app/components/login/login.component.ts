@@ -111,6 +111,7 @@ export class LoginComponent implements OnInit {
           else {
             sessionStorage.setItem('tipo_usuario', 'estudiante')
             tipo = 2;
+            console.log("Es estudiante");
           }
           resolve({ res: true, res2: tipo });
         } else {
@@ -134,8 +135,10 @@ export class LoginComponent implements OnInit {
         }
         else
         {
-          this.modificarMenu();
-          this.irInicioUsuario();
+          console.log("res: ",res.res2);
+          this.router.navigate(['ver_clases_estudiante']);
+          //this.modificarMenu();
+          //this.irInicioUsuario();
         }
         //this.modificarMenu();
         //this.irInicioUsuario();
