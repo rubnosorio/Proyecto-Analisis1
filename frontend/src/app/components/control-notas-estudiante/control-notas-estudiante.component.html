@@ -1,0 +1,57 @@
+<div class="container" style="width: 800px;">
+    <div class="row justify-content-md-center">
+        <div class="col-md-12">
+            <mat-card>
+                <mat-card-header>
+                  <mat-card-title style="margin-left:15px">Control Notas</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <mat-card>
+                        <mat-card-header>
+                            <mat-card-title>Tareas</mat-card-title>
+                        </mat-card-header>
+                        <mat-card-content>
+                            <mat-table [dataSource]="tareas" class="tabla1">
+                                <ng-container matColumnDef="nombre">
+                                  <mat-header-cell *matHeaderCellDef>Nombre Tarea</mat-header-cell>
+                                  <mat-cell *matCellDef="let tarea">{{tarea.nombre_tarea}}</mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="nota">
+                                  <mat-header-cell *matHeaderCellDef>Nota</mat-header-cell>
+                                  <mat-cell *matCellDef="let tarea">{{tarea.nota}}</mat-cell>
+                                </ng-container>
+                                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                              </mat-table>
+                        </mat-card-content>
+                    </mat-card>
+                    <mat-card>
+                        <mat-card-header>
+                            <mat-card-title>Examenes</mat-card-title>
+                        </mat-card-header>
+                        <mat-card-content>
+                            <mat-table [dataSource]="examenes" class="tabla2">
+                                <ng-container matColumnDef="nombre">
+                                  <mat-header-cell *matHeaderCellDef>Nombre Tarea</mat-header-cell>
+                                  <mat-cell *matCellDef="let examen">{{examen.nombre_examen}}</mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="nota">
+                                  <mat-header-cell *matHeaderCellDef>Nota</mat-header-cell>
+                                  <mat-cell *matCellDef="let examen">{{examen.nota}}</mat-cell>
+                                </ng-container>
+                                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                              </mat-table>
+                        </mat-card-content>
+                    </mat-card>
+                    <mat-card-actions>
+                      <button mat-raised-button color="primary" style="margin-left:20px" (click)="CalcularNota()">Calcular Nota</button>
+                        <button mat-raised-button color="warn" (click)="Regresar()">Volver</button>
+                        <mat-label *ngIf="nota" style="margin-left:170px"><b>Total </b></mat-label>
+                        <mat-label *ngIf="nota" style="margin-left:50px"><b>{{NotaTotal}}</b></mat-label>
+                    </mat-card-actions>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>

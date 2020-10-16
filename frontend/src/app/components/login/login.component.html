@@ -1,0 +1,54 @@
+<div style="width: 100%;">
+  <div align="center" class="column1">
+    <img src="https://iipsgt.files.wordpress.com/2014/11/logo-usac-byempacharte.png">
+  </div>
+  <div align="center" class="column2">
+    <br>
+    <div>
+      <mat-card>
+        <mat-card-title style="text-align: center;">
+          <br>
+          LOGIN
+          <br>
+          <br>
+        </mat-card-title>
+        <mat-card-content>
+          <form novalidate [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <p>
+              <mat-form-field>
+                <mat-icon matSuffix>account_circle</mat-icon>
+                <input matInput placeholder="Username" type="text" formControlName="username">
+                <mat-error *ngIf="formErrors.username">
+                  {{formErrors.username}}
+                </mat-error>
+                <br>
+              </mat-form-field>
+            </p>
+            <p>
+              <mat-form-field>
+                <mat-icon matSuffix>lock</mat-icon>
+                <input matInput placeholder="Password" type="password" required formControlName="password">
+                <mat-error *ngIf="formErrors.username">
+                  {{formErrors.password}}
+                </mat-error>
+                <br>
+              </mat-form-field>
+            </p>
+            <br>
+            <mat-slide-toggle formControlName="escatedratico">¿Ingresar como catedratico?</mat-slide-toggle>
+            <br><br>
+            <button type="submit" mat-raised-button color="primary" [disabled]="loginForm.invalid">Iniciar
+              Sesion</button>
+
+            <br>
+            <br>
+            <div>
+              <a href="">¿Tienes problemas iniciando Sesion?</a>
+            </div>
+          </form>
+          <br>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

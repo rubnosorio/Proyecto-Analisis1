@@ -1,0 +1,105 @@
+<mat-horizontal-stepper linear #stepper>
+  <mat-step>
+    <ng-template matStepLabel>Pregunta</ng-template>
+
+    <form [formGroup]="questionForm" novalidate>
+      <mat-form-field>
+        <mat-label>Descripcion de la Pregunta</mat-label>
+        <input matInput placeholder="Descripcion de la pregunta" formControlName="question_desc">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Tipo de Pregunta</mat-label>
+        <mat-select formControlName="question_type">
+          <mat-option value="" disabled>Escoger Tipo</mat-option>
+          <mat-option *ngFor="let typee of typees" [value]="typee.value">
+            {{typee.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
+
+    <div>
+      <button class="alignright" mat-button matStepperNext [disabled]="questionForm.invalid">
+        <mat-icon>arrow_forward</mat-icon>
+      </button>
+    </div>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Respuestas</ng-template>
+
+    <div *ngIf="questionForm.controls['question_type'].value==2">
+      <h1>Respuesta</h1>
+      <form [formGroup]="answerForm">
+        <mat-radio-group formControlName="answer_res" aria-label="Select an option">
+          <mat-radio-button value=1>Verdadero</mat-radio-button>
+          <mat-radio-button value=0>Falso</mat-radio-button>
+        </mat-radio-group>
+      </form>
+      <br><br>
+      <div>
+        <button class="alignleft" mat-button matStepperPrevious>
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+        <button class="alignright" mat-button matStepperNext [disabled]="answerForm.controls['answer_res'].invalid">
+          <mat-icon>arrow_forward</mat-icon>
+        </button>
+      </div>
+    </div>
+
+    <div *ngIf="questionForm.controls['question_type'].value==1">
+      <h1>Respuesta</h1>
+      <form [formGroup]="answerForm">
+        <textarea rows="10" formControlName="answer_desc"></textarea>
+      </form>
+      <br><br>
+      <div>
+        <button class="alignleft" mat-button matStepperPrevious>
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+        <button class="alignright" mat-button matStepperNext [disabled]="answerForm.controls['answer_desc'].invalid">
+          <mat-icon>arrow_forward</mat-icon>
+        </button>
+      </div>
+    </div>
+
+    <div *ngIf="questionForm.controls['question_type'].value==0">
+      <h1>Respuestas</h1>
+      <form [formGroup]="answerForm">
+        <input type="text" class="fullwidth" formControlName="answer_desc">
+        <br><br>
+        <mat-radio-group formControlName="answer_res" aria-label="Select an option">
+          <mat-radio-button value=1>Verdadero</mat-radio-button>
+          <mat-radio-button value=0>Falso</mat-radio-button>
+        </mat-radio-group>
+        <br><br>
+        <button mat-stroked-button color="primary" (click)="crearrespuesta()">Crear Respuesta</button>
+        <br><br>
+        <mat-list>
+          <mat-list-item *ngFor="let res of respuestas"> {{res.answer_desc}} ( {{tra(res.answer_res)}} )
+          </mat-list-item>
+        </mat-list>
+      </form>
+      <br><br>
+      <div>
+        <button class="alignleft" mat-button matStepperPrevious>
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+        <button class="alignright" mat-button matStepperNext [disabled]="respuestas.length==0">
+          <mat-icon>arrow_forward</mat-icon>
+        </button>
+      </div>
+    </div>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Revision</ng-template>
+    <div>
+      <h1>Si esta seguro de agregar esta respuesta presione agregar respuesta</h1>
+      <br>
+      <button mat-stroked-button color="primary" (click)="agregarrespuesta()">Agregar respuesta</button>
+      <br><br>
+      <button class="alignleft" mat-button matStepperPrevious>
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>

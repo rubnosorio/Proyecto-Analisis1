@@ -1,0 +1,42 @@
+<div class="card-container" *ngIf="examen">
+  <mat-card>
+    <br>
+    <mat-card-title>
+      <h1>{{examen.nombre_examen}}</h1>
+    </mat-card-title>
+    <mat-card-content>
+      <h3>{{examen.preguntas[indexactual].pregunta}}</h3>
+
+
+      <form [formGroup]="formtf" *ngIf="examen.preguntas[indexactual].tipo_respuesta==2">
+        <mat-radio-group formControlName="answer_res" aria-label="Select an option">
+          <mat-radio-button value=1>Verdadero</mat-radio-button>
+          <br>
+          <mat-radio-button value=0>Falso</mat-radio-button>
+        </mat-radio-group>
+      </form>
+
+
+      <ul *ngIf="examen.preguntas[indexactual].tipo_respuesta==0">
+        <li *ngFor="let res of examen.preguntas[indexactual].opciones">
+          <mat-checkbox [(ngModel)]="res.res">{{res.respuesta}}
+          </mat-checkbox>
+        </li>
+      </ul>
+
+
+      <form [formGroup]="formarea" *ngIf="examen.preguntas[indexactual].tipo_respuesta==1">
+        <textarea rows="10" formControlName="answer_res"></textarea>
+      </form>
+
+      <br>
+      <br>
+
+      <button mat-button style="margin-left: 35%;" (click)="siguiente()" [disabled]="esultimo()">Siguiente</button>
+      <button mat-button (click)="calificar()" [disabled]="!esultimo()">Enviar examen</button>
+    </mat-card-content>
+    <mat-card-actions>
+
+    </mat-card-actions>
+  </mat-card>
+</div>

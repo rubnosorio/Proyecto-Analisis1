@@ -1,0 +1,30 @@
+
+
+<div fxLayout="row" fxFlex.md="70" style="margin-left: 28px;" fxLayoutWrap class="card-deck-containe mat-elevation-z4" id="ca1">
+    <h1  class='elegantshadow'>Cursos </h1>
+    <div class="card-item" >
+        <mat-card class="pp1">
+            <mat-card-actions class="pp2">
+                <button style="margin-left: 100px;" mat-flat-button class="nuevo_curso" (click)="Crear_clase()">Crear Curso</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>
+<div fxLayout="row" fxLayoutAlign="center" fxFlex.md="50" style="margin-left: 290px;" fxLayoutWrap class="card-deck-container mat-elevation-z4">    
+    <div fxFlex *ngFor="let clase of clases" class="card-item">
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>{{clase.nombre_clase}}</mat-card-title>              
+            </mat-card-header>
+            <mat-card-content>
+                <img src="assets/libros.jpg" width="600" height="200" class="img-card-top"> 
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-flat-button class="ir_curso"  (click)="Ir_a_Curso(clase)">Ir a curso</button>
+              <button mat-flat-button color="warn" style="margin-left: 20px;"   >Eliminar Curso</button>
+            </mat-card-actions>
+          </mat-card> 
+    </div>
+
+    
+</div>

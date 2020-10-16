@@ -1,0 +1,21 @@
+[
+    {
+        "id_clase": 1,
+        "nombre_clase": "Analisis y diseño 1",
+        "cod_acceso": "abcd-qwef",
+        "id_usuario": 1
+    },
+    {
+        "id_clase": 2,
+        "nombre_clase": "Mate Computo",
+        "cod_acceso": "aqcd-qtef",
+        "id_usuario": 2
+    },{
+        "id_clase": 3,
+        "nombre_clase": "IPC1",
+        "cod_acceso": "nbcd-jwhf",
+        "id_usuario": 1
+    }
+
+
+]
