@@ -12,13 +12,14 @@ import { DemoComponent } from './components/demo/demo.component';
 import { CrearClaseComponent } from './components/crear-clase/crear-clase.component';
 import { NotaEstudiantesComponent } from "./components/nota-estudiantes/nota-estudiantes.component";
 import { CrearUsuarioComponent } from './components/crear-usuario/crear-usuario.component';
-import { UnirseClaseComponent} from './components/unirse-clase/unirse-clase.component';
+import { UnirseClaseComponent } from './components/unirse-clase/unirse-clase.component';
 import { ControlNotasEstudianteComponent } from './components/control-notas-estudiante/control-notas-estudiante.component';
 import { ResolverExamenComponent } from './components/resolver-examen/resolver-examen.component';
 import { VerCursosEstudianteComponent } from './components/ver-cursos-estudiante/ver-cursos-estudiante.component';
 import { PrincipalEstudianteComponent } from './components/principal-estudiante/principal-estudiante.component';
 import { InicioProfesorComponent } from "./components/inicio-profesor/inicio-profesor.component";
-import {VistaCursosProfesorComponent} from './components/vista-cursos-profesor/vista-cursos-profesor.component';
+import { VistaCursosProfesorComponent } from './components/vista-cursos-profesor/vista-cursos-profesor.component';
+import { CrearPublicacionComponent } from './components/crear-publicacion/crear-publicacion.component';
 
 const routes: Routes = [
   {
@@ -97,10 +98,14 @@ const routes: Routes = [
     path: 'Cursos_Profesor',
     component: VistaCursosProfesorComponent,
   },
+  {
+    path: 'crear_publicacion',
+    component: CrearPublicacionComponent
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
