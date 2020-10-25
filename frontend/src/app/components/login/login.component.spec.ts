@@ -17,7 +17,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
-fdescribe('Login Component', () => {
+describe('Login Component', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
   beforeEach(async(() => {
