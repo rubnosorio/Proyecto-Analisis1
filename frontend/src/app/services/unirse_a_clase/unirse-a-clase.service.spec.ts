@@ -7,7 +7,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 
 
-fdescribe('UnirseAClaseService', () => {
+describe('UnirseAClaseService', () => {
   let service: UnirseAClaseService;
   var http: HttpClient;
   let existe:boolean;
