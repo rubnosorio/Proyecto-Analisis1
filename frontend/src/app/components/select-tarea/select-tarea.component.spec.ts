@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SelectTareaComponent } from './select-tarea.component';
 
-describe('SelectTareaComponent', () => {
+fdescribe('SelectTareaComponent', () => {
   let component: SelectTareaComponent;
   let fixture: ComponentFixture<SelectTareaComponent>;
 

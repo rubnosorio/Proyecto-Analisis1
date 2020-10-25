@@ -7,7 +7,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { LoginComponent } from '../login/login.component';
 import { Examen } from 'src/app/models/examen';
 
-describe('UpdateExamenComponent', () => {
+fdescribe('UpdateExamenComponent', () => {
   let component: UpdateExamenComponent;
   let fixture: ComponentFixture<UpdateExamenComponent>;
 

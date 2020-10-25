@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { VerClasesEstudianteService } from './ver-clases-estudiante.service';
 
-describe('VerClasesEstudianteService', () => {
+fdescribe('VerClasesEstudianteService', () => {
   let service: VerClasesEstudianteService;
 
   beforeEach(() => {

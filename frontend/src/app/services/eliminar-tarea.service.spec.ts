@@ -3,7 +3,7 @@ import { TestBed } from '@angular/core/testing';
 import { EliminarTareaService } from './eliminar-tarea.service';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
-describe('EliminarTareaService', () => {
+fdescribe('EliminarTareaService', () => {
   let service: EliminarTareaService;
 
   beforeEach(() => {

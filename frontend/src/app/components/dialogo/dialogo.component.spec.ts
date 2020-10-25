@@ -4,7 +4,7 @@ import { DialogoComponent } from './dialogo.component';
 import { MatDialogRef } from '@angular/material/dialog';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 
-describe('DialogoComponent', () => {
+fdescribe('DialogoComponent', () => {
   let component: DialogoComponent;
   let fixture: ComponentFixture<DialogoComponent>;
 

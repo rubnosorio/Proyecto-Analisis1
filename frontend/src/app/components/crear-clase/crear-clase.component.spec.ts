@@ -8,7 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 
-describe('CrearClaseComponent', () => {
+fdescribe('CrearClaseComponent', () => {
   let component: CrearClaseComponent;
   let fixture: ComponentFixture<CrearClaseComponent>;
 

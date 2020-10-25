@@ -6,7 +6,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
-describe('DialogoEliminarExamenComponent', () => {
+fdescribe('DialogoEliminarExamenComponent', () => {
   let component: DialogoEliminarExamenComponent;
   let fixture: ComponentFixture<DialogoEliminarExamenComponent>;
 

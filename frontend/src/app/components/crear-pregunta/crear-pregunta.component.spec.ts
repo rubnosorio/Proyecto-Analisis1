@@ -10,7 +10,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-describe('CrearPreguntaComponent', () => {
+fdescribe('CrearPreguntaComponent', () => {
   let component: CrearPreguntaComponent;
   let fixture: ComponentFixture<CrearPreguntaComponent>;
 

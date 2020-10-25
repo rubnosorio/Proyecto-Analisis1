@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { ControlNotasEstudianteService } from './control-notas-estudiante.service';
 
-describe('Given ControlNotasEstudianteService', () => {
+fdescribe('Given ControlNotasEstudianteService', () => {
   let service: ControlNotasEstudianteService;
   let data = {
     id_usuario: 1,
