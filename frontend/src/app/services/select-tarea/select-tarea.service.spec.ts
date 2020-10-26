@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { SelectTareaService } from './select-tarea.service';
 
-fdescribe('Select-Tarea-Service', () => {
+describe('Select-Tarea-Service', () => {
   let service: SelectTareaService;
 
   beforeEach(() => {
