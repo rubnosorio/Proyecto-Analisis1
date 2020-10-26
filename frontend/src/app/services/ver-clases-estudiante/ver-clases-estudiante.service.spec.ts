@@ -17,13 +17,39 @@ describe('VerClasesEstudianteService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('Obtencion correcta de clases', (done) => {
+  describe('Dado un usuario que tiene registradas varias clases', () => {
     let user = {
       id_usuario: 1
     }
-    service.ObtenerClases(user).subscribe((res:any[]) => {
-      expect(res.length).toBeGreaterThanOrEqual(0);
-      done();
+    it('Se obtienen correctamente sus clases', (done) => {
+      let clases=0;
+      service.getMockClases().subscribe((res:any[]) => {
+        for(let i=0; i<res.length; i++){
+          if(user.id_usuario==res[i].id_usuario){
+            clases++;
+          }
+        }
+        expect(clases).toBeGreaterThan(0);
+        done();
+      });
+    });
+  });
+
+  describe('Dado un usuario que no tiene clases registrados', () => {
+    let user = {
+      id_usuario: 4
+    }
+    it('No es posible obtener ninguna clase', (done) => {
+      let clases=0;
+      service.getMockClases().subscribe((res:any[]) => {
+        for(let i=0; i<res.length; i++){
+          if(user.id_usuario==res[i].id_usuario){
+            clases++;
+          }
+        }
+        expect(clases).toEqual(0);
+        done();
+      });
     });
   });
 });

@@ -6,15 +6,19 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class VerClasesEstudianteService {
+export class VerExamenesEstudianteService {
 
-  constructor(private  http:HttpClient) { }
+  constructor(private http:HttpClient) { }
 
   getMockClases():Observable<any[]> {
     return this.http.get<any[]>('assets/fakedb/ClaseFakeTable.json');
   }
-  
-  ObtenerClases(user:any){
-    return this.http.post(baseURL+'get_clases',user); 
+
+  getMockExamenes():Observable<any[]> {
+    return this.http.get<any[]>('assets/fakedb/ExamenesFake.json');
   }
+
+  get_examenes(clase:any){
+    return this.http.post(baseURL+'ver_examenes_estudiante',clase);
+  } 
 }
