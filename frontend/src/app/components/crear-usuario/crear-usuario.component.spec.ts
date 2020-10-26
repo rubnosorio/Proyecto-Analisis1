@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { CrearUsuarioComponent } from './crear-usuario.component';
 
-fdescribe('CrearUsuarioComponent', () => {
+describe('CrearUsuarioComponent', () => {
   let component: CrearUsuarioComponent;
   let fixture: ComponentFixture<CrearUsuarioComponent>;
 
