@@ -1,14 +1,16 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SelectTareaComponent } from './select-tarea.component';
+import { SelectTareaService } from "../../services/select-tarea/select-tarea.service";
 
-fdescribe('SelectTareaComponent', () => {
+describe('SelectTareaComponent', () => {
   let component: SelectTareaComponent;
   let fixture: ComponentFixture<SelectTareaComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SelectTareaComponent ]
+      declarations: [ SelectTareaComponent ],
+      providers:[SelectTareaService]
     })
     .compileComponents();
   }));
