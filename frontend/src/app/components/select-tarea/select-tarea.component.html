@@ -1,0 +1,25 @@
+<br>
+<div class="titulo2">MI LISTA DE TAREAS</div>
+<br>
+<div *ngFor="let item of lista_tareas;" class="column">
+    <mat-card class="example-card">
+        <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>{{item.nombre_tarea}}</mat-card-title>
+            <mat-card-subtitle *ngIf="item.estado=='Sin entregar'" style="color:red;">Sin Enviar<br>Valor: {{item.valor_tarea}} pts<br>Fecha Entrega: {{item.fecha_entrega}}
+            </mat-card-subtitle>
+            <mat-card-subtitle *ngIf="item.estado=='Entregado'" style="color: green;">Enviado<br>Valor: {{item.valor_tarea}}pts<br>Fecha Entrega: {{item.fecha_entrega}}
+            </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <p>
+                {{item.descripcion}}
+            </p>
+        </mat-card-content>
+        <mat-card-actions>
+            <a *ngIf="item.url_archivo_instruccion!=''" href="http://www.{{item.url_archivo_instruccion}}" target="_blank" mat-button>Instrucciones</a>
+            <button *ngIf="verificar_fecha(item.fecha_entrega)==0" (click)="entregarTarea(item.id_tarea)" mat-button disabled>Entregar Tarea</button>
+            <button *ngIf="verificar_fecha(item.fecha_entrega)==1" (click)="entregarTarea(item.id_tarea)" style="color:green;" mat-button>Entregar Tarea</button>
+        </mat-card-actions>
+    </mat-card>
+</div>

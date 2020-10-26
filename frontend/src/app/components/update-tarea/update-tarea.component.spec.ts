@@ -10,7 +10,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Tarea } from 'src/app/models/tarea';
 
-describe('UpdateTareaComponent', () => {
+fdescribe('UpdateTareaComponent', () => {
   let component: UpdateTareaComponent;
   let fixture: ComponentFixture<UpdateTareaComponent>;
 

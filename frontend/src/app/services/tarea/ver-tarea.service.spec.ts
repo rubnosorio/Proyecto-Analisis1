@@ -3,7 +3,7 @@ import { TestBed } from '@angular/core/testing';
 import { VerTareaService } from './ver-tarea.service';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
-describe('VerTareaService', () => {
+fdescribe('VerTareaService', () => {
   let service: VerTareaService;
 
   beforeEach(() => {

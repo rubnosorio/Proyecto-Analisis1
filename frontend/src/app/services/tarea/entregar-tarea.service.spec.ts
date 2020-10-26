@@ -3,7 +3,7 @@ import { TestBed } from '@angular/core/testing';
 import { EntregarTareaService } from './entregar-tarea.service';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
-describe('EntregarTareaService', () => {
+fdescribe('EntregarTareaService', () => {
   let service: EntregarTareaService;
 
   beforeEach(() => {

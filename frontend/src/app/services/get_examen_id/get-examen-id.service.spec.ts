@@ -3,7 +3,7 @@ import { TestBed } from '@angular/core/testing';
 import { GetExamenIdService } from './get-examen-id.service';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
-describe('GetExamenIdService', () => {
+fdescribe('GetExamenIdService', () => {
   let service: GetExamenIdService;
 
   beforeEach(() => {

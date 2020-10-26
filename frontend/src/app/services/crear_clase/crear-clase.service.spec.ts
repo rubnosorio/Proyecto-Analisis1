@@ -3,7 +3,7 @@ import { TestBed } from '@angular/core/testing';
 import { CrearClaseService } from './crear-clase.service';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
-describe('CrearClaseService', () => {
+fdescribe('CrearClaseService', () => {
   let service: CrearClaseService;
 
   beforeEach(() => {

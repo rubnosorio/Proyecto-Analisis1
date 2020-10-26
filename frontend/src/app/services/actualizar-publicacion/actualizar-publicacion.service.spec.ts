@@ -1,10 +1,9 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { CrearUsuarioService } from './crear-usuario.service';
-import { Usuario } from '../../models/usuario'
+import { ActualizarPublicacionService } from './actualizar-publicacion.service';
 
-fdescribe('Given que se quiere mandar usuarios al servidor', () => {
-  let service: CrearUsuarioService;
+fdescribe('Dado que se quiere actualizar una publicacion', () => {
+  let service: ActualizarPublicacionService;
   let httpMock: HttpTestingController;
 
   beforeEach(() => {
@@ -13,7 +12,7 @@ fdescribe('Given que se quiere mandar usuarios al servidor', () => {
         HttpClientTestingModule,
       ]
     });
-    service = TestBed.inject(CrearUsuarioService);
+    service = TestBed.inject(ActualizarPublicacionService);
     httpMock = TestBed.inject(HttpTestingController)
   });
 
@@ -21,26 +20,25 @@ fdescribe('Given que se quiere mandar usuarios al servidor', () => {
     expect(service).toBeTruthy();
   });
 
-  it('When la URL existe', () => {
+  it('Cuando la URL existe', () => {
     let base64 = service.getbaseURL()
     expect(base64).toBeTruthy();
   });
 
-  it('And el metodo para postear el usuario existe', () => {
-    let res = service.postUser
+  it('Y el metodo para postear el usuario existe', () => {
+    let res = service.update
     expect(res).toBeTruthy();
   });
 
   it('Then el usuario es posteado con exito', () => {
     const mockRes = 200;
     var res = 0
-    service.postUser(new Usuario(1,"prueba","prueba","prueba","prueba","prueba@prueba.com"))
+    service.update({publicacion: "Esta es una publicacion de prueba", fecha: "22/10/2020 23:00", id_clase: 1, id_usuario: 1 })
     .subscribe(resAPI =>{
       res = resAPI
     })
-    const req = httpMock.expectOne(service.getbaseURL()+'crear_usuario');
+    const req = httpMock.expectOne(service.getbaseURL()+'actualizar-publicacion');
     req.flush(mockRes);
-    console.log(req)
     expect(res).toEqual(200);
   });
 });
