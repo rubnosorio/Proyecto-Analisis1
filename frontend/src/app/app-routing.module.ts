@@ -19,6 +19,7 @@ import { VerCursosEstudianteComponent } from './components/ver-cursos-estudiante
 import { PrincipalEstudianteComponent } from './components/principal-estudiante/principal-estudiante.component';
 import { InicioProfesorComponent } from "./components/inicio-profesor/inicio-profesor.component";
 import {VistaCursosProfesorComponent} from './components/vista-cursos-profesor/vista-cursos-profesor.component';
+import { SelectTareaComponent } from "./components/select-tarea/select-tarea.component";
 
 const routes: Routes = [
   {
@@ -96,6 +97,10 @@ const routes: Routes = [
   {
     path: 'Cursos_Profesor',
     component: VistaCursosProfesorComponent,
+  },
+  {
+    path: 'select_tarea',
+    component: SelectTareaComponent,
   },
 ];
 

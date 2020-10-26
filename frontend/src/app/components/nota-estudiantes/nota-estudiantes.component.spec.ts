@@ -11,7 +11,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { RouterTestingModule } from '@angular/router/testing';
 import { LoginComponent } from '../login/login.component';
 
-describe('NotaEstudiantesComponent', () => {
+fdescribe('NotaEstudiantesComponent', () => {
   let component: NotaEstudiantesComponent;
   let fixture: ComponentFixture<NotaEstudiantesComponent>;
   var lista_actividades:ListaActividades[]=[];

@@ -80,6 +80,7 @@ import { PrincipalEstudianteComponent } from './components/principal-estudiante/
 import { InicioProfesorComponent } from './components/inicio-profesor/inicio-profesor.component';
 import { VistaCursosProfesorComponent } from './components/vista-cursos-profesor/vista-cursos-profesor.component';
 import { ActualizarPublicacionComponent } from './components/actualizar-publicacion/actualizar-publicacion.component';
+import { SelectTareaComponent } from './components/select-tarea/select-tarea.component';
 
 
 @NgModule({
@@ -109,6 +110,7 @@ import { ActualizarPublicacionComponent } from './components/actualizar-publicac
     InicioProfesorComponent,
     VistaCursosProfesorComponent,
     ActualizarPublicacionComponent,
+    SelectTareaComponent,
   ],
   imports: [
     BrowserModule,
