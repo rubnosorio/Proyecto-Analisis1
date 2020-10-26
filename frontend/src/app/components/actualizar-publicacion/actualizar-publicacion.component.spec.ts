@@ -39,7 +39,7 @@ fdescribe('Dado que quiero actualizar una publicacion', () => {
     expect(component).toBeTruthy();
   });
 
-  it('entonces obtengo la publicacion a actualizar', () => {
+  it('Entonces obtengo la publicacion a actualizar', () => {
     var res = component.obtenerParametro();
     expect(res).toBeTrue();
   });
