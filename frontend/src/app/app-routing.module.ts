@@ -20,6 +20,7 @@ import { PrincipalEstudianteComponent } from './components/principal-estudiante/
 import { InicioProfesorComponent } from "./components/inicio-profesor/inicio-profesor.component";
 import {VistaCursosProfesorComponent} from './components/vista-cursos-profesor/vista-cursos-profesor.component';
 import { SelectTareaComponent } from "./components/select-tarea/select-tarea.component";
+import { ActualizarPublicacionComponent } from './components/actualizar-publicacion/actualizar-publicacion.component';
 
 const routes: Routes = [
   {
@@ -101,6 +102,10 @@ const routes: Routes = [
   {
     path: 'select_tarea',
     component: SelectTareaComponent,
+  },
+  {
+    path: 'actualizar_publicacion/:id',
+    component: ActualizarPublicacionComponent,
   },
 ];
 

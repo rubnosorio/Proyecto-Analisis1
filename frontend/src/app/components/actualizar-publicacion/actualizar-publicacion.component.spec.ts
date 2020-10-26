@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ActualizarPublicacionComponent } from './actualizar-publicacion.component';
 
-describe('ActualizarPublicacionComponent', () => {
+describe('Dado que quiero actualizar una publicacion', () => {
   let component: ActualizarPublicacionComponent;
   let fixture: ComponentFixture<ActualizarPublicacionComponent>;
 
@@ -21,5 +21,10 @@ describe('ActualizarPublicacionComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('entonces obtengo la publicacion a actualizar', () => {
+    var res = obtenerParametro();
+    expect(res).toBeTrue();
   });
 });
