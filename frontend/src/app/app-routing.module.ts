@@ -19,6 +19,7 @@ import { VerCursosEstudianteComponent } from './components/ver-cursos-estudiante
 import { PrincipalEstudianteComponent } from './components/principal-estudiante/principal-estudiante.component';
 import { InicioProfesorComponent } from "./components/inicio-profesor/inicio-profesor.component";
 import {VistaCursosProfesorComponent} from './components/vista-cursos-profesor/vista-cursos-profesor.component';
+import { VerExamenesEstudianteComponent } from '../app/components/ver-examenes-estudiante/ver-examenes-estudiante.component';
 
 const routes: Routes = [
   {
@@ -97,6 +98,10 @@ const routes: Routes = [
     path: 'Cursos_Profesor',
     component: VistaCursosProfesorComponent,
   },
+  {
+    path: 'ver_examenes_estudiante',
+    component: VerExamenesEstudianteComponent 
+  }
 ];
 
 @NgModule({
