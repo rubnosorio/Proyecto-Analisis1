@@ -23,6 +23,17 @@ export class SelectTareaComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  
+  verificar_fecha(fecha: string) {
+    let final = new Date(fecha);
+    let actual = new Date();
+    if(actual.getTime()<=final.getTime()){
+      return 1;
+    }
+    return 0;
+  }
+
+  entregarTarea(id_tarea:number){
+    console.log(id_tarea);
+  }
 
 }
