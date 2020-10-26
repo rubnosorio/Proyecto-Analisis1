@@ -1,14 +1,30 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ActualizarPublicacionComponent } from './actualizar-publicacion.component';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { convertToParamMap } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
-describe('Dado que quiero actualizar una publicacion', () => {
+fdescribe('Dado que quiero actualizar una publicacion', () => {
   let component: ActualizarPublicacionComponent;
   let fixture: ComponentFixture<ActualizarPublicacionComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ActualizarPublicacionComponent ]
+      imports: [
+        HttpClientTestingModule,
+      ],
+      declarations: [ ActualizarPublicacionComponent ],
+      providers: [
+        {
+          provide: ActivatedRoute,
+          useValue: {
+            snapshot: {
+              paramMap: convertToParamMap({ id: 1 }),
+            },
+          },
+        },
+      ],
     })
     .compileComponents();
   }));
@@ -24,7 +40,7 @@ describe('Dado que quiero actualizar una publicacion', () => {
   });
 
   it('entonces obtengo la publicacion a actualizar', () => {
-    var res = obtenerParametro();
+    var res = component.obtenerParametro();
     expect(res).toBeTrue();
   });
 });
