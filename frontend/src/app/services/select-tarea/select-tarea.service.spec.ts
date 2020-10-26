@@ -20,7 +20,7 @@ fdescribe('Select-Tarea-Service', () => {
     });
     describe('Cuando entro a la clase que quiero ver', ()=>{
       it('Entonces obtengo la lista de tareas de la clase'),()=>{
-        expect(mockServicio(1,1)).toBeGreaterThanOrEqual(0);
+        expect(mockServicio(1,1).length).toBeGreaterThanOrEqual(0);
       }
     });
   });
