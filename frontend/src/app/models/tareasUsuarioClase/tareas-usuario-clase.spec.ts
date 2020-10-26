@@ -1,7 +1,7 @@
 import { TareasUsuarioClase } from './tareas-usuario-clase';
 
-describe('TareasUsuarioClase', () => {
+fdescribe('TareasUsuarioClase', () => {
   it('should create an instance', () => {
-    expect(new TareasUsuarioClase()).toBeTruthy();
+    expect(new TareasUsuarioClase(1,1,1,"","",5,"","","")).toBeTruthy();
   });
 });
