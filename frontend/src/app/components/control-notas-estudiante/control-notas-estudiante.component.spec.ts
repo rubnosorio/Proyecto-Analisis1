@@ -9,7 +9,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { LoginComponent } from '../login/login.component';
 import { PrincipalEstudianteComponent } from '../principal-estudiante/principal-estudiante.component';
 
-fdescribe('ControlNotasEstudianteComponent', () => {
+describe('ControlNotasEstudianteComponent', () => {
   let component: ControlNotasEstudianteComponent;
   let fixture: ComponentFixture<ControlNotasEstudianteComponent>;
 
