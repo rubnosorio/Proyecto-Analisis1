@@ -31,7 +31,10 @@ module.exports = (app, connection) => {
                             }
                             listado_tareas.push(tarea);
                         }
-                        res.send(listado_tareas);
+                        var respuesta={
+                            lista_tareas:listado_tareas
+                        }
+                        res.send(respuesta);
                     }
                     else {
                         res.status(400).send(err2);
