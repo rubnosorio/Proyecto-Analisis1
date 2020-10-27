@@ -13,7 +13,10 @@ export class CrearPublicacionComponent implements OnInit {
   }
 
   minlenght(lenght: number): boolean {
-    return false;
+    if (lenght < 5) {
+      return false;
+    }
+    return true;
   }
 
 }
