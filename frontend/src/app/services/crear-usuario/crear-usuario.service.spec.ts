@@ -3,7 +3,7 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { CrearUsuarioService } from './crear-usuario.service';
 import { Usuario } from '../../models/usuario'
 
-describe('Given que se quiere mandar usuarios al servidor', () => {
+fdescribe('Given que se quiere mandar usuarios al servidor', () => {
   let service: CrearUsuarioService;
   let httpMock: HttpTestingController;
 

@@ -1,6 +1,6 @@
 import { ListaActividades } from './lista-actividades';
 
-describe('ListaActividades', () => {
+fdescribe('ListaActividades', () => {
   it('Deberia crear una nueva actividad', () => {
     expect(new ListaActividades('tarea 1')).toBeTruthy();
   });

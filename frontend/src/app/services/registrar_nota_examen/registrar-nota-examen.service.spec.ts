@@ -3,7 +3,7 @@ import { TestBed } from '@angular/core/testing';
 import { RegistrarNotaExamenService } from './registrar-nota-examen.service';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
-describe('RegistrarNotaExamenService', () => {
+fdescribe('RegistrarNotaExamenService', () => {
   let service: RegistrarNotaExamenService;
 
   beforeEach(() => {

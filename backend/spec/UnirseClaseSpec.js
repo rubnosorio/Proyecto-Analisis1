@@ -4,7 +4,7 @@ const server = require('../index');
 const endpoint = 'http://localhost:3000/unirse_a_clase';
 var respues;
 
-fdescribe('unirse_a_clase', function () {
+describe('unirse_a_clase', function () {
     beforeAll((done) => {
         request.post(endpoint,{json: true, body:{"cod_clase":"abcdefghi","id_usuario": 1}}, function (error, response) {
             respues = JSON.stringify(response);

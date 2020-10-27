@@ -3,7 +3,7 @@ import { TestBed } from '@angular/core/testing';
 import { VistaCursosPofesorService } from './vista-cursos-pofesor.service';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
-describe('VistaCursosPofesorService', () => {
+fdescribe('VistaCursosPofesorService', () => {
   let service: VistaCursosPofesorService;
 
   beforeEach(() => {

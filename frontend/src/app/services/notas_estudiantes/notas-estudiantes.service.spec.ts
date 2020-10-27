@@ -4,7 +4,7 @@ import { NotaEstudiante } from "../../models/nota-estudiante";
 import { NotasEstudiantesService } from './notas-estudiantes.service';
 import { Observable } from 'rxjs';
 
-describe('NotasEstudiantesService', () => {
+fdescribe('NotasEstudiantesService', () => {
   let service: NotasEstudiantesService;
 
   beforeEach(() => {

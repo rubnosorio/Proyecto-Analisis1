@@ -3,7 +3,7 @@ import { TestBed } from '@angular/core/testing';
 import { DialogService } from './dialog.service';
 import { MatDialogModule } from '@angular/material/dialog';
 
-describe('DialogService', () => {
+fdescribe('DialogService', () => {
   let service: DialogService;
 
   beforeEach(() => {

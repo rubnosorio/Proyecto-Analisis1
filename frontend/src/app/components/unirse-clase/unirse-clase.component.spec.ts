@@ -6,7 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 
-describe('UnirseClaseComponent', () => {
+fdescribe('UnirseClaseComponent', () => {
   let component: UnirseClaseComponent;
   let fixture: ComponentFixture<UnirseClaseComponent>;
 

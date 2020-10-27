@@ -7,7 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import { convertToParamMap } from '@angular/router';
 import { FormBuilder } from '@angular/forms';
 
-describe('ResolverExamenComponent', () => {
+fdescribe('ResolverExamenComponent', () => {
   let component: ResolverExamenComponent;
   let fixture: ComponentFixture<ResolverExamenComponent>;
 

@@ -20,7 +20,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { LoginComponent } from '../login/login.component';
 import { NavbarComponent } from "../navbar/navbar.component";
 
-fdescribe('Crear Tarea Component', () => {
+describe('Crear Tarea Component', () => {
   let component: CrearTareaComponent;
   let fixture: ComponentFixture<CrearTareaComponent>;
 

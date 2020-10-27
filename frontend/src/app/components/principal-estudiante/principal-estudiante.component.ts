@@ -27,7 +27,7 @@ export class PrincipalEstudianteComponent implements OnInit {
       this.menu.fillerNav = [];
       var newmenu = [
         { name: "Mis notas", route: "/control_notas_estudiante", icon: "insert_drive_file" },
-        { name: "Mis tareas", route: "/entregar-tarea", icon: "assignment" },
+        { name: "Mis tareas", route: "/select_tarea", icon: "assignment" },
         { name: "Cerrar Sesion", route: "/login", icon: "exit_to_app" }
       ]
       this.menu.fillerNav=newmenu;
