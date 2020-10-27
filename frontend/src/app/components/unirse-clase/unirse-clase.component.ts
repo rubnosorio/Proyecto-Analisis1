@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { UnirseAClaseService } from '../../services/unirse_a_clase/unirse-a-clase.service';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-unirse-clase',
@@ -14,7 +14,7 @@ export class UnirseClaseComponent implements OnInit {
     cod_clase:"",
     id_usuario: 1
 }
-  constructor(private toastr: ToastrService,private dialog: MatDialog,private unirseaclase: UnirseAClaseService) { }
+  constructor(private toastr: ToastrService,private dialog: MatDialog,private unirseaclase: UnirseAClaseService, private router:Router) { }
 
   ngOnInit(): void {
    
@@ -44,6 +44,10 @@ export class UnirseClaseComponent implements OnInit {
     }else{
       //this.toastr.error('Código incorrecto','Código invalido');
     }
+  }
+
+  regresar(){
+    this.router.navigate(['ver_clases_estudiante']);
   }
 
 }
