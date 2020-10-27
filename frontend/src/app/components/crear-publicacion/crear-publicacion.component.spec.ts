@@ -53,4 +53,34 @@ fdescribe('CrearPublicacionComponent', () => {
     });
   });
 
+  describe("Dado tenga demasiado caracteres", function () {
+    let cadena = 'Muchachos recuerden que la tarea se entrega el proximo jueves'.repeat(100)
+    beforeEach(function () {
+
+    });
+    describe("Cuando cree una publicacion", function () {
+      beforeEach(function () {
+
+      });
+      it("Entonces hay errores en el maximo de caracteres aceptados", function () {
+        expect(component.maxlenght(cadena.length)).toBeFalsy();
+      });
+    });
+  });
+
+  describe("Dado no exceda el numero maximo de caracteres", function () {
+    let cadena = 'Mu'
+    beforeEach(function () {
+
+    });
+    describe("Cuando cree una publicacion", function () {
+      beforeEach(function () {
+
+      });
+      it("Entonces no hay errores en el maximo de caracteres", function () {
+        expect(component.maxlenght(cadena.length)).toBeTruthy();
+      });
+    });
+  });
+
 });

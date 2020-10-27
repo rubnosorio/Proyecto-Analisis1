@@ -19,4 +19,8 @@ export class CrearPublicacionComponent implements OnInit {
     return true;
   }
 
+  maxlenght(lenght: number): boolean {
+    return false;
+  }
+
 }
