@@ -13,7 +13,7 @@ export class SelectTareaComponent implements OnInit {
   lista_tareas: TareasUsuarioClase[] = [];
   fecha: Date = new Date();
 
-  constructor(private selectTareaService: SelectTareaService) {
+  constructor(private selectTareaService: SelectTareaService, private router: Router) {
     this.selectTareaService.getTareas(1, 1).subscribe((res: any) => {
       this.lista_tareas = res.lista_tareas;
       console.log(this.lista_tareas);
@@ -33,7 +33,8 @@ export class SelectTareaComponent implements OnInit {
   }
 
   entregarTarea(id_tarea:number){
-    console.log(id_tarea);
+    sessionStorage.setItem("id_tarea",id_tarea.toString());
+    this.router.navigate(['/entregar-tarea']);
   }
 
 }
