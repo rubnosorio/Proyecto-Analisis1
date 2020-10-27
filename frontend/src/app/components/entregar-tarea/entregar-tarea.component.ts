@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Tarea } from '../../models/tarea'
 import { EntregarTareaService } from '../../services/tarea/entregar-tarea.service'
 import { EntregarTarea } from 'src/app/models/entregar-tarea';
+import { Router } from '@angular/router';
+import {MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition,} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-entregar-tarea',
@@ -15,8 +17,10 @@ export class EntregarTareaComponent implements OnInit {
   id_usuario:number;
   id_clase:number;
   id_tarea:number;
+  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
 
-  constructor(private entregaService: EntregarTareaService) {
+  constructor(private entregaService: EntregarTareaService, private router: Router,  private _snackBar: MatSnackBar,) {
     this.getTask()
     this.id_usuario=Number(sessionStorage.getItem("id_usuario"));
     this.id_clase=Number(sessionStorage.getItem("id_clase"));
@@ -50,13 +54,23 @@ export class EntregarTareaComponent implements OnInit {
     r.onload = function l(){
       this.sendTask(r.result)
     }.bind(this);
-    console.log("entregado");
   }
 
   sendTask(base: string): any {
     this.entregaService.sendTask(new EntregarTarea(this.id_usuario,this.id_clase,this.id_tarea,"",this.files[0].name,base,0)).subscribe((res: any) => {
-      return res
+      this.openSnackBar("Tarea enviada", "Cerrar");
+      this.router.navigate(['select_tarea']);
+    },(err)=>{
+      this.openSnackBar("Ha ocurrido un error al entregar la tarea", "Cerrar");
     })
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 2000,
+      horizontalPosition: this.horizontalPosition,
+      verticalPosition: this.verticalPosition,
+    });
   }
 
 }

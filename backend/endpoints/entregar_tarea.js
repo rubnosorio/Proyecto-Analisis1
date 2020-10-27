@@ -21,7 +21,7 @@ module.exports = (app, s3, connection) => {
             //para insertar la tarea en el directorio de la forma nombrclase/nombretarea/nombrearchivi.extension
             connection.query(`select (select nombre_clase FROM CLASE where id_clase=${parseInt(id_clase)}) as clase, (select nombre_tarea FROM TAREA where id_tarea=${parseInt(id_tarea)}) as tarea`, function (err, rows, fields) {
                 if (!err) {
-                    var clase = rows[0].clase;
+                    var clase = id_clase;
                     var tarea = rows[0].tarea;
                     const bucketname = 'proyectoanalisis1';
                     const folder = `${clase}/${tarea}/`;
@@ -35,7 +35,7 @@ module.exports = (app, s3, connection) => {
                     s3.upload(uploadParamsS3, (err, data) => {
                         if (err) {
                             status.statusCode=404;
-                            res.send(status);
+                            res.status(404).send(status);
                         }
                         else{
                             //ahora insertamos la tarea que el estudiante entrega
@@ -43,11 +43,11 @@ module.exports = (app, s3, connection) => {
                             connection.query(`insert into ENTREGA_TAREA(id_usuario,id_clase,id_tarea,url_tarea,nombre) 
                             values (${parseInt(id_usuario)},${parseInt(id_clase)},${parseInt(id_tarea)},'${url_archivo}','${nombre_tarea}')`, function (err2, rows2, fields2) {
                                 if (!err2) {
-                                    res.send(status)
+                                    res.status(200).send(status)
                                 }
                                 else {
                                     status.statusCode = 404;
-                                    res.send(status)
+                                    res.status(404).send(status)
                                 }
                             });
                         }
@@ -55,13 +55,13 @@ module.exports = (app, s3, connection) => {
                 }
                 else {
                     status.statusCode = 404;
-                    res.send(status)
+                    res.staus(404).send(status)
                 }
             });
         }
         else {
             status.statusCode = 404;
-            res.send(status);
+            res.staus(404).send(status)
         }
     });
 }
