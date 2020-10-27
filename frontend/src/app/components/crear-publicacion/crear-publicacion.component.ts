@@ -20,7 +20,10 @@ export class CrearPublicacionComponent implements OnInit {
   }
 
   maxlenght(lenght: number): boolean {
-    return false;
+    if (lenght > 255) {
+      return false;
+    }
+    return true;
   }
 
 }
