@@ -12,16 +12,24 @@ export class EntregarTareaComponent implements OnInit {
 
   tarea: Tarea
   files: any[] = [];
+  id_usuario:number;
+  id_clase:number;
+  id_tarea:number;
 
   constructor(private entregaService: EntregarTareaService) {
     this.getTask()
+    this.id_usuario=Number(sessionStorage.getItem("id_usuario"));
+    this.id_clase=Number(sessionStorage.getItem("id_clase"));
+    this.id_tarea=Number(sessionStorage.getItem("id_tarea"));
   }
 
   ngOnInit(): void {
   }
 
   getTask() {
-    this.tarea = new Tarea(1, "Tarea de Prueba", "Esta es una prueba y aca ira la descripcion de la tarea", "", "asdasd/asdad", "25/08/2020 18:12",10)
+    var tarea_entregar=JSON.parse(sessionStorage.getItem("tarea"));
+    this.tarea = new Tarea(tarea_entregar.id_tarea,
+       tarea_entregar.nombre_tarea, tarea_entregar.descripcion, "", tarea_entregar.url_archivo_instruccion, tarea_entregar.fecha_entrega,tarea_entregar.valor_tarea)
   }
 
   onSelect(event) {
@@ -42,10 +50,11 @@ export class EntregarTareaComponent implements OnInit {
     r.onload = function l(){
       this.sendTask(r.result)
     }.bind(this);
+    console.log("entregado");
   }
 
   sendTask(base: string): any {
-    this.entregaService.sendTask(new EntregarTarea(1,1,12,"",this.files[0].name,base,0)).subscribe((res: any) => {
+    this.entregaService.sendTask(new EntregarTarea(this.id_usuario,this.id_clase,this.id_tarea,"",this.files[0].name,base,0)).subscribe((res: any) => {
       return res
     })
   }

@@ -57,6 +57,13 @@ export class SelectTareaComponent implements OnInit {
 
   entregarTarea(id_tarea: number) {
     sessionStorage.setItem("id_tarea", id_tarea.toString());
+    var tarea_entregar;
+    for(let i=0;i<this.lista_tareas.length;i++){
+      if(this.lista_tareas[i].id_tarea==id_tarea){
+        tarea_entregar=this.lista_tareas[i];
+      }
+    }
+    sessionStorage.setItem("tarea",JSON.stringify(tarea_entregar));
     this.router.navigate(['/entregar-tarea']);
   }
 
