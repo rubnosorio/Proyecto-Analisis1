@@ -79,6 +79,7 @@ import { VerCursosEstudianteComponent } from './components/ver-cursos-estudiante
 import { PrincipalEstudianteComponent } from './components/principal-estudiante/principal-estudiante.component';
 import { InicioProfesorComponent } from './components/inicio-profesor/inicio-profesor.component';
 import { VistaCursosProfesorComponent } from './components/vista-cursos-profesor/vista-cursos-profesor.component';
+import { VerExamenesEstudianteComponent } from './components/ver-examenes-estudiante/ver-examenes-estudiante.component';
 import { ActualizarPublicacionComponent } from './components/actualizar-publicacion/actualizar-publicacion.component';
 import { SelectTareaComponent } from './components/select-tarea/select-tarea.component';
 
@@ -111,6 +112,7 @@ import { SelectTareaComponent } from './components/select-tarea/select-tarea.com
     VistaCursosProfesorComponent,
     ActualizarPublicacionComponent,
     SelectTareaComponent,
+    VerExamenesEstudianteComponent,
   ],
   imports: [
     BrowserModule,

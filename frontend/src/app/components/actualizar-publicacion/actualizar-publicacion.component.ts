@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-actualizar-publicacion',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ActualizarPublicacionComponent implements OnInit {
 
-  constructor() { }
+  publicacion = {id_publicacion: 0, publicacion: "esta es una publicacion de prueba", fecha: "2020/10/26 12:55", id_clase: 0, id_usuario: 0}
+
+  constructor(private route: ActivatedRoute,) {
+    this.obtenerParametro()
+  }
 
   ngOnInit(): void {
+
+  }
+
+  obtenerParametro(): any{
+    this.publicacion.id_publicacion = Number(this.route.snapshot.paramMap.get('id'));
+    return true;
   }
 
 }
