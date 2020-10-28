@@ -26,4 +26,8 @@ export class CrearPublicacionComponent implements OnInit {
     return true;
   }
 
+  crearpublicacion(publicacion): any {
+    return false;
+  }
+
 }
