@@ -24,6 +24,7 @@ import { VerExamenesEstudianteComponent } from '../app/components/ver-examenes-e
 import { SelectTareaComponent } from "./components/select-tarea/select-tarea.component";
 import { ActualizarPublicacionComponent } from './components/actualizar-publicacion/actualizar-publicacion.component';
 import { TareasClaseComponent } from './components/tareas-clase/tareas-clase.component';
+import { ActualizarNotaTareaComponent } from './components/actualizar-nota-tarea/actualizar-nota-tarea.component';
 
 const routes: Routes = [
   {
@@ -121,6 +122,10 @@ const routes: Routes = [
   {
     path: 'tareas_clase',
     component: TareasClaseComponent
+  },
+  {
+    path: 'actualizar_nota_tarea',
+    component: ActualizarNotaTareaComponent
   },
 ];
 

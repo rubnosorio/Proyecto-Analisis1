@@ -34,4 +34,16 @@ export class SelectTareaService {
     }
     return this.http.post<any>(baseURL + 'select_tareas_clase', info, httpOptions);
   }
+
+  getEntregas(id_tarea:number): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+    };
+    var info={
+      id_tarea:id_tarea
+    }
+    return this.http.post<any>(baseURL + 'ver_entregas', info, httpOptions);
+  }
 }
