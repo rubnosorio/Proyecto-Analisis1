@@ -12,7 +12,7 @@ export class AppComponent {
   title = 'frontend';
   constructor(private dialogService: DialogService, private router:Router){
     console.log('entro');
-    this.router.navigate(['login']);
+    //this.router.navigate(['login']);
   }
   //Implementación dialogo
   onPrueba(){

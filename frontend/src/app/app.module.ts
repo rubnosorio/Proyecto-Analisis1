@@ -83,6 +83,7 @@ import { CrearPublicacionComponent } from './components/crear-publicacion/crear-
 import { VerExamenesEstudianteComponent } from './components/ver-examenes-estudiante/ver-examenes-estudiante.component';
 import { ActualizarPublicacionComponent } from './components/actualizar-publicacion/actualizar-publicacion.component';
 import { SelectTareaComponent } from './components/select-tarea/select-tarea.component';
+import { TareasClaseComponent } from './components/tareas-clase/tareas-clase.component';
 
 
 @NgModule({
@@ -115,6 +116,7 @@ import { SelectTareaComponent } from './components/select-tarea/select-tarea.com
     ActualizarPublicacionComponent,
     SelectTareaComponent,
     VerExamenesEstudianteComponent,
+    TareasClaseComponent,
   ],
   imports: [
     BrowserModule,
