@@ -9,10 +9,12 @@ import { ActualizarPublicacionComponent } from './actualizar-publicacion.compone
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { convertToParamMap } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
+import { baseURL } from '../../services/shared/baseURL';
 
 fdescribe('Dado que quiero actualizar una publicacion', () => {
   let component: ActualizarPublicacionComponent;
   let fixture: ComponentFixture<ActualizarPublicacionComponent>;
+  let mock: HttpTestingController;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -42,6 +44,7 @@ fdescribe('Dado que quiero actualizar una publicacion', () => {
       ],
     })
     .compileComponents();
+    mock = TestBed.inject(HttpTestingController);
   }));
 
   beforeEach(() => {
@@ -58,5 +61,14 @@ fdescribe('Dado que quiero actualizar una publicacion', () => {
     var res = component.obtenerParametro();
     expect(res).toBeTrue();
   });
-  
+
+  it('Entonces entonces envio la informacion de la publicacion a actualizar', (done) => {
+    var res = {message: "Todo correcto"}
+    component.actualizarPublicacion();
+    var req = mock.expectOne(baseURL + 'regalartarjeta');
+    req.flush(res);
+    expect(req.request.url).toEqual(baseURL + 'regalartarjeta');
+    done();
+  });
+
 });
