@@ -65,9 +65,9 @@ fdescribe('Dado que quiero actualizar una publicacion', () => {
   it('Entonces entonces envio la informacion de la publicacion a actualizar', (done) => {
     var res = {message: "Todo correcto"}
     component.actualizarPublicacion();
-    var req = mock.expectOne(baseURL + 'regalartarjeta');
+    var req = mock.expectOne(baseURL + 'actualizar-publicacion');
     req.flush(res);
-    expect(req.request.url).toEqual(baseURL + 'regalartarjeta');
+    expect(req.request.url).toEqual(baseURL + 'actualizar-publicacion');
     done();
   });
 

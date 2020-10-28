@@ -40,4 +40,12 @@ export class ActualizarPublicacionComponent implements OnInit {
     return true;
   }
 
+  actualizarPublicacion(){
+    this.publicacionService.update(this.publicacion).subscribe((data:any) => {
+      this.toastr.success(data.message);
+    }, err => {
+      this.toastr.error(err.error.message);
+    })
+  }
+
 }
