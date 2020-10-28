@@ -67,5 +67,6 @@ const actualizar_publicacion = require('./endpoints/actualizar-publicacion')(app
 const select_tareas = require('./endpoints/select_tareas_states')(app, connection);
 const crear_publicacion = require('./endpoints/crear_publicacion')(app, connection);
 const actualizar_nota_tarea = require('./endpoints/actualiza_nota_tarea')(app, connection);
+const select_tareas_clase = require('./endpoints/selec_tareas_clase')(app, connection);
 
 app.listen(3000, () => console.log('escuchando en puerto 3000'));
