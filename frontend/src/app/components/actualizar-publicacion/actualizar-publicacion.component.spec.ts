@@ -1,5 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { ToastrModule } from 'ngx-toastr';
+import { RouterTestingModule } from '@angular/router/testing';
+import { LoginComponent } from '../login/login.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { ActualizarPublicacionComponent } from './actualizar-publicacion.component';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { convertToParamMap } from '@angular/router';
@@ -12,7 +17,17 @@ fdescribe('Dado que quiero actualizar una publicacion', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
+        ToastrModule.forRoot(),
         HttpClientTestingModule,
+        BrowserAnimationsModule,
+        RouterTestingModule.withRoutes(
+          [
+            {
+              path: 'login',
+              component: LoginComponent
+            }
+          ]
+        ),
       ],
       declarations: [ ActualizarPublicacionComponent ],
       providers: [
@@ -39,8 +54,9 @@ fdescribe('Dado que quiero actualizar una publicacion', () => {
     expect(component).toBeTruthy();
   });
 
-  it('Entonces obtengo la publicacion a actualizar', () => {
+  it('Entonces obtengo el parametro de la publicacion a actualizar', () => {
     var res = component.obtenerParametro();
     expect(res).toBeTrue();
   });
+  
 });

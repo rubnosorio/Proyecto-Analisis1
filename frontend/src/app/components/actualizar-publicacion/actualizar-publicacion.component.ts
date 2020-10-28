@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { ActualizarPublicacionService } from '../../services/actualizar-publicacion/actualizar-publicacion.service'
 
 
 @Component({
@@ -11,12 +13,26 @@ export class ActualizarPublicacionComponent implements OnInit {
 
   publicacion = {id_publicacion: 0, publicacion: "esta es una publicacion de prueba", fecha: "2020/10/26 12:55", id_clase: 0, id_usuario: 0}
 
-  constructor(private route: ActivatedRoute,) {
-    this.obtenerParametro()
+  constructor(private route: ActivatedRoute,
+    private publicacionService: ActualizarPublicacionService,
+    private toastr: ToastrService,
+  ) {
+    this.obtenerParametro();
+    this.obtenerPublicacion();
   }
 
   ngOnInit(): void {
 
+  }
+
+  obtenerPublicacion(): any{
+    this.publicacionService.get(this.publicacion).subscribe((data: any) => {
+      console.log(data)
+      this.publicacion = data.data;
+    }, err => {
+      this.toastr.error(err.error.message)
+    })
+    return true;
   }
 
   obtenerParametro(): any{
