@@ -16,7 +16,7 @@ module.exports = (app, s3, connection) => {
             extension = base64String.substring(base64String.indexOf('/') + 1, base64String.indexOf(';base64')); //obtiene la información de la extension a partir del header
             base64 = base64String.split(","); //separamos el header del codigo en base64
             decoded = Buffer.from(base64[1], 'base64');
-            filename = nombre_tarea + "." + extension;
+            filename = nombre_tarea;
             //realizamos una consulta para obtener el nombre de la clase y el nombre de la tarea que fue creada por el profesor
             //para insertar la tarea en el directorio de la forma nombrclase/nombretarea/nombrearchivi.extension
             connection.query(`select (select nombre_clase FROM CLASE where id_clase=${parseInt(id_clase)}) as clase, (select nombre_tarea FROM TAREA where id_tarea=${parseInt(id_tarea)}) as tarea`, function (err, rows, fields) {
