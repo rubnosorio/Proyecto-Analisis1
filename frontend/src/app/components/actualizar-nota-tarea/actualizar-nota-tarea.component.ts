@@ -11,9 +11,15 @@ import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition
 export class ActualizarNotaTareaComponent implements OnInit {
 
   lista_entregas:any[]=[];
+  id_tarea:number;
+  id_usuario:number;
+  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
 
-  constructor(private selectTareaService:SelectTareaService) { 
-    this.selectTareaService.getEntregas(1).subscribe((res:any)=>{
+  constructor(private selectTareaService:SelectTareaService, private _snackBar: MatSnackBar, private router:Router) { 
+    this.id_tarea=Number(sessionStorage.getItem("id_tarea"));
+    this.id_usuario=Number(sessionStorage.getItem("id_usuario"));
+    this.selectTareaService.getEntregas(this.id_tarea).subscribe((res:any)=>{
       console.log(res);
       this.lista_entregas=res;
     });
@@ -29,8 +35,13 @@ export class ActualizarNotaTareaComponent implements OnInit {
     this.step = index;
   }
 
-  actualizarNota(index:string) {
-    console.log(index);
+  actualizarNota(nota:number) {
+    //console.log(index);
+    this.selectTareaService.UpdateNota(this.id_tarea, this.id_usuario,nota).subscribe((res:any)=>{
+      this.openSnackBar("Tarea calificada correctamente", "Cerrar");
+    },(err:any)=>{
+      this.openSnackBar("Ha ocurrido un error, intente nuevamente", "Cerrar");
+    });
     //this.step++;
   }
 
@@ -39,6 +50,17 @@ export class ActualizarNotaTareaComponent implements OnInit {
   }
 
   aaa: string = null
+  
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 2000,
+      horizontalPosition: this.horizontalPosition,
+      verticalPosition: this.verticalPosition,
+    });
+  }
 
+  regresar(){
+    this.router.navigate(['tareas_clase']);
+  }
 
 }
