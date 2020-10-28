@@ -11,7 +11,12 @@ export class CrearPublicacionService {
 
   constructor(private http: HttpClient) { }
 
-  crear_publicacion() {
-
+  crear_publicacion(publicacion) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+    };
+    return this.http.post<any>(baseURL + 'crear_publicacion', publicacion, httpOptions);
   }
 }
