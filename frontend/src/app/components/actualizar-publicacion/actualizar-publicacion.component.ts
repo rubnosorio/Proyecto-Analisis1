@@ -27,7 +27,6 @@ export class ActualizarPublicacionComponent implements OnInit {
 
   obtenerPublicacion(): any{
     this.publicacionService.get(this.publicacion).subscribe((data: any) => {
-      console.log(data)
       this.publicacion = data.data;
     }, err => {
       this.toastr.error(err.error.message)
@@ -43,6 +42,7 @@ export class ActualizarPublicacionComponent implements OnInit {
   actualizarPublicacion(){
     this.publicacionService.update(this.publicacion).subscribe((data:any) => {
       this.toastr.success(data.message);
+      this.obtenerPublicacion()
     }, err => {
       this.toastr.error(err.error.message);
     })

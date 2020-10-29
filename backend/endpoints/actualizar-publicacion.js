@@ -1,6 +1,6 @@
 module.exports = (app, connection) => {
     app.post('/actualizar-publicacion', (req, res) => {
-        let sql = `UPDATE PUBLICACION SET publicacion=${req.body.publicacion} WHERE id_publicacion=${req.body.id_publicacion}`;
+        let sql = `UPDATE PUBLICACION SET publicacion='${req.body.publicacion}' WHERE id_publicacion=${req.body.id_publicacion}`;
         connection.query(sql, [], function (err, rows, fields) {
             if (err) {
                 res.status(500).json({ message: "No se pudo actualizar la publicacion" });
