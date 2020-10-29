@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NavbarComponent } from "../navbar/navbar.component";
 import { Router } from '@angular/router';
 import {MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition,} from '@angular/material/snack-bar';
+import {Publicacion} from '../../models/publicacion';
+import {ObPublicacionesService}from '../../services/Ob_publicaciones/ob-publicaciones.service';
 
 @Component({
   selector: 'app-inicio-profesor',
@@ -13,12 +15,16 @@ export class InicioProfesorComponent implements OnInit {
   horizontalPosition: MatSnackBarHorizontalPosition = 'center';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
 
-
+  publicaciones: Publicacion[]=[];
+  idUsuario=0;
+  idCurso=0;
+  Curso='aaaa';
   constructor
     (
       private menu: NavbarComponent,
       private router: Router,
-      private _snackBar: MatSnackBar
+      private _snackBar: MatSnackBar,
+      public obpublic: ObPublicacionesService
     ) {
     if (!sessionStorage.getItem("id_usuario")) {
       this.openSnackBar("No ha iniciado sesión", "Cerrar");
@@ -41,6 +47,10 @@ export class InicioProfesorComponent implements OnInit {
       ]
       this.menu.fillerNav = menuActtual;
     }
+    this.idUsuario = Number(sessionStorage.getItem("id_usuario"));
+    this.idCurso = Number(sessionStorage.getItem("id_clase"));
+    this.Curso= sessionStorage.getItem("clase");
+    this.Curso= this.Curso.substr(1,this.Curso.length-2);
   }
 
   openSnackBar(message: string, action: string) {
@@ -52,6 +62,22 @@ export class InicioProfesorComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getPublicaciones();
+  }
+
+  getPublicaciones(){
+    this.obpublic.getPublicaciones(this.idUsuario,this.idCurso).subscribe((data_api: any) => {
+      console.log(data_api);
+      this.publicaciones = data_api;
+    })
+  }
+
+  Crear_publicacion(){
+
+  }
+
+  Eliminar_Publicacion(pub:Publicacion){
+    //tu_servicio(pub);
   }
 
 }

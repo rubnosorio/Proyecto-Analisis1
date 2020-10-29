@@ -1,13 +1,25 @@
-<div class="card-container">
-    <mat-card>
-        <br>
-        <mat-card-title>
-        </mat-card-title>
-        <mat-card-content>
-            <img src="../../../assets/img/enconstruccion.png">
-      </mat-card-content>
-      <mat-card-actions>
-      </mat-card-actions>
-      <br>
-    </mat-card>
+<div fxLayout="row" fxFlex.md="70" style="margin-left: 28px;" fxLayoutWrap class="card-deck-containe mat-elevation-z4" id="ca1">
+  <h1  class='elegantshadow'>{{Curso}} </h1>
+  <div class="card-item" >
+      <mat-card class="pp1">
+          <mat-card-actions class="pp2">
+              <button style="margin-left: 100px;" mat-flat-button class="nuevo_curso" (click)="Crear_publicacion()">Crear Publicación</button>
+          </mat-card-actions>
+      </mat-card>
+  </div>
+</div>
+<div fxLayout="row" fxLayoutAlign="center" fxFlex.md="50" style="margin-left: 290px;" fxLayoutWrap class="card-deck-container mat-elevation-z4">    
+  <div fxFlex *ngFor="let publicacion of publicaciones" class="card-item">
+      <mat-card>
+          <mat-card-header>
+              <mat-card-title>{{publicacion.fecha.substr(0,publicacion.fecha.length-14)}}</mat-card-title>              
+          </mat-card-header>
+          <mat-card-container>
+            {{publicacion.publicacion}}
+          </mat-card-container>
+          <mat-card-actions>
+            <button mat-flat-button class="ir_curso"  >Editar</button>
+            <button mat-flat-button color="warn" (click)="Eliminar_Publicacion(publicacion)" style="margin-left: 20px;"   >Eliminar</button>
+          </mat-card-actions>
+        </mat-card> 
   </div>

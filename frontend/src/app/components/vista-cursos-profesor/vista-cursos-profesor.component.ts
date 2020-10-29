@@ -82,6 +82,7 @@ export class VistaCursosProfesorComponent implements OnInit {
 
   Ir_a_Curso(Clase:PClase){
     sessionStorage.setItem("id_clase",JSON.stringify(Clase.id_clase));
+    sessionStorage.setItem("clase",JSON.stringify(Clase.nombre_clase));
     this.router.navigate(['/principal_profesor']);
   }
 

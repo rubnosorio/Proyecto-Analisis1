@@ -63,5 +63,6 @@ const registrar_nota_examen = require('./endpoints/registrar_nota_examen')(app, 
 const notas_estudiante = require('./endpoints/nota_estudiante')(app,connection);
 const obtener_Clases = require('./endpoints/obtener_clases')(app,connection); 
 const ver_cursos_profesor = require('./endpoints/Ver_cursos_profesor')(app,connection);
+const ver_publicaciones = require('./endpoints/ver_pulicaciones')(app,connection);
 
 app.listen(3000, () => console.log('escuchando en puerto 3000'));
