@@ -4,6 +4,7 @@ import { CrearPublicacionComponent } from './crear-publicacion.component';
 import { ToastrModule } from 'ngx-toastr';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { FormBuilder } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { CrearPublicacionService } from '../../services/crear_publicacion/crear-publicacion.service';
 
@@ -17,13 +18,15 @@ fdescribe('CrearPublicacionComponent', () => {
     TestBed.configureTestingModule({
       declarations: [CrearPublicacionComponent],
       imports: [ToastrModule.forRoot(),
-        HttpClientTestingModule],
+        HttpClientTestingModule,
+        RouterTestingModule],
       providers: [FormBuilder]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
+    sessionStorage.setItem('tipo_usuario', 'catedratico')
     fixture = TestBed.createComponent(CrearPublicacionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CrearPublicacionService } from '../../services/crear_publicacion/crear-publicacion.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-crear-publicacion',
@@ -11,18 +11,24 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class CrearPublicacionComponent implements OnInit {
 
-  constructor(private toastr: ToastrService, private ps: CrearPublicacionService, private fb: FormBuilder) {
+  constructor(private toastr: ToastrService, private ps: CrearPublicacionService, private fb: FormBuilder, private router: Router) {
     this.createForm();
   }
 
   postForm: FormGroup;
 
   ngOnInit(): void {
+
+    if (sessionStorage.getItem('tipo_usuario') == 'estudiante') {
+      this.toastr.error('No tienes permitido entrar a esta pagina');
+      this.router.navigate(['ver_clases_estudiante']);
+    }
   }
 
   async onSubmit() {
     var postt = this.postForm.controls['publicacion'].value;
-    console.log(await this.crearpublicacion(postt));
+    await this.crearpublicacion(postt);
+    this.postForm.reset();
   }
 
   crearpublicacion(publicacion) {
