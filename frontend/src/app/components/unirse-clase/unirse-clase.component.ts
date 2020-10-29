@@ -34,6 +34,7 @@ export class UnirseClaseComponent implements OnInit {
   Unirse(cod:string){
     if(this.CodigoValido(cod)){
       this.serv.cod_clase=cod;
+      this.serv.id_usuario=Number(sessionStorage.getItem('id_usuario'));
       this.unirseaclase.unirse_clase(this.serv).subscribe((res:any) => {
         if (res.statusCode == 200) {
           this.toastr.error('Inserción Correcta','Agregado Correctamente');

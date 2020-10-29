@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { VerClasesEstudianteService } from '../../services/ver-clases-estudiante/ver-clases-estudiante.service';
 import { NavbarComponent } from "../navbar/navbar.component";
+import { DarmeBajaService } from '../../services/darme-baja/darme-baja.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-ver-cursos-estudiante',
@@ -16,7 +18,7 @@ export class VerCursosEstudianteComponent implements OnInit {
   clases: any[];
 
 
-  constructor(private router: Router, private get_clases: VerClasesEstudianteService, private menu: NavbarComponent) {
+  constructor(private router: Router, private get_clases: VerClasesEstudianteService,private darbaja:DarmeBajaService,private toast:ToastrService, private menu: NavbarComponent) {
     if (!sessionStorage.getItem("id_usuario")) {
       this.menu.openSnackBar("No ha iniciado sesión", "Cerrar");
       this.router.navigate(['/login']);
@@ -49,6 +51,14 @@ export class VerCursosEstudianteComponent implements OnInit {
   }
 
   DarmedeBaja(clase: any) {
-    // Pendiente agregar darse de baja
+    let clase_user = {
+      id_clase:Number(clase.id_clase),
+      id_usuario:this.user.id_usuario
+    }
+    this.darbaja.darme_de_baja(clase_user).subscribe((res:any) => {
+      if(res.statusCode==200){
+        this.toast.success('Te has dado de baja del curso con exito', 'Dada de baja completo');
+      }
+    });
   }
 }
