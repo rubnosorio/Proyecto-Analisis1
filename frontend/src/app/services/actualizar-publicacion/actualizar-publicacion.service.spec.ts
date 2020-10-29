@@ -25,14 +25,14 @@ fdescribe('Dado que se quiere actualizar una publicacion', () => {
     expect(base64).toBeTruthy();
   });
 
-  it('Y el metodo para postear el usuario existe', () => {
+  it('Y el metodo para postear la publicacion existe', () => {
     let res = service.update
     expect(res).toBeTruthy();
   });
 
-  it('Then el usuario es posteado con exito', () => {
+  it('Then la publicacion es posteado con exito', () => {
     const mockRes = 200;
-    var res = 0
+    var res:any
     service.update({publicacion: "Esta es una publicacion de prueba", fecha: "22/10/2020 23:00", id_clase: 1, id_usuario: 1 })
     .subscribe(resAPI =>{
       res = resAPI

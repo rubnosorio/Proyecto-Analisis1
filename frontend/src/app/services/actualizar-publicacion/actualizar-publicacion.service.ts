@@ -13,7 +13,11 @@ export class ActualizarPublicacionService {
     return baseURL
   }
 
-  update(publicacion: any): any{
+  update(publicacion: any){
     return this.http.post(baseURL+'actualizar-publicacion',publicacion)
+  }
+
+  get(publicacion: any){
+    return this.http.post(baseURL+'obtener-publicacion',publicacion)
   }
 }

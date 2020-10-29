@@ -1,6 +1,6 @@
 <mat-card class="card">
     <mat-card-header>
-        <mat-card-title>{{publicacion.fecha}}</mat-card-title>
+        <mat-card-title>{{ publicacion.fecha | date:'medium' }}</mat-card-title>
     </mat-card-header>
     <mat-card-content>
         <mat-form-field class="text">
@@ -9,6 +9,6 @@
         </mat-form-field>
     </mat-card-content>
     <mat-card-actions>
-        <button mat-button>Actualizar</button>
+        <button (click)="actualizarPublicacion()" color="primary" mat-raised-button>Actualizar</button>
     </mat-card-actions>
 </mat-card>
