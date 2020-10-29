@@ -1,0 +1,85 @@
+.example-card {
+    max-width: 350px;
+    margin:auto;
+    border-style: outset;
+    background-image: url("https://static.vecteezy.com/system/resources/previews/000/625/953/non_2x/soft-abstract-background-in-light-colors-vector.jpg");
+    text-align: justify;
+  }
+  .example-header-image {
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Flag_of_Guatemala.svg/1200px-Flag_of_Guatemala.svg.png');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+
+  .main-div{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .column {
+    float: left;
+    width: 30%;
+    padding-left: 2.5%;
+    orientation: portrait;
+  }
+
+  @media screen and (min-width:320px) and (max-width:997px) and (orientation:landscape) {
+    .column{
+      width: 100%;
+      padding: 10px;
+    }
+  }
+
+  @media screen and (max-width:997px){
+    .column{
+      width: 100%;
+      padding: 10px;
+    }
+  }
+
+  @media screen and (max-width:1024px) and (orientation:landscape){
+    .column{
+      width: 50%;
+      margin-left: auto;
+    margin-right: auto;
+    }
+  }
+
+  @media screen and (min-width:998px) and (max-width:1024px) and (orientation:landscape) {
+    .column{
+      width: 50%;
+      margin-left: auto;
+    margin-right: auto;
+    }
+  }
+  
+  
+  /* Clear floats after the columns */
+  .row/*:after*/ {
+    display: table;
+    clear: both;
+  }
+
+  .titulo2{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    color: black;
+  }
+
+  .copyright {
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 15px;
+    color: black;
+    position:absolute;
+    width: auto;
+    left: 45%;
+    margin-left: -100px;
+    text-align: justify;
+  }

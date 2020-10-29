@@ -6,11 +6,18 @@
             <h1>Mis Notas</h1>
         </div>
     </mat-grid-tile>
-    <mat-grid-tile (click)='redirect("/entregar-tarea")'>
+    <mat-grid-tile (click)='redirect("/select_tarea")'>
         <div class="card">
             <img src="assets/bg-principal.jpg">
             <mat-divider></mat-divider>
             <h1>Mis Tareas</h1>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile (click)='redirect("/ver_examenes_estudiante")'>
+        <div class="card">
+            <img src="assets/bg-principal.jpg">
+            <mat-divider></mat-divider>
+            <h1>Mis Examenes</h1>
         </div>
     </mat-grid-tile>
 </mat-grid-list>

@@ -1,0 +1,35 @@
+[
+    {
+        "id_examen": 1,
+        "nombre_examen": "Primer Parcial",
+        "fecha": "27-10-2020",
+        "descripcion": "Primer Parcial del curso",
+        "num_preguntas": 3,
+        "valor_examen": 5,
+        "estado": 1,
+        "id_clase": 1,
+        "preguntas": " "
+    },
+    {
+        "id_examen": 2,
+        "nombre_examen": "Segundo Parcial",
+        "fecha": "28-10-2020",
+        "descripcion": "Segundo Parcial del curso",
+        "num_preguntas": 3,
+        "valor_examen": 5,
+        "estado": 1,
+        "id_clase": 1,
+        "preguntas": " "
+    },
+    {
+        "id_examen": 3,
+        "nombre_examen": "Tercer Parcial",
+        "fecha": "28-10-2020",
+        "descripcion": "Tercer Parcial del curso",
+        "num_preguntas": 10,
+        "valor_examen": 25,
+        "estado": 1,
+        "id_clase": 1,
+        "preguntas": " "
+    }
+]

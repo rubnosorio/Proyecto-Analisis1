@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Tarea } from '../../models/tarea'
 import { EntregarTareaService } from '../../services/tarea/entregar-tarea.service'
 import { EntregarTarea } from 'src/app/models/entregar-tarea';
+import { Router } from '@angular/router';
+import {MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition,} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-entregar-tarea',
@@ -12,16 +14,26 @@ export class EntregarTareaComponent implements OnInit {
 
   tarea: Tarea
   files: any[] = [];
+  id_usuario:number;
+  id_clase:number;
+  id_tarea:number;
+  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
 
-  constructor(private entregaService: EntregarTareaService) {
+  constructor(private entregaService: EntregarTareaService, private router: Router,  private _snackBar: MatSnackBar,) {
     this.getTask()
+    this.id_usuario=Number(sessionStorage.getItem("id_usuario"));
+    this.id_clase=Number(sessionStorage.getItem("id_clase"));
+    this.id_tarea=Number(sessionStorage.getItem("id_tarea"));
   }
 
   ngOnInit(): void {
   }
 
   getTask() {
-    this.tarea = new Tarea(1, "Tarea de Prueba", "Esta es una prueba y aca ira la descripcion de la tarea", "", "asdasd/asdad", "25/08/2020 18:12",10)
+    var tarea_entregar=JSON.parse(sessionStorage.getItem("tarea"));
+    this.tarea = new Tarea(tarea_entregar.id_tarea,
+       tarea_entregar.nombre_tarea, tarea_entregar.descripcion, "", tarea_entregar.url_archivo_instruccion, tarea_entregar.fecha_entrega,tarea_entregar.valor_tarea)
   }
 
   onSelect(event) {
@@ -45,9 +57,20 @@ export class EntregarTareaComponent implements OnInit {
   }
 
   sendTask(base: string): any {
-    this.entregaService.sendTask(new EntregarTarea(1,1,12,"",this.files[0].name,base,0)).subscribe((res: any) => {
-      return res
+    this.entregaService.sendTask(new EntregarTarea(this.id_usuario,this.id_clase,this.id_tarea,"",this.files[0].name,base,0)).subscribe((res: any) => {
+      this.openSnackBar("Tarea enviada", "Cerrar");
+      this.router.navigate(['select_tarea']);
+    },(err)=>{
+      this.openSnackBar("Ha ocurrido un error al entregar la tarea", "Cerrar");
     })
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 2000,
+      horizontalPosition: this.horizontalPosition,
+      verticalPosition: this.verticalPosition,
+    });
   }
 
 }

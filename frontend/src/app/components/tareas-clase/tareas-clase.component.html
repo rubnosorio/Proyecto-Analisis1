@@ -1,0 +1,21 @@
+<br>
+<div class="titulo2">TAREAS CREADAS</div>
+<br>
+<div *ngFor="let item of lista_tareas;" class="column">
+    <mat-card class="example-card">
+        <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>{{item.nombre_tarea}}</mat-card-title>
+            <mat-card-subtitle style="color:green;">Valor: {{item.valor_tarea}} pts
+            </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <p>
+                {{item.descripcion}}
+            </p>
+        </mat-card-content>
+        <mat-card-actions>
+            <button  style="color:green;" (click)="Calificar(item.id_tarea)" mat-button>Ver Entregas</button>
+        </mat-card-actions>
+    </mat-card>
+</div>

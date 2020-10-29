@@ -79,6 +79,13 @@ import { VerCursosEstudianteComponent } from './components/ver-cursos-estudiante
 import { PrincipalEstudianteComponent } from './components/principal-estudiante/principal-estudiante.component';
 import { InicioProfesorComponent } from './components/inicio-profesor/inicio-profesor.component';
 import { VistaCursosProfesorComponent } from './components/vista-cursos-profesor/vista-cursos-profesor.component';
+import { CrearPublicacionComponent } from './components/crear-publicacion/crear-publicacion.component';
+import { VerExamenesEstudianteComponent } from './components/ver-examenes-estudiante/ver-examenes-estudiante.component';
+import { ActualizarPublicacionComponent } from './components/actualizar-publicacion/actualizar-publicacion.component';
+import { SelectTareaComponent } from './components/select-tarea/select-tarea.component';
+import { TareasClaseComponent } from './components/tareas-clase/tareas-clase.component';
+import { ActualizarNotaTareaComponent } from './components/actualizar-nota-tarea/actualizar-nota-tarea.component';
+
 
 
 @NgModule({
@@ -107,6 +114,12 @@ import { VistaCursosProfesorComponent } from './components/vista-cursos-profesor
     PrincipalEstudianteComponent,
     InicioProfesorComponent,
     VistaCursosProfesorComponent,
+    CrearPublicacionComponent,
+    ActualizarPublicacionComponent,
+    SelectTareaComponent,
+    VerExamenesEstudianteComponent,
+    TareasClaseComponent,
+    ActualizarNotaTareaComponent,
   ],
   imports: [
     BrowserModule,

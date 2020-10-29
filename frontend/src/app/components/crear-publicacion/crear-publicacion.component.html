@@ -1,0 +1,21 @@
+<div class="card-container">
+  <mat-card>
+    <br>
+    <mat-card-title>
+      CREAR PUBLICACION
+    </mat-card-title>
+    <mat-card-content>
+      <form novalidate [formGroup]="postForm">
+        <mat-form-field>
+          <mat-icon matSuffix>create</mat-icon>
+          <textarea class="text-area-noresize" matInput placeholder="Descripcion" rows="10" formControlName="publicacion"></textarea>
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button type="submit" mat-raised-button color="primary" (click)="onSubmit()">Crear Publicacion</button>
+      <button mat-button mat-raised-button color="primary" >Limpiar Formulario</button>
+    </mat-card-actions>
+    <br>
+  </mat-card>
+</div>

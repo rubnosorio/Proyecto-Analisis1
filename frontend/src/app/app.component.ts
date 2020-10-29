@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { DialogService } from './services/shared/dialog.service';
+import { Router } from "@angular/router";
 
 
 @Component({
@@ -9,7 +10,9 @@ import { DialogService } from './services/shared/dialog.service';
 })
 export class AppComponent {
   title = 'frontend';
-  constructor(private dialogService: DialogService){
+  constructor(private dialogService: DialogService, private router:Router){
+    console.log('entro');
+    //this.router.navigate(['login']);
   }
   //Implementación dialogo
   onPrueba(){

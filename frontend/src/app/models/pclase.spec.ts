@@ -1,5 +1,5 @@
 import { PClase } from './pclase';
 
-describe('PClase', () => {
+fdescribe('PClase', () => {
   
 });
