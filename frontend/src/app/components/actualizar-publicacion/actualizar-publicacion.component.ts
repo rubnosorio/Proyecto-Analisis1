@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 import { ActualizarPublicacionService } from '../../services/actualizar-publicacion/actualizar-publicacion.service'
 
 
@@ -16,7 +17,16 @@ export class ActualizarPublicacionComponent implements OnInit {
   constructor(private route: ActivatedRoute,
     private publicacionService: ActualizarPublicacionService,
     private toastr: ToastrService,
+    private router: Router,
   ) {
+    if (!sessionStorage.getItem("id_usuario")) {
+      this.toastr.error("No ha iniciado sesión");
+      this.router.navigate(['/login']);
+    }
+    else if (sessionStorage.getItem("tipo_usuario") == "estudiante") {
+      this.toastr.error("Su sesión no es de tipo Profesor");
+      this.router.navigate(['/login']);
+    }
     this.obtenerParametro();
     this.obtenerPublicacion();
   }
