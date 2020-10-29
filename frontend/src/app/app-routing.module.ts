@@ -25,6 +25,7 @@ import { SelectTareaComponent } from "./components/select-tarea/select-tarea.com
 import { ActualizarPublicacionComponent } from './components/actualizar-publicacion/actualizar-publicacion.component';
 import { TareasClaseComponent } from './components/tareas-clase/tareas-clase.component';
 import { ActualizarNotaTareaComponent } from './components/actualizar-nota-tarea/actualizar-nota-tarea.component';
+import {VistaPublicacionesEComponent} from './components/vista-publicaciones-e/vista-publicaciones-e.component';
 
 const routes: Routes = [
   {
@@ -127,6 +128,11 @@ const routes: Routes = [
     path: 'actualizar_nota_tarea',
     component: ActualizarNotaTareaComponent
   },
+  {
+    path: 'publicaciones_estudiante',
+    component: VistaPublicacionesEComponent
+  },
+  
 ];
 
 @NgModule({

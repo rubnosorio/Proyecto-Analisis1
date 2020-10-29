@@ -47,6 +47,7 @@ export class VerCursosEstudianteComponent implements OnInit {
 
   IraClase(clase: any) {
     sessionStorage.setItem('id_clase', JSON.stringify(clase.id_clase));
+    sessionStorage.setItem("clase",JSON.stringify(clase.nombre_clase));
     this.router.navigate(['/principal_estudiante']); // Interior clase usuario
   }
 

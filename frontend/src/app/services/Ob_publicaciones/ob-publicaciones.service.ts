@@ -9,7 +9,10 @@ export class ObPublicacionesService {
 
   constructor(private http: HttpClient) { }
 
-  getPublicaciones(idUsuario: number,idClase){
+  getPublicaciones(idUsuario: number,idClase:number){
     return this.http.post(baseURL+'ver_publicaciones',{Id_Usuario: idUsuario,Id_Clase:idClase})
+  }
+  getPublicacionesEstu(idClase:number){
+    return this.http.post(baseURL+'ver_publicacionesE',{Id_Clase:idClase})
   }
 }

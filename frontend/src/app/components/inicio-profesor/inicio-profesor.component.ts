@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import {MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition,} from '@angular/material/snack-bar';
 import {Publicacion} from '../../models/publicacion';
 import {ObPublicacionesService}from '../../services/Ob_publicaciones/ob-publicaciones.service';
+import {EliminarPublicacionService} from '../../services/eliminar-publicacion/eliminar-publicacion.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-inicio-profesor',
@@ -24,7 +26,9 @@ export class InicioProfesorComponent implements OnInit {
       private menu: NavbarComponent,
       private router: Router,
       private _snackBar: MatSnackBar,
-      public obpublic: ObPublicacionesService
+      public obpublic: ObPublicacionesService,
+      public ep: EliminarPublicacionService,
+      private toast:ToastrService
     ) {
     if (!sessionStorage.getItem("id_usuario")) {
       this.openSnackBar("No ha iniciado sesión", "Cerrar");
@@ -74,11 +78,19 @@ export class InicioProfesorComponent implements OnInit {
   }
 
   Crear_publicacion(){
-
+    this.router.navigate(['/crear_publicacion']);
   }
 
   Eliminar_Publicacion(pub:Publicacion){
-    //tu_servicio(pub);
+    this.ep.eliminar_publicacion(pub).subscribe((res: any) => {
+      if(res.statusCode==200){
+        this.toast.success('Se ha eliminado la publicación con exito', 'Eliminar Publicación');
+      }
+    })
+  }
+
+  Actualizar_Publicacion(pub:Publicacion){
+    this.router.navigate(['/actualizar_publicacion/'+pub.id_publicacion]);
   }
 
 }

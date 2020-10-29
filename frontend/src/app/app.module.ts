@@ -85,6 +85,7 @@ import { ActualizarPublicacionComponent } from './components/actualizar-publicac
 import { SelectTareaComponent } from './components/select-tarea/select-tarea.component';
 import { TareasClaseComponent } from './components/tareas-clase/tareas-clase.component';
 import { ActualizarNotaTareaComponent } from './components/actualizar-nota-tarea/actualizar-nota-tarea.component';
+import { VistaPublicacionesEComponent } from './components/vista-publicaciones-e/vista-publicaciones-e.component';
 
 
 
@@ -120,6 +121,7 @@ import { ActualizarNotaTareaComponent } from './components/actualizar-nota-tarea
     VerExamenesEstudianteComponent,
     TareasClaseComponent,
     ActualizarNotaTareaComponent,
+    VistaPublicacionesEComponent,
   ],
   imports: [
     BrowserModule,

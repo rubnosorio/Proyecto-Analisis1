@@ -18,7 +18,7 @@
             {{publicacion.publicacion}}
           </mat-card-container>
           <mat-card-actions>
-            <button mat-flat-button class="ir_curso"  >Editar</button>
+            <button mat-flat-button class="ir_curso" (click)="Actualizar_Publicacion(publicacion)"  >Editar</button>
             <button mat-flat-button color="warn" (click)="Eliminar_Publicacion(publicacion)" style="margin-left: 20px;"   >Eliminar</button>
           </mat-card-actions>
         </mat-card> 

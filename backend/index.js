@@ -72,5 +72,6 @@ const ver_entregas = require('./endpoints/ver_entregas')(app, connection);
 const eliminar_publicacion = require('./endpoints/eliminar_publicacion')(app,connection);
 const darme_baja = require('./endpoints/darme_baja')(app,connection);
 const ver_publicaciones = require('./endpoints/ver_pulicaciones')(app,connection);
+const ver_publicacionesE = require('./endpoints/verPublicacionesEstudiante')(app,connection);
 
 app.listen(3000, () => console.log('escuchando en puerto 3000'));
