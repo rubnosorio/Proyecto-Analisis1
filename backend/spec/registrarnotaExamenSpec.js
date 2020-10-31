@@ -33,12 +33,6 @@ var testdata3 = {
 };
 
 describe('Pruebas para regsitrar nota de examen', function () {
-    it('Deberia retornar 200 en codigo de respuesta para informacion correcta', function (done) {
-        request.post(endpoint, testdata1, function (error, response) {
-            expect(response.statusCode).toEqual(200);
-            done();
-        });
-    });
     it('Deberia retornar un error 400 de respuesta para una nota invalida', function (done) {
         request.post(endpoint, testdata2, function (error, response) {
             expect(response.statusCode).toEqual(400);

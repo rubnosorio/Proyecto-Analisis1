@@ -8,10 +8,10 @@ describe('Dado que quiero ver las tareas de una clase', function () {
         id_clase: 1,
         id_usuario: 1
     };
-    describe('Cuando entro a la clase que quiero',function(){
+    describe('Cuando entro a la clase que quiero', function () {
         it('Entonces obtendré una lista de tareas que hay en la clase', function (done) {
-            request.post(endpoint, { json: true, body: clase }, function (error, response) {
-                expect(response.lista_tareas.length).toBeGreaterThanOrEqual(0);
+            request.post(endpoint, { json: true, body: clase }, (error, response) => {
+                expect(response.body.lista_tareas.length).toBeGreaterThanOrEqual(0);
                 done();
             });
         });

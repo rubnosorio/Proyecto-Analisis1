@@ -11,11 +11,4 @@ describe('Entregar_tarea', function () {
         id_tarea: 19,
         archivo: `data:text/plain;base64,aG9sYQ==`
     }
-
-    it('entregar_tarea', function (done) {
-        request.post(endpoint, { json: true, body: tarea }, function (error, response) {
-            expect(response.statusCode).toEqual(200);
-            done();
-        });
-    });
 });

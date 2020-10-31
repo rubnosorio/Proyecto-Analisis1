@@ -5,7 +5,8 @@ const endpoint = 'http://localhost:3000/actualizar-publicacion';
 
 describe('Dado que se actualizara una publicacion', function () {
     var resp = {
-        message: "Se actualizo correctamente la publicacion"
+        id_publicacion: 1,
+        publicacion: "Se actualizo correctamente la publicacion"
     };
 
     it('Cuando se quiere interactua con la base de datos', function (done) {

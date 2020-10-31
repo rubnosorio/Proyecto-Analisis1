@@ -18,7 +18,6 @@ module.exports = (app, mysql, s3, connection) => {
             base64 = base64String.split(","); //separamos el header del codigo en base64
             decoded = Buffer.from(base64[1], 'base64');
             filename= "instrucciones"+nombre_tarea+"."+extension;
-            console.log("si jalo");
         }
         //variables para el bucket de S3
         const bucketname = 'proyectoanalisis1';

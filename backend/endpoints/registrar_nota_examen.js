@@ -26,8 +26,8 @@ module.exports = (app, connection) => {
                 }
                 else {
                     console.log(err);
-                    status.statusCode = 404;
-                    res.send(status);
+                    res.statusCode = 404;
+                    res.send(res);
                 }
             });
         }

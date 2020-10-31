@@ -8,7 +8,6 @@ module.exports = (app,connection,uuid) => {
         //generamos el codigo de acceso
         var cod_acceso = uuid();
         cod_acceso = cod_acceso.substring(0,8);
-        console.log(req);
         connection.query(`insert into CLASE(nombre_clase,id_usuario,cod_acceso) values ('${nombre_clase}',${parseInt(id_usuario)},
         '${cod_acceso}')`, function (err, rows, fields) {
             //console.log(err);
